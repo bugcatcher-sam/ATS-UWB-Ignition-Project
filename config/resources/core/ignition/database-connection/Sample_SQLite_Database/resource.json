@@ -1,0 +1,19 @@
+{
+  "scope": "A",
+  "description": "Quick Start SQLite database connection",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "config.json"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "quickstart",
+      "timestamp": "2026-04-13T22:51:09Z"
+    },
+    "uuid": "f7e28fad-f246-4a5f-abe1-878f9063cd90",
+    "lastModificationSignature": "fa3d77f0a4160896766304eb1aa3554d8b0ee7f37194addb0e72af1cc28df605",
+    "enabled": true
+  }
+}

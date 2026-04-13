@@ -1,0 +1,20 @@
+{
+  "scope": "A",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "layout--6-coordinate.png"
+  ],
+  "attributes": {
+    "size": 17973,
+    "lastModificationSignature": "804927ab0a4d097043aa0cd1461c730312e62bccdc1e161f3f7f84996620d363",
+    "width": -1,
+    "format": "PNG",
+    "lastModification": {
+      "actor": "quickstart",
+      "timestamp": "2026-04-13T22:51:10Z"
+    },
+    "height": -1
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "uuid": "306d5a87-3ac0-41e4-b170-b4eaa06e325c",
+      "username": "samgov",
+      "schedule": "Always",
+      "password": "[46fd5617]fa4fa306ca566b3c10c31edebf1c286ed06c678135bb91f984dc3d90e49fff08",
+      "passwordDate": "20260413.155006925-0700",
+      "passwordHistory": [],
+      "createdDate": "20260413.155006924-0700",
+      "lastModifiedDate": "20260413.155006924-0700",
+      "roles": [
+        "7858e5de-3420-4565-b500-61e03fade07c"
+      ],
+      "extraProps": [],
+      "scheduleAdjustments": [],
+      "contactInfos": []
+    }
+  ],
+  "roles": [
+    {
+      "uuid": "7858e5de-3420-4565-b500-61e03fade07c",
+      "rolename": "Administrator",
+      "createdDate": "20260413.155006924-0700",
+      "lastModifiedDate": "20260413.155006924-0700"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "scope": "A",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "no.svg"
+  ],
+  "attributes": {
+    "size": 517,
+    "lastModificationSignature": "c7e59d3b32dd00018571eae7be7bc40ca6e06339ee593559d5dd0b04b004a836",
+    "width": -1,
+    "format": "SVG",
+    "lastModification": {
+      "actor": "quickstart",
+      "timestamp": "2026-04-13T22:51:10Z"
+    },
+    "height": -1
+  }
+}
