@@ -10,11 +10,11 @@
       "name": "ENABLED"
     },
     {
-      "completed": false,
+      "completed": true,
       "name": "DESIGNER"
     },
     {
-      "completed": false,
+      "completed": true,
       "name": "PROJECT"
     },
     {

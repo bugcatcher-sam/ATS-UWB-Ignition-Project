@@ -1,0 +1,19 @@
+{
+  "scope": "C",
+  "version": 2,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "window.bin",
+    "thumbnail.png"
+  ],
+  "attributes": {
+    "xml-format-version": 1,
+    "lastModificationSignature": "b8a212da4985d415c13db73a6753dc27f307571718df32c09f54ab2086570b0f",
+    "lastModification": {
+      "actor": "samgov",
+      "timestamp": "2026-05-04T19:28:20Z"
+    },
+    "open-on-start": true
+  }
+}

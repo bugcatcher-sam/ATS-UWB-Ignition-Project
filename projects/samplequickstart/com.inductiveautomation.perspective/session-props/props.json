@@ -1,10 +1,5 @@
 {
-  "custom": {
-    "device": {
-      "barcode": "",
-      "nfc": ""
-    }
-  },
+  "custom": {},
   "propConfig": {
     "props.auth": {
       "access": "PRIVATE",
@@ -53,13 +48,19 @@
     "props.lastActivity": {
       "access": "SYSTEM",
       "persistent": false
+    },
+    "props.offline.capable": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.offline.enabled": {
+      "access": "SYSTEM",
+      "persistent": false
+    },
+    "props.offline.lastSynced": {
+      "access": "SYSTEM",
+      "persistent": false
     }
   },
-  "props": {
-    "address": "172.18.0.2",
-    "device": {},
-    "geolocation": {},
-    "locale": "en-US",
-    "timeZoneId": "Etc/UTC"
-  }
+  "props": {}
 }

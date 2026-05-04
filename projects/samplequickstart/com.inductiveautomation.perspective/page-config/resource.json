@@ -7,10 +7,10 @@
     "config.json"
   ],
   "attributes": {
+    "lastModificationSignature": "200d2c1f3a123681c65545ca2f815e13e32c2f0d52b8087987bf4dec70807468",
     "lastModification": {
-      "actor": "admin",
-      "timestamp": "2023-11-21T22:36:11Z"
-    },
-    "lastModificationSignature": "4840de04ca172a9a1c5d1c64309aef5b0a87a36f2b171d2452d1e068a9ac79c9"
+      "actor": "samgov",
+      "timestamp": "2026-04-27T19:23:03Z"
+    }
   }
 }
