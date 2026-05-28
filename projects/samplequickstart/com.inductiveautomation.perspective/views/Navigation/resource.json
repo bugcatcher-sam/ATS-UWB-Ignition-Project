@@ -1,0 +1,17 @@
+{
+  "scope": "G",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "view.json",
+    "thumbnail.png"
+  ],
+  "attributes": {
+    "lastModificationSignature": "23f4510f343f2fc92820994c25c046174cd4086407e0faaa3a32f8fd0b4b74b4",
+    "lastModification": {
+      "actor": "samgov",
+      "timestamp": "2026-05-18T19:07:28Z"
+    }
+  }
+}

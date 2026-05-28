@@ -1,0 +1,21 @@
+{
+  "scope": "A",
+  "description": "",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "UWB ATS Control Block Diagram 1-1.svg"
+  ],
+  "attributes": {
+    "width": 0,
+    "format": "SVG",
+    "lastModification": {
+      "actor": "samgov",
+      "timestamp": "2026-05-22T22:21:59Z"
+    },
+    "size": 166182,
+    "lastModificationSignature": "dfba37ce7ffe662614158285e121e3795141761bde8a368eedbf708e682542e8",
+    "height": 0
+  }
+}

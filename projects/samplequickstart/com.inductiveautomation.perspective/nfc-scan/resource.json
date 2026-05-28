@@ -1,0 +1,17 @@
+{
+  "scope": "A",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "onNdefDataReceived.py"
+  ],
+  "attributes": {
+    "lastModificationSignature": "1d80ade826d7d63cb683c575ed54ba3d1756674cecdc7ba53b9c5ee6fd2c4409",
+    "lastModification": {
+      "actor": "samgov",
+      "timestamp": "2026-05-17T09:57:40Z"
+    },
+    "enabled": true
+  }
+}

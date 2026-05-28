@@ -1,0 +1,17 @@
+{
+  "scope": "A",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "onBarcodeDataReceived.py"
+  ],
+  "attributes": {
+    "lastModificationSignature": "fe8d30e3d1feae3d397de3811327c2a1f490c188ca0e032ecda10f4f2406d1c9",
+    "lastModification": {
+      "actor": "samgov",
+      "timestamp": "2026-05-17T09:57:40Z"
+    },
+    "enabled": true
+  }
+}

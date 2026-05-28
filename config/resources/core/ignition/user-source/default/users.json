@@ -15,6 +15,30 @@
       "extraProps": [],
       "scheduleAdjustments": [],
       "contactInfos": []
+    },
+    {
+      "uuid": "d2fa2d34-ea61-4c8d-901c-2a86d53e1900",
+      "username": "tmc104al",
+      "firstName": "Adan",
+      "lastName": "Rodriguez",
+      "schedule": "Always",
+      "language": "en_US",
+      "description": "",
+      "password": "[C1757021]cd153b538d24c749336d9e622b46bb03d6268ccf612aded1b4a79f23e35d752e",
+      "passwordDate": "20260507.111732189-0700",
+      "passwordHistory": [],
+      "badge": "",
+      "createdDate": "20260507.111732184-0700",
+      "lastModifiedDate": "20260507.111732184-0700",
+      "roles": [],
+      "extraProps": [
+        {
+          "propertyKey": "user.pin",
+          "propertyValue": ""
+        }
+      ],
+      "scheduleAdjustments": [],
+      "contactInfos": []
     }
   ],
   "roles": [

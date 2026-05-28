@@ -1,0 +1,138 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 908,
+      "width": 2019
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "HorizontalMenu"
+        },
+        "position": {
+          "basis": "46px"
+        },
+        "props": {
+          "items": [
+            {
+              "enabled": true,
+              "icon": {
+                "path": ""
+              },
+              "items": [
+                {
+                  "enabled": true,
+                  "icon": {
+                    "color": "",
+                    "path": "material/link"
+                  },
+                  "items": [],
+                  "label": "Link to UW Bothell Capstone Symposium Webpage",
+                  "style": {
+                    "classes": ""
+                  },
+                  "target": "https://www.uwb.edu/stem/undergraduate/capstone-symposium"
+                }
+              ],
+              "label": "UW Bothell Cap...",
+              "style": {
+                "classes": ""
+              },
+              "target": "https://www.uwb.edu/stem/undergraduate/capstone-symposium"
+            },
+            {
+              "enabled": true,
+              "icon": {
+                "color": "",
+                "path": "material/link"
+              },
+              "items": [],
+              "label": "Level 1 Screen",
+              "style": {
+                "classes": ""
+              },
+              "target": "/main-page"
+            },
+            {
+              "enabled": true,
+              "icon": {
+                "path": ""
+              },
+              "items": [],
+              "label": "Level 2 Screen",
+              "style": {
+                "classes": ""
+              },
+              "target": "/control-screen"
+            },
+            {
+              "enabled": true,
+              "icon": {
+                "path": ""
+              },
+              "items": [],
+              "label": "Project Credits",
+              "style": {
+                "classes": ""
+              },
+              "target": ""
+            }
+          ]
+        },
+        "type": "ia.navigation.horizontalmenu"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "AlarmStatusTable"
+            },
+            "position": {
+              "basis": "1391px"
+            },
+            "type": "ia.display.alarmstatustable"
+          },
+          {
+            "meta": {
+              "name": "Image"
+            },
+            "position": {
+              "basis": "100px"
+            },
+            "type": "ia.display.image"
+          },
+          {
+            "meta": {
+              "name": "Image_0"
+            },
+            "position": {
+              "basis": "100px"
+            },
+            "type": "ia.display.image"
+          }
+        ],
+        "meta": {
+          "name": "FlexContainer"
+        },
+        "position": {
+          "basis": "322px"
+        },
+        "props": {
+          "justify": "center"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

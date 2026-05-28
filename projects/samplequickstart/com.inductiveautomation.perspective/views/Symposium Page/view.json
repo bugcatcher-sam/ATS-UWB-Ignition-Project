@@ -1,0 +1,36 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 593,
+      "width": 1128
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "IFrame"
+        },
+        "position": {
+          "height": 587,
+          "width": 1128
+        },
+        "props": {
+          "allowFullScreen": true,
+          "src": "https://www.uwb.edu/stem/undergraduate/capstone-symposium"
+        },
+        "type": "ia.display.iframe"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "position": {
+      "x": -1,
+      "y": 0
+    },
+    "type": "ia.container.coord"
+  }
+}
