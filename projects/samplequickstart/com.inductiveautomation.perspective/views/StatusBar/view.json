@@ -1,0 +1,234 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 24,
+      "width": 1024
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": { "name": "root" },
+    "props": {
+      "direction": "row",
+      "alignItems": "center",
+      "style": {
+        "backgroundColor": "#1A1A1A",
+        "borderTop": "1px solid #333333",
+        "padding": "0 8px",
+        "gap": "0px",
+        "height": "100%",
+        "overflow": "hidden"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": { "name": "UserLabel" },
+        "position": { "basis": "180px", "shrink": 0 },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "expression": "'USER: ' + coalesce({session.props.auth.user.userName}, 'Not Logged In')"
+            }
+          }
+        },
+        "props": {
+          "text": "USER: Not Logged In",
+          "style": {
+            "color": "#AAAAAA",
+            "fontSize": "10px",
+            "fontFamily": "monospace",
+            "letterSpacing": "0.3px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": { "name": "Divider1" },
+        "position": { "basis": "12px", "shrink": 0 },
+        "props": {
+          "text": "|",
+          "style": { "color": "#444444", "fontSize": "10px", "fontFamily": "monospace" }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": { "name": "ModeSection" },
+        "position": { "basis": "200px", "shrink": 0 },
+        "props": {
+          "direction": "row",
+          "alignItems": "center",
+          "style": { "gap": "6px" }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": { "name": "ModeLabel" },
+            "props": {
+              "text": "MODE:",
+              "style": {
+                "color": "#AAAAAA",
+                "fontSize": "10px",
+                "fontFamily": "monospace"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": { "name": "ModeValue" },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "tag",
+                  "tagPath": "[default]BFS/System/SystemMode"
+                }
+              },
+              "props.style.color": {
+                "binding": {
+                  "type": "tag",
+                  "tagPath": "[default]BFS/System/SystemMode",
+                  "transforms": [
+                    {
+                      "type": "map",
+                      "map": {
+                        "AUTO": "#66BB6A",
+                        "RUNNING": "#66BB6A",
+                        "MANUAL": "#FFA726",
+                        "MAINTENANCE": "#42A5F5",
+                        "STOPPED": "#AAAAAA",
+                        "FAULT": "#EF5350"
+                      },
+                      "fallback": "#AAAAAA"
+                    }
+                  ]
+                }
+              }
+            },
+            "props": {
+              "text": "STOPPED",
+              "style": {
+                "color": "#AAAAAA",
+                "fontSize": "10px",
+                "fontFamily": "monospace",
+                "fontWeight": "700",
+                "letterSpacing": "0.5px"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.display.label",
+        "meta": { "name": "Divider2" },
+        "position": { "basis": "12px", "shrink": 0 },
+        "props": {
+          "text": "|",
+          "style": { "color": "#444444", "fontSize": "10px", "fontFamily": "monospace" }
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": { "name": "AlarmSection" },
+        "position": { "basis": "160px", "shrink": 0 },
+        "props": {
+          "direction": "row",
+          "alignItems": "center",
+          "style": { "gap": "6px" }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": { "name": "AlarmLabel" },
+            "props": {
+              "text": "ALARMS:",
+              "style": {
+                "color": "#AAAAAA",
+                "fontSize": "10px",
+                "fontFamily": "monospace"
+              }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": { "name": "AlarmCount" },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "tag",
+                  "tagPath": "[default]BFS/System/AlarmActiveCount",
+                  "transforms": [
+                    {
+                      "type": "expr",
+                      "expression": "toStr({value}) + ' Active'"
+                    }
+                  ]
+                }
+              },
+              "props.style.color": {
+                "binding": {
+                  "type": "tag",
+                  "tagPath": "[default]BFS/System/AlarmActiveCount",
+                  "transforms": [
+                    {
+                      "type": "map",
+                      "map": { "0": "#AAAAAA" },
+                      "fallback": "#EF5350"
+                    }
+                  ]
+                }
+              }
+            },
+            "props": {
+              "text": "0 Active",
+              "style": {
+                "color": "#AAAAAA",
+                "fontSize": "10px",
+                "fontFamily": "monospace",
+                "fontWeight": "700"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.display.label",
+        "meta": { "name": "Divider3" },
+        "position": { "basis": "12px", "shrink": 0 },
+        "props": {
+          "text": "|",
+          "style": { "color": "#444444", "fontSize": "10px", "fontFamily": "monospace" }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": { "name": "Spacer" },
+        "position": { "grow": 1 }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": { "name": "DateTime" },
+        "position": { "basis": "200px", "shrink": 0 },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "type": "expr",
+              "expression": "dateFormat(now(), 'yyyy-MM-dd  HH:mm:ss')"
+            }
+          }
+        },
+        "props": {
+          "text": "2026-01-01  00:00:00",
+          "style": {
+            "color": "#888888",
+            "fontSize": "10px",
+            "fontFamily": "monospace",
+            "textAlign": "right"
+          }
+        }
+      }
+    ]
+  }
+}

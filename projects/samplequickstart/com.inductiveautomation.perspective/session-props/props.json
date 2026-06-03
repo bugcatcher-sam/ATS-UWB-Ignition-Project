@@ -1,5 +1,8 @@
 {
-  "custom": {},
+  "custom": {
+    "navbarExpanded": false,
+    "currentScreen": "overview"
+  },
   "propConfig": {
     "props.auth": {
       "access": "PRIVATE",

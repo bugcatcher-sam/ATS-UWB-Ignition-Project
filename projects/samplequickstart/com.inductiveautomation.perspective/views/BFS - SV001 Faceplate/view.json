@@ -1,0 +1,123 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 260,
+      "width": 300
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": { "name": "root" },
+    "props": {
+      "direction": "column",
+      "style": { "backgroundColor": "#C8C8C8", "border": "2px solid #555555", "width": "100%", "height": "100%" }
+    },
+    "children": [
+      {
+        "type": "ia.container.flex",
+        "meta": { "name": "Header" },
+        "position": { "basis": "32px", "shrink": 0 },
+        "props": {
+          "direction": "row",
+          "alignItems": "center",
+          "style": { "backgroundColor": "#3D3D3D", "padding": "0 10px", "gap": "8px" }
+        },
+        "children": [
+          { "type": "ia.display.label", "position": { "grow": 1 }, "props": { "text": "SV-001  SOLENOID VALVE", "style": { "color": "#E0E0E0", "fontSize": "11px", "fontWeight": "700", "fontFamily": "monospace" } } },
+          {
+            "type": "ia.input.button",
+            "props": {
+              "text": "✕",
+              "action": { "type": "script", "config": { "script": "system.perspective.closePopup('sv_faceplate')" } },
+              "style": { "backgroundColor": "transparent", "color": "#AAAAAA", "fontSize": "14px", "border": "none", "padding": "0 4px" }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": { "name": "Body" },
+        "position": { "grow": 1 },
+        "props": {
+          "direction": "column",
+          "style": { "padding": "10px", "gap": "8px" }
+        },
+        "children": [
+          {
+            "type": "ia.container.flex",
+            "props": { "direction": "row", "alignItems": "center", "style": { "gap": "8px" } },
+            "children": [
+              { "type": "ia.display.label", "props": { "text": "Status:", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace", "width": "70px" } } },
+              {
+                "type": "ia.display.label",
+                "propConfig": {
+                  "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SolenoidState", "transforms": [{ "type": "map", "map": { "true": "OPEN", "false": "CLOSED" } }] } },
+                  "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SolenoidState", "transforms": [{ "type": "map", "map": { "true": "#1565C0" }, "fallback": "#616161" }] } }
+                },
+                "props": { "text": "CLOSED", "style": { "color": "#616161", "fontSize": "14px", "fontFamily": "monospace", "fontWeight": "700" } }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "props": { "direction": "row", "alignItems": "center", "style": { "gap": "8px" } },
+            "children": [
+              { "type": "ia.display.label", "props": { "text": "Mode:", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace", "width": "70px" } } },
+              {
+                "type": "ia.display.label",
+                "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SV001_Mode" } } },
+                "props": { "text": "AUTO", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "props": { "direction": "row", "alignItems": "center", "style": { "gap": "8px" } },
+            "children": [
+              { "type": "ia.display.label", "props": { "text": "Fault:", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace", "width": "70px" } } },
+              {
+                "type": "ia.display.label",
+                "propConfig": {
+                  "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SV001_Fault", "transforms": [{ "type": "map", "map": { "true": "FAULT", "false": "None" } }] } },
+                  "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SV001_Fault", "transforms": [{ "type": "map", "map": { "true": "#B71C1C", "false": "#2E7D32" } }] } }
+                },
+                "props": { "text": "None", "style": { "color": "#2E7D32", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700" } }
+              }
+            ]
+          },
+          { "type": "ia.display.label", "props": { "text": "MANUAL CONTROL  (Manual Mode Only)", "style": { "color": "#888888", "fontSize": "9px", "fontFamily": "monospace", "marginTop": "4px" } } },
+          {
+            "type": "ia.container.flex",
+            "props": { "direction": "row", "style": { "gap": "8px" } },
+            "children": [
+              {
+                "type": "ia.input.button",
+                "props": { "text": "OPEN", "action": { "type": "tag-write", "config": { "tagPath": "[default]BFS/Valve/Command", "value": true } }, "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "12px", "fontWeight": "700", "padding": "6px 16px" } }
+              },
+              {
+                "type": "ia.input.button",
+                "props": { "text": "CLOSE", "action": { "type": "tag-write", "config": { "tagPath": "[default]BFS/Valve/Command", "value": false } }, "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "12px", "fontWeight": "700", "padding": "6px 16px" } }
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "props": { "direction": "row", "style": { "gap": "8px" } },
+            "children": [
+              {
+                "type": "ia.input.button",
+                "props": { "text": "AUTO MODE", "action": { "type": "tag-write", "config": { "tagPath": "[default]BFS/Valve/SV001_Mode", "value": "AUTO" } }, "style": { "backgroundColor": "#757575", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "11px", "padding": "4px 10px" } }
+              },
+              {
+                "type": "ia.input.button",
+                "props": { "text": "MANUAL MODE", "action": { "type": "tag-write", "config": { "tagPath": "[default]BFS/Valve/SV001_Mode", "value": "MANUAL" } }, "style": { "backgroundColor": "#757575", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "11px", "padding": "4px 10px" } }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

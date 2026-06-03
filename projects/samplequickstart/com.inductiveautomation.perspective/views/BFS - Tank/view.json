@@ -1,0 +1,276 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 664,
+      "width": 1024
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": { "name": "root" },
+    "props": {
+      "direction": "column",
+      "style": { "backgroundColor": "#C8C8C8", "width": "100%", "height": "100%" }
+    },
+    "children": [
+      {
+        "type": "ia.container.flex",
+        "meta": { "name": "TitleBar" },
+        "position": { "basis": "36px", "shrink": 0 },
+        "props": {
+          "direction": "row",
+          "alignItems": "center",
+          "style": { "backgroundColor": "#3D3D3D", "padding": "0 12px", "gap": "12px", "borderBottom": "2px solid #555555" }
+        },
+        "children": [
+          { "type": "ia.display.label", "position": { "grow": 1 }, "props": { "text": "AUTOMATED BOTTLE FILLER  —  TANK & PUMP MONITORING", "style": { "color": "#E0E0E0", "fontSize": "13px", "fontWeight": "600", "fontFamily": "monospace", "letterSpacing": "0.5px" } } }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": { "name": "MainContent" },
+        "position": { "grow": 1 },
+        "props": {
+          "direction": "row",
+          "style": { "padding": "8px", "gap": "8px" }
+        },
+        "children": [
+          {
+            "type": "ia.container.flex",
+            "meta": { "name": "TankPanel" },
+            "position": { "basis": "200px", "shrink": 0 },
+            "props": {
+              "direction": "column",
+              "alignItems": "center",
+              "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "10px", "gap": "8px" }
+            },
+            "children": [
+              { "type": "ia.display.label", "props": { "text": "TK-001  WATER SUPPLY TANK", "style": { "color": "#444444", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px" } } },
+              {
+                "type": "ia.container.flex",
+                "meta": { "name": "TankBody" },
+                "props": {
+                  "direction": "column",
+                  "justifyContent": "flex-end",
+                  "style": { "width": "100px", "height": "280px", "border": "4px solid #666666", "backgroundColor": "#C8C8C8", "position": "relative", "overflow": "hidden" }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": { "name": "HHLine" },
+                    "props": { "text": "— HH 95%", "style": { "position": "absolute", "bottom": "95%", "left": "0", "width": "100%", "height": "2px", "backgroundColor": "#B71C1C", "zIndex": 2, "color": "#B71C1C", "fontSize": "8px", "fontFamily": "monospace", "paddingLeft": "2px" } }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": { "name": "HLine" },
+                    "props": { "text": "— H 85%", "style": { "position": "absolute", "bottom": "85%", "left": "0", "width": "100%", "height": "2px", "backgroundColor": "#E65100", "zIndex": 2, "color": "#E65100", "fontSize": "8px", "fontFamily": "monospace", "paddingLeft": "2px" } }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": { "name": "LLine" },
+                    "props": { "text": "— L 20%", "style": { "position": "absolute", "bottom": "20%", "left": "0", "width": "100%", "height": "2px", "backgroundColor": "#F57F17", "zIndex": 2, "color": "#F57F17", "fontSize": "8px", "fontFamily": "monospace", "paddingLeft": "2px" } }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": { "name": "LLLine" },
+                    "props": { "text": "— LL 10%", "style": { "position": "absolute", "bottom": "10%", "left": "0", "width": "100%", "height": "2px", "backgroundColor": "#B71C1C", "zIndex": 2, "color": "#B71C1C", "fontSize": "8px", "fontFamily": "monospace", "paddingLeft": "2px" } }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": { "name": "WaterFill" },
+                    "propConfig": {
+                      "props.style.height": { "binding": { "type": "tag", "tagPath": "[default]BFS/Tank/TK001_Level_PV", "transforms": [{ "type": "expr", "expression": "toStr({value}) + '%'" }] } },
+                      "props.style.backgroundColor": {
+                        "binding": {
+                          "type": "tag",
+                          "tagPath": "[default]BFS/Tank/TK001_Level_PV",
+                          "transforms": [{ "type": "expr", "expression": "if({value} >= 95 || {value} <= 10, '#B71C1C', if({value} >= 85 || {value} <= 20, '#E65100', '#1565C0'))" }]
+                        }
+                      }
+                    },
+                    "props": { "text": "", "style": { "backgroundColor": "#1565C0", "width": "100%", "height": "75%", "position": "absolute", "bottom": "0", "left": "0", "zIndex": 1 } }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Tank/TK001_Level_PV", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + '%'" }] } } },
+                    "props": { "text": "75.0%", "style": { "color": "#FFFFFF", "fontSize": "14px", "fontFamily": "monospace", "fontWeight": "700", "textShadow": "0 0 4px #000000", "position": "absolute", "bottom": "50%", "width": "100%", "textAlign": "center", "zIndex": 3 } }
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "props": { "direction": "column", "alignItems": "flex-start", "style": { "gap": "4px", "width": "100%" } },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "props": { "direction": "row", "style": { "gap": "6px" } },
+                    "children": [
+                      { "type": "ia.display.label", "props": { "text": "Level:", "style": { "color": "#666666", "fontSize": "11px", "fontFamily": "monospace", "width": "60px" } } },
+                      {
+                        "type": "ia.display.label",
+                        "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Tank/TK001_Level_PV", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' %'" }] } } },
+                        "props": { "text": "75.0 %", "style": { "color": "#111111", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700" } }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "props": { "direction": "row", "style": { "gap": "6px" } },
+                    "children": [
+                      { "type": "ia.display.label", "props": { "text": "Volume:", "style": { "color": "#666666", "fontSize": "11px", "fontFamily": "monospace", "width": "60px" } } },
+                      {
+                        "type": "ia.display.label",
+                        "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Tank/TK001_Level_EU", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.00') + ' gal'" }] } } },
+                        "props": { "text": "3.75 gal", "style": { "color": "#111111", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700" } }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "props": { "direction": "row", "style": { "gap": "6px" } },
+                    "children": [
+                      { "type": "ia.display.label", "props": { "text": "Pressure:", "style": { "color": "#666666", "fontSize": "11px", "fontFamily": "monospace", "width": "60px" } } },
+                      {
+                        "type": "ia.display.label",
+                        "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Tank/TK001_Pressure", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' PSI'" }] } } },
+                        "props": { "text": "14.7 PSI", "style": { "color": "#111111", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700" } }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": { "name": "RightPanel" },
+            "position": { "grow": 1 },
+            "props": {
+              "direction": "column",
+              "style": { "gap": "8px" }
+            },
+            "children": [
+              {
+                "type": "ia.container.flex",
+                "meta": { "name": "PumpControlPanel" },
+                "position": { "basis": "160px", "shrink": 0 },
+                "props": {
+                  "direction": "column",
+                  "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "10px", "gap": "8px" }
+                },
+                "children": [
+                  { "type": "ia.display.label", "props": { "text": "P-001  DIAPHRAGM PUMP CONTROLS", "style": { "color": "#444444", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px" } } },
+                  {
+                    "type": "ia.container.flex",
+                    "props": { "direction": "row", "style": { "gap": "16px", "flexWrap": "wrap" } },
+                    "children": [
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "column", "alignItems": "center" },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "STATUS", "style": { "color": "#666666", "fontSize": "9px", "fontFamily": "monospace" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": {
+                              "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/Running", "transforms": [{ "type": "map", "map": { "true": "RUNNING", "false": "STOPPED" } }] } },
+                              "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/Running", "transforms": [{ "type": "map", "map": { "true": "#2E7D32" }, "fallback": "#616161" }] } }
+                            },
+                            "props": { "text": "STOPPED", "style": { "color": "#616161", "fontSize": "18px", "fontWeight": "700", "fontFamily": "monospace" } }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "column", "alignItems": "center" },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "MODE", "style": { "color": "#666666", "fontSize": "9px", "fontFamily": "monospace" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/P001_Mode" } } },
+                            "props": { "text": "AUTO", "style": { "color": "#333333", "fontSize": "18px", "fontWeight": "700", "fontFamily": "monospace" } }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "column", "alignItems": "center" },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "SPM", "style": { "color": "#666666", "fontSize": "9px", "fontFamily": "monospace" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/P001_Speed_PV", "transforms": [{ "type": "expr", "expression": "format({value}, '#0')" }] } } },
+                            "props": { "text": "0", "style": { "color": "#333333", "fontSize": "18px", "fontWeight": "700", "fontFamily": "monospace" } }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "column", "alignItems": "center" },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "CURRENT", "style": { "color": "#666666", "fontSize": "9px", "fontFamily": "monospace" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/P001_Current", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + 'A'" }] } } },
+                            "props": { "text": "0.0A", "style": { "color": "#333333", "fontSize": "18px", "fontWeight": "700", "fontFamily": "monospace" } }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "props": { "direction": "row", "style": { "gap": "8px" } },
+                    "children": [
+                      {
+                        "type": "ia.input.button",
+                        "props": { "text": "START PUMP", "action": { "type": "tag-write", "config": { "tagPath": "[default]BFS/Pump/P001_Command", "value": true } }, "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "11px", "fontWeight": "700", "padding": "6px 12px" } }
+                      },
+                      {
+                        "type": "ia.input.button",
+                        "props": { "text": "STOP PUMP", "action": { "type": "tag-write", "config": { "tagPath": "[default]BFS/Pump/P001_Command", "value": false } }, "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "11px", "fontWeight": "700", "padding": "6px 12px" } }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": { "name": "TrendPanel" },
+                "position": { "grow": 1 },
+                "props": {
+                  "direction": "column",
+                  "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "8px", "gap": "4px" }
+                },
+                "children": [
+                  { "type": "ia.display.label", "props": { "text": "TANK LEVEL TREND  —  LAST 2 HOURS", "style": { "color": "#555555", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px" } } },
+                  {
+                    "type": "ia.chart.tag-history",
+                    "meta": { "name": "TankTrend" },
+                    "position": { "grow": 1 },
+                    "props": {
+                      "config": {
+                        "subplots": [
+                          {
+                            "pens": [
+                              { "tagPath": "[default]BFS/Tank/TK001_Level_PV", "name": "Tank Level %", "color": "#1565C0", "lineWeight": 2 },
+                              { "tagPath": "[default]BFS/Tank/TK001_Level_SP_H", "name": "High SP", "color": "#E65100", "lineWeight": 1, "style": "Dash" },
+                              { "tagPath": "[default]BFS/Tank/TK001_Level_SP_L", "name": "Low SP", "color": "#F57F17", "lineWeight": 1, "style": "Dash" }
+                            ]
+                          }
+                        ]
+                      },
+                      "startDate": "${now - 2h}",
+                      "endDate": "${now}"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

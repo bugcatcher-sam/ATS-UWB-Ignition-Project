@@ -28,6 +28,14 @@
         },
         {
           "tagType": "AtomicTag",
+          "name": "SystemMode",
+          "dataType": "String",
+          "valueSource": "memory",
+          "value": "STOPPED",
+          "tooltip": "STOPPED | AUTO | MANUAL | MAINTENANCE"
+        },
+        {
+          "tagType": "AtomicTag",
           "name": "StartCmd",
           "dataType": "Boolean",
           "valueSource": "memory",
@@ -49,6 +57,50 @@
           "valueSource": "memory",
           "value": false,
           "tooltip": "Momentary fault reset command"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "EStop",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": false,
+          "tooltip": "Emergency stop active",
+          "alarms": [
+            {
+              "name": "Emergency Stop",
+              "label": "BFS Emergency Stop Activated",
+              "mode": "Equals",
+              "setpointA": 1,
+              "priority": "Critical",
+              "enabled": true,
+              "ackMode": "Manual",
+              "notes": "E-Stop has been activated. Clear the E-Stop and reset before restarting."
+            }
+          ]
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "AlarmActiveCount",
+          "dataType": "Int4",
+          "valueSource": "memory",
+          "value": 0,
+          "tooltip": "Total active alarms"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "AlarmUnackCount",
+          "dataType": "Int4",
+          "valueSource": "memory",
+          "value": 0,
+          "tooltip": "Unacknowledged alarm count"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "SystemRunning",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": false,
+          "tooltip": "True when system is in running state"
         }
       ]
     },
@@ -80,9 +132,45 @@
               "priority": "Critical",
               "enabled": true,
               "ackMode": "Manual",
-              "notes": "Laser detector LS-01 has reported a fault. Check beam alignment and power."
+              "notes": "Laser detector LS-001 has reported a fault. Check beam alignment and power."
             }
           ]
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "LS001_Signal",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 0.0,
+          "tooltip": "Laser receiver signal strength 0-100%",
+          "engUnit": "%",
+          "formatString": "#0.0"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "LS001_Raw",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 0.0,
+          "tooltip": "Raw laser signal analog value"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "LS001_Threshold",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 50.0,
+          "tooltip": "Detect threshold setpoint",
+          "engUnit": "%"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "LS001_Sensitivity",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 75.0,
+          "tooltip": "Laser sensitivity calibration setpoint",
+          "engUnit": "%"
         }
       ]
     },
@@ -105,6 +193,41 @@
           "valueSource": "memory",
           "value": false,
           "tooltip": "Write True to open valve, False to close"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "SV001_Fault",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": false,
+          "tooltip": "Solenoid valve fault status",
+          "alarms": [
+            {
+              "name": "Solenoid Valve Fault",
+              "label": "BFS Solenoid SV-001 Fault",
+              "mode": "Equals",
+              "setpointA": 1,
+              "priority": "High",
+              "enabled": true,
+              "ackMode": "Manual",
+              "notes": "Solenoid valve SV-001 fault detected. Check coil, wiring, and mechanical operation."
+            }
+          ]
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "SV001_Mode",
+          "dataType": "String",
+          "valueSource": "memory",
+          "value": "AUTO",
+          "tooltip": "AUTO | MANUAL"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "SV001_LastChange",
+          "dataType": "DateTime",
+          "valueSource": "memory",
+          "tooltip": "Timestamp of last valve state change"
         }
       ]
     },
@@ -118,7 +241,344 @@
           "dataType": "Boolean",
           "valueSource": "memory",
           "value": false,
-          "tooltip": "True = pump motor running"
+          "tooltip": "True = diaphragm pump running"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "P001_Command",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": false,
+          "tooltip": "Write True to start pump, False to stop"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "P001_Fault",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": false,
+          "tooltip": "Diaphragm pump fault status",
+          "alarms": [
+            {
+              "name": "Pump Fault",
+              "label": "BFS Diaphragm Pump P-001 Fault",
+              "mode": "Equals",
+              "setpointA": 1,
+              "priority": "High",
+              "enabled": true,
+              "ackMode": "Manual",
+              "notes": "Diaphragm pump P-001 fault. Check diaphragm condition, check valves, and motor."
+            }
+          ]
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "P001_Mode",
+          "dataType": "String",
+          "valueSource": "memory",
+          "value": "AUTO",
+          "tooltip": "AUTO | MANUAL"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "P001_Speed_PV",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 0.0,
+          "tooltip": "Pump stroke rate",
+          "engUnit": "spm",
+          "formatString": "#0"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "P001_Current",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 0.0,
+          "tooltip": "Pump motor current draw",
+          "engUnit": "A",
+          "formatString": "#0.0"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "P001_Runtime",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 0.0,
+          "tooltip": "Total pump runtime this session",
+          "engUnit": "min",
+          "formatString": "#0.0"
+        }
+      ]
+    },
+    {
+      "tagType": "Folder",
+      "name": "Tank",
+      "tags": [
+        {
+          "tagType": "AtomicTag",
+          "name": "TK001_Level_PV",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 75.0,
+          "tooltip": "Tank water level",
+          "engUnit": "%",
+          "formatString": "#0.0",
+          "alarms": [
+            {
+              "name": "Tank High-High",
+              "label": "BFS Tank TK-001 Level High-High",
+              "mode": "AboveValue",
+              "setpointA": 95.0,
+              "priority": "Critical",
+              "enabled": true,
+              "ackMode": "Manual",
+              "notes": "Tank level critically high. Stop filling immediately."
+            },
+            {
+              "name": "Tank High",
+              "label": "BFS Tank TK-001 Level High",
+              "mode": "AboveValue",
+              "setpointA": 85.0,
+              "priority": "Medium",
+              "enabled": true,
+              "ackMode": "Manual",
+              "notes": "Tank level elevated. Monitor closely."
+            },
+            {
+              "name": "Tank Low",
+              "label": "BFS Tank TK-001 Level Low",
+              "mode": "BelowValue",
+              "setpointA": 20.0,
+              "priority": "Medium",
+              "enabled": true,
+              "ackMode": "Manual",
+              "notes": "Tank level low. Refill tank soon."
+            },
+            {
+              "name": "Tank Low-Low",
+              "label": "BFS Tank TK-001 Level Low-Low — Pump Shutoff",
+              "mode": "BelowValue",
+              "setpointA": 10.0,
+              "priority": "High",
+              "enabled": true,
+              "ackMode": "Manual",
+              "notes": "Tank critically low. System will stop pump to prevent dry-running."
+            }
+          ]
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "TK001_Level_EU",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 3.75,
+          "tooltip": "Tank level in engineering units (gallons)",
+          "engUnit": "gal",
+          "formatString": "#0.00"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "TK001_Level_SP_HH",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 95.0,
+          "tooltip": "Tank High-High setpoint",
+          "engUnit": "%"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "TK001_Level_SP_H",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 85.0,
+          "tooltip": "Tank High setpoint",
+          "engUnit": "%"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "TK001_Level_SP_L",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 20.0,
+          "tooltip": "Tank Low setpoint",
+          "engUnit": "%"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "TK001_Level_SP_LL",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 10.0,
+          "tooltip": "Tank Low-Low setpoint",
+          "engUnit": "%"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "TK001_Pressure",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 14.7,
+          "tooltip": "Tank supply pressure",
+          "engUnit": "PSI",
+          "formatString": "#0.0"
+        }
+      ]
+    },
+    {
+      "tagType": "Folder",
+      "name": "FlowMeter",
+      "tags": [
+        {
+          "tagType": "AtomicTag",
+          "name": "FT001_FlowRate",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 0.0,
+          "tooltip": "Instantaneous flow rate",
+          "engUnit": "mL/s",
+          "formatString": "#0.0"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "FT001_Totalizer",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 0.0,
+          "tooltip": "Cumulative volume dispensed this session",
+          "engUnit": "mL",
+          "formatString": "#0.0"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "FT001_Fault",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": false,
+          "tooltip": "Flow transmitter fault status",
+          "alarms": [
+            {
+              "name": "Flow Sensor Fault",
+              "label": "BFS Flow Transmitter FT-001 Fault",
+              "mode": "Equals",
+              "setpointA": 1,
+              "priority": "Medium",
+              "enabled": true,
+              "ackMode": "Manual",
+              "notes": "Flow transmitter FT-001 fault. Check sensor wiring and flow path."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tagType": "Folder",
+      "name": "Filling",
+      "tags": [
+        {
+          "tagType": "AtomicTag",
+          "name": "FillingActive",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": false,
+          "tooltip": "True during an active fill cycle"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "FillComplete",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": false,
+          "tooltip": "True when fill cycle has completed successfully"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "FillTime_SP",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 5.0,
+          "tooltip": "Target fill time setpoint",
+          "engUnit": "s",
+          "formatString": "#0.0"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "FillTime_Current",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 0.0,
+          "tooltip": "Elapsed time of current fill cycle",
+          "engUnit": "s",
+          "formatString": "#0.0"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "FillTime_Average",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 0.0,
+          "tooltip": "Average fill time over last 10 cycles",
+          "engUnit": "s",
+          "formatString": "#0.0"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "FillVolume_SP",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 500.0,
+          "tooltip": "Target fill volume (16.9 oz = 500 mL)",
+          "engUnit": "mL",
+          "formatString": "#0.0"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "FillVolume_PV",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 0.0,
+          "tooltip": "Current bottle volume dispensed",
+          "engUnit": "mL",
+          "formatString": "#0.0",
+          "alarms": [
+            {
+              "name": "Overfill",
+              "label": "BFS Bottle Overfill Detected",
+              "mode": "AboveValue",
+              "setpointA": 510.0,
+              "priority": "Medium",
+              "enabled": true,
+              "ackMode": "Manual",
+              "notes": "Bottle fill volume exceeded 510mL. Check valve timing."
+            },
+            {
+              "name": "Underfill",
+              "label": "BFS Bottle Underfill Detected",
+              "mode": "BelowValue",
+              "setpointA": 490.0,
+              "priority": "Low",
+              "enabled": false,
+              "ackMode": "Manual",
+              "notes": "Enable and set setpointA to minimum acceptable fill volume."
+            }
+          ]
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "BatchTarget",
+          "dataType": "Int4",
+          "valueSource": "memory",
+          "value": 100,
+          "tooltip": "Operator-set batch target count",
+          "engUnit": "bottles"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "RejectCount",
+          "dataType": "Int4",
+          "valueSource": "memory",
+          "value": 0,
+          "tooltip": "Number of rejected/incomplete fills this batch"
         }
       ]
     },
@@ -164,6 +624,13 @@
           "tooltip": "Current fill rate",
           "engUnit": "btl/min",
           "formatString": "#0.0"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "ShiftStart",
+          "dataType": "DateTime",
+          "valueSource": "memory",
+          "tooltip": "Shift start timestamp"
         }
       ]
     }
