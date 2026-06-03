@@ -1,0 +1,171 @@
+{
+  "tagType": "Folder",
+  "name": "BFS",
+  "tags": [
+    {
+      "tagType": "Folder",
+      "name": "System",
+      "tags": [
+        {
+          "tagType": "AtomicTag",
+          "name": "State",
+          "dataType": "Int2",
+          "valueSource": "memory",
+          "value": 0,
+          "tooltip": "0=Stopped, 1=Running, 2=Fault",
+          "alarms": [
+            {
+              "name": "System Fault",
+              "label": "BFS System Fault",
+              "mode": "AboveValue",
+              "setpointA": 1.5,
+              "priority": "Critical",
+              "enabled": true,
+              "ackMode": "Manual",
+              "notes": "System has entered a fault state. Investigate and reset before restarting."
+            }
+          ]
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "StartCmd",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": false,
+          "tooltip": "Momentary start command"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "StopCmd",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": false,
+          "tooltip": "Momentary stop command"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "FaultReset",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": false,
+          "tooltip": "Momentary fault reset command"
+        }
+      ]
+    },
+    {
+      "tagType": "Folder",
+      "name": "Sensor",
+      "tags": [
+        {
+          "tagType": "AtomicTag",
+          "name": "BottleDetected",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": false,
+          "tooltip": "True when laser detector sees a 16.9 oz bottle in fill position"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "Health",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": true,
+          "tooltip": "True = sensor OK, False = sensor fault",
+          "alarms": [
+            {
+              "name": "Laser Sensor Fault",
+              "label": "BFS Laser Detector Fault",
+              "mode": "Equals",
+              "setpointA": 0,
+              "priority": "Critical",
+              "enabled": true,
+              "ackMode": "Manual",
+              "notes": "Laser detector LS-01 has reported a fault. Check beam alignment and power."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tagType": "Folder",
+      "name": "Valve",
+      "tags": [
+        {
+          "tagType": "AtomicTag",
+          "name": "SolenoidState",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": false,
+          "tooltip": "True = valve open (water flowing), False = valve closed"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "Command",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": false,
+          "tooltip": "Write True to open valve, False to close"
+        }
+      ]
+    },
+    {
+      "tagType": "Folder",
+      "name": "Pump",
+      "tags": [
+        {
+          "tagType": "AtomicTag",
+          "name": "Running",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": false,
+          "tooltip": "True = pump motor running"
+        }
+      ]
+    },
+    {
+      "tagType": "Folder",
+      "name": "Production",
+      "tags": [
+        {
+          "tagType": "AtomicTag",
+          "name": "FillCount",
+          "dataType": "Int4",
+          "valueSource": "memory",
+          "value": 0,
+          "tooltip": "Total bottles filled this shift",
+          "engUnit": "bottles"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "TargetCount",
+          "dataType": "Int4",
+          "valueSource": "memory",
+          "value": 100,
+          "tooltip": "Operator-set production target",
+          "engUnit": "bottles",
+          "alarms": [
+            {
+              "name": "Target Reached",
+              "label": "BFS Production Target Reached",
+              "mode": "Equals",
+              "setpointA": 0,
+              "priority": "Advisory",
+              "enabled": false,
+              "notes": "Enable this alarm and set setpointA to match TargetCount to alert on completion."
+            }
+          ]
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "FillRate",
+          "dataType": "Float4",
+          "valueSource": "memory",
+          "value": 0.0,
+          "tooltip": "Current fill rate",
+          "engUnit": "btl/min",
+          "formatString": "#0.0"
+        }
+      ]
+    }
+  ]
+}

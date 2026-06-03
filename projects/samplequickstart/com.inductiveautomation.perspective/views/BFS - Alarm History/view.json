@@ -1,0 +1,392 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 900,
+      "width": 1280
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": { "name": "Header" },
+        "position": { "basis": "56px", "shrink": 0 },
+        "props": {
+          "direction": "row",
+          "alignItems": "center",
+          "style": {
+            "backgroundColor": "#37474F",
+            "padding": "0 24px",
+            "gap": "16px",
+            "borderBottom": "2px solid #263238"
+          }
+        },
+        "children": [
+          {
+            "meta": { "name": "BackBtn" },
+            "props": {
+              "text": "‹ OVERVIEW",
+              "style": {
+                "backgroundColor": "#455A64",
+                "color": "#B0BEC5",
+                "fontSize": "12px",
+                "padding": "6px 14px",
+                "fontFamily": "monospace",
+                "letterSpacing": "0.5px"
+              },
+              "action": { "type": "page", "config": { "url": "/bfs-overview" } }
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": { "name": "Title" },
+            "position": { "grow": 1 },
+            "props": {
+              "text": "ALARM MANAGEMENT  —  BFS  |  LEVEL 4",
+              "style": {
+                "color": "#ECEFF1",
+                "fontSize": "15px",
+                "fontWeight": "600",
+                "letterSpacing": "1px",
+                "fontFamily": "monospace"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": { "name": "ISANote" },
+            "props": {
+              "text": "ISA-18.2 COMPLIANT",
+              "style": { "color": "#546E7A", "fontSize": "10px", "letterSpacing": "1px", "fontFamily": "monospace" }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": { "name": "AlarmPriorityBar" },
+        "position": { "basis": "44px", "shrink": 0 },
+        "props": {
+          "direction": "row",
+          "alignItems": "center",
+          "style": {
+            "backgroundColor": "#263238",
+            "padding": "0 24px",
+            "gap": "24px",
+            "borderBottom": "1px solid #37474F"
+          }
+        },
+        "children": [
+          {
+            "meta": { "name": "PriorityLegendLabel" },
+            "props": {
+              "text": "PRIORITY:",
+              "style": { "color": "#546E7A", "fontSize": "10px", "letterSpacing": "1px", "fontFamily": "monospace" }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": { "name": "EmergencyLegend" },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": { "gap": "6px" }
+            },
+            "children": [
+              {
+                "meta": { "name": "EmergencyDot" },
+                "props": {
+                  "style": { "width": "10px", "height": "10px", "borderRadius": "50%", "backgroundColor": "#D50000", "flexShrink": "0" }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": { "name": "EmergencyLabel" },
+                "props": {
+                  "text": "EMERGENCY",
+                  "style": { "color": "#EF9A9A", "fontSize": "10px", "fontFamily": "monospace" }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": { "name": "CriticalLegend" },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": { "gap": "6px" }
+            },
+            "children": [
+              {
+                "meta": { "name": "CriticalDot" },
+                "props": {
+                  "style": { "width": "10px", "height": "10px", "borderRadius": "50%", "backgroundColor": "#FF6D00", "flexShrink": "0" }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": { "name": "CriticalLabel" },
+                "props": {
+                  "text": "CRITICAL",
+                  "style": { "color": "#FFCC80", "fontSize": "10px", "fontFamily": "monospace" }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": { "name": "AdvisoryLegend" },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": { "gap": "6px" }
+            },
+            "children": [
+              {
+                "meta": { "name": "AdvisoryDot" },
+                "props": {
+                  "style": { "width": "10px", "height": "10px", "borderRadius": "50%", "backgroundColor": "#FFD600", "flexShrink": "0" }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": { "name": "AdvisoryLabel" },
+                "props": {
+                  "text": "ADVISORY",
+                  "style": { "color": "#FFF9C4", "fontSize": "10px", "fontFamily": "monospace" }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": { "name": "JournalLegend" },
+            "props": {
+              "direction": "row",
+              "alignItems": "center",
+              "style": { "gap": "6px" }
+            },
+            "children": [
+              {
+                "meta": { "name": "JournalDot" },
+                "props": {
+                  "style": { "width": "10px", "height": "10px", "borderRadius": "50%", "backgroundColor": "#90A4AE", "flexShrink": "0" }
+                },
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": { "name": "JournalLabel" },
+                "props": {
+                  "text": "JOURNAL",
+                  "style": { "color": "#B0BEC5", "fontSize": "10px", "fontFamily": "monospace" }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "type": "ia.container.flex"
+          }
+        ],
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": { "name": "ActiveAlarmSection" },
+        "position": { "grow": 1, "basis": "0" },
+        "props": {
+          "direction": "column",
+          "style": {
+            "backgroundColor": "#455A64",
+            "padding": "16px 24px 8px 24px",
+            "gap": "8px"
+          }
+        },
+        "children": [
+          {
+            "meta": { "name": "ActiveLabel" },
+            "props": {
+              "text": "ACTIVE & UNACKNOWLEDGED ALARMS",
+              "style": { "color": "#90A4AE", "fontSize": "10px", "letterSpacing": "1.5px", "fontFamily": "monospace" }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": { "name": "AlarmStatusTable" },
+            "position": { "grow": 1, "basis": "0" },
+            "props": {
+              "alarmFilter": {
+                "source": "[default]BFS/**",
+                "state": "ActiveUnacked,ActiveAcked,ClearUnacked"
+              },
+              "columns": [
+                { "field": "priority", "header": "PRIORITY", "width": 110 },
+                { "field": "displayPath", "header": "SOURCE", "width": 280 },
+                { "field": "label", "header": "DESCRIPTION", "width": 380 },
+                { "field": "activeDate", "header": "ACTIVE TIME", "width": 180 },
+                { "field": "ackDate", "header": "ACK TIME", "width": 160 },
+                { "field": "state", "header": "STATE", "width": 120 }
+              ],
+              "style": {
+                "backgroundColor": "#263238",
+                "fontFamily": "monospace",
+                "fontSize": "12px"
+              }
+            },
+            "type": "ia.display.alarmstatustable"
+          }
+        ],
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": { "name": "AlarmReferenceSection" },
+        "position": { "basis": "200px", "shrink": 0 },
+        "props": {
+          "direction": "column",
+          "style": {
+            "backgroundColor": "#37474F",
+            "padding": "12px 24px",
+            "gap": "8px",
+            "borderTop": "2px solid #263238"
+          }
+        },
+        "children": [
+          {
+            "meta": { "name": "ReferenceLabel" },
+            "props": {
+              "text": "ALARM REFERENCE  —  BFS CONFIGURED ALARMS",
+              "style": { "color": "#78909C", "fontSize": "10px", "letterSpacing": "1.5px", "fontFamily": "monospace" }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": { "name": "AlarmRefTable" },
+            "props": {
+              "direction": "row",
+              "style": { "gap": "40px" }
+            },
+            "children": [
+              {
+                "meta": { "name": "Col1" },
+                "props": {
+                  "direction": "column",
+                  "style": { "gap": "4px" }
+                },
+                "children": [
+                  {
+                    "meta": { "name": "Ref1Header" },
+                    "props": {
+                      "text": "TAG / ALARM NAME",
+                      "style": { "color": "#546E7A", "fontSize": "9px", "letterSpacing": "1px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "Ref1a" },
+                    "props": {
+                      "text": "BFS/System/State  —  System Fault",
+                      "style": { "color": "#90A4AE", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "Ref1b" },
+                    "props": {
+                      "text": "BFS/Sensor/Health  —  Laser Sensor Fault",
+                      "style": { "color": "#90A4AE", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": { "name": "Col2" },
+                "props": {
+                  "direction": "column",
+                  "style": { "gap": "4px" }
+                },
+                "children": [
+                  {
+                    "meta": { "name": "Ref2Header" },
+                    "props": {
+                      "text": "PRIORITY",
+                      "style": { "color": "#546E7A", "fontSize": "9px", "letterSpacing": "1px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "Ref2a" },
+                    "props": {
+                      "text": "Critical",
+                      "style": { "color": "#FFCC80", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "Ref2b" },
+                    "props": {
+                      "text": "Critical",
+                      "style": { "color": "#FFCC80", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": { "name": "Col3" },
+                "props": {
+                  "direction": "column",
+                  "style": { "gap": "4px" }
+                },
+                "children": [
+                  {
+                    "meta": { "name": "Ref3Header" },
+                    "props": {
+                      "text": "REQUIRED ACTION",
+                      "style": { "color": "#546E7A", "fontSize": "9px", "letterSpacing": "1px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "Ref3a" },
+                    "props": {
+                      "text": "Stop filling, investigate fault, press FAULT RESET on Overview",
+                      "style": { "color": "#90A4AE", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "Ref3b" },
+                    "props": {
+                      "text": "Check beam alignment, 24VDC supply, and lens on LS-01",
+                      "style": { "color": "#90A4AE", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "type": "ia.container.flex"
+              }
+            ],
+            "type": "ia.container.flex"
+          }
+        ],
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": { "name": "root" },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#455A64",
+        "height": "100%",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

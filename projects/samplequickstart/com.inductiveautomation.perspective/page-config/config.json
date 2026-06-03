@@ -1,5 +1,115 @@
 {
   "pages": {
+    "/bfs-overview": {
+      "title": "BFS Overview",
+      "viewPath": "BFS - Overview",
+      "docks": {
+        "top": [
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "push",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "",
+            "modal": false,
+            "resizable": false,
+            "show": "visible",
+            "size": 150,
+            "viewParams": {},
+            "viewPath": "Navigation"
+          }
+        ]
+      }
+    },
+    "/bfs-laser-detector": {
+      "title": "BFS Laser Detector",
+      "viewPath": "BFS - Laser Detector",
+      "docks": {
+        "top": [
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "push",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "",
+            "modal": false,
+            "resizable": false,
+            "show": "visible",
+            "size": 150,
+            "viewParams": {},
+            "viewPath": "Navigation"
+          }
+        ]
+      }
+    },
+    "/bfs-valve-pump": {
+      "title": "BFS Valve & Pump",
+      "viewPath": "BFS - Valve and Pump",
+      "docks": {
+        "top": [
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "push",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "",
+            "modal": false,
+            "resizable": false,
+            "show": "visible",
+            "size": 150,
+            "viewParams": {},
+            "viewPath": "Navigation"
+          }
+        ]
+      }
+    },
+    "/bfs-alarms": {
+      "title": "BFS Alarm History",
+      "viewPath": "BFS - Alarm History",
+      "docks": {
+        "top": [
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "push",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "",
+            "modal": false,
+            "resizable": false,
+            "show": "visible",
+            "size": 150,
+            "viewParams": {},
+            "viewPath": "Navigation"
+          }
+        ]
+      }
+    },
+    "/bfs-trends": {
+      "title": "BFS Trends",
+      "viewPath": "BFS - Trends",
+      "docks": {
+        "top": [
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "push",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "",
+            "modal": false,
+            "resizable": false,
+            "show": "visible",
+            "size": 150,
+            "viewParams": {},
+            "viewPath": "Navigation"
+          }
+        ]
+      }
+    },
     "/": {
       "title": "",
       "viewPath": "Symposium Page"

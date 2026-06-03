@@ -80,6 +80,60 @@
                 "classes": ""
               },
               "target": ""
+            },
+            {
+              "enabled": true,
+              "icon": {
+                "color": "",
+                "path": "material/water"
+              },
+              "items": [
+                {
+                  "enabled": true,
+                  "icon": { "color": "", "path": "material/dashboard" },
+                  "items": [],
+                  "label": "BFS Overview (L2)",
+                  "style": { "classes": "" },
+                  "target": "/bfs-overview"
+                },
+                {
+                  "enabled": true,
+                  "icon": { "color": "", "path": "material/sensors" },
+                  "items": [],
+                  "label": "Laser Detector (L3)",
+                  "style": { "classes": "" },
+                  "target": "/bfs-laser-detector"
+                },
+                {
+                  "enabled": true,
+                  "icon": { "color": "", "path": "material/settings" },
+                  "items": [],
+                  "label": "Valve & Pump (L3)",
+                  "style": { "classes": "" },
+                  "target": "/bfs-valve-pump"
+                },
+                {
+                  "enabled": true,
+                  "icon": { "color": "", "path": "material/notifications" },
+                  "items": [],
+                  "label": "Alarm History (L4)",
+                  "style": { "classes": "" },
+                  "target": "/bfs-alarms"
+                },
+                {
+                  "enabled": true,
+                  "icon": { "color": "", "path": "material/show_chart" },
+                  "items": [],
+                  "label": "Trends (L4)",
+                  "style": { "classes": "" },
+                  "target": "/bfs-trends"
+                }
+              ],
+              "label": "BFS  ▾",
+              "style": {
+                "classes": ""
+              },
+              "target": "/bfs-overview"
             }
           ]
         },

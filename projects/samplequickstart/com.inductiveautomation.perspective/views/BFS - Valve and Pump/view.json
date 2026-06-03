@@ -1,0 +1,706 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 900,
+      "width": 1280
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": { "name": "Header" },
+        "position": { "basis": "56px", "shrink": 0 },
+        "props": {
+          "direction": "row",
+          "alignItems": "center",
+          "style": {
+            "backgroundColor": "#37474F",
+            "padding": "0 24px",
+            "gap": "16px",
+            "borderBottom": "2px solid #263238"
+          }
+        },
+        "children": [
+          {
+            "meta": { "name": "BackBtn" },
+            "props": {
+              "text": "‹ OVERVIEW",
+              "style": {
+                "backgroundColor": "#455A64",
+                "color": "#B0BEC5",
+                "fontSize": "12px",
+                "padding": "6px 14px",
+                "fontFamily": "monospace",
+                "letterSpacing": "0.5px"
+              },
+              "action": { "type": "page", "config": { "url": "/bfs-overview" } }
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": { "name": "Title" },
+            "position": { "grow": 1 },
+            "props": {
+              "text": "SOLENOID VALVE V-01  &  PUMP P-01  |  LEVEL 3 DETAIL",
+              "style": {
+                "color": "#ECEFF1",
+                "fontSize": "15px",
+                "fontWeight": "600",
+                "letterSpacing": "1px",
+                "fontFamily": "monospace"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": { "name": "Timestamp" },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "expression": "dateFormat(now(), 'yyyy-MM-dd  HH:mm:ss')"
+                }
+              }
+            },
+            "props": {
+              "text": "",
+              "style": { "color": "#78909C", "fontSize": "12px", "fontFamily": "monospace" }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": { "name": "ContentArea" },
+        "position": { "grow": 1, "basis": "0" },
+        "props": {
+          "direction": "row",
+          "style": {
+            "backgroundColor": "#546E7A",
+            "padding": "24px",
+            "gap": "24px"
+          }
+        },
+        "children": [
+          {
+            "meta": { "name": "ValveColumn" },
+            "position": { "grow": 1, "basis": "0" },
+            "props": {
+              "direction": "column",
+              "style": { "gap": "16px" }
+            },
+            "children": [
+              {
+                "meta": { "name": "ValveSectionLabel" },
+                "props": {
+                  "text": "SOLENOID VALVE  —  V-01",
+                  "style": {
+                    "color": "#90A4AE",
+                    "fontSize": "11px",
+                    "letterSpacing": "2px",
+                    "fontFamily": "monospace",
+                    "borderBottom": "1px solid #455A64",
+                    "paddingBottom": "6px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": { "name": "ValveStateCard" },
+                "props": {
+                  "direction": "row",
+                  "alignItems": "center",
+                  "style": {
+                    "backgroundColor": "#37474F",
+                    "padding": "20px 16px",
+                    "gap": "20px",
+                    "borderRadius": "2px",
+                    "border": "1px solid #455A64"
+                  }
+                },
+                "children": [
+                  {
+                    "meta": { "name": "ValveSymbol" },
+                    "propConfig": {
+                      "props.style.backgroundColor": {
+                        "binding": {
+                          "type": "tag",
+                          "tagPath": "[default]BFS/Valve/SolenoidState",
+                          "transforms": [
+                            {
+                              "type": "map",
+                              "map": { "true": "#004D40", "false": "#37474F" },
+                              "fallback": "#37474F"
+                            }
+                          ]
+                        }
+                      },
+                      "props.style.borderColor": {
+                        "binding": {
+                          "type": "tag",
+                          "tagPath": "[default]BFS/Valve/SolenoidState",
+                          "transforms": [
+                            {
+                              "type": "map",
+                              "map": { "true": "#80CBC4", "false": "#607D8B" },
+                              "fallback": "#607D8B"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "width": "80px",
+                        "height": "80px",
+                        "backgroundColor": "#37474F",
+                        "border": "3px solid #607D8B",
+                        "display": "flex",
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "flexShrink": "0"
+                      }
+                    },
+                    "children": [
+                      {
+                        "meta": { "name": "ValveSymbolText" },
+                        "props": {
+                          "text": "V-01",
+                          "style": { "color": "#90A4AE", "fontSize": "14px", "fontWeight": "700", "fontFamily": "monospace" }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "meta": { "name": "ValveStateInfo" },
+                    "position": { "grow": 1 },
+                    "props": {
+                      "direction": "column",
+                      "style": { "gap": "6px" }
+                    },
+                    "children": [
+                      {
+                        "meta": { "name": "ValveStateValue" },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "tag",
+                              "tagPath": "[default]BFS/Valve/SolenoidState",
+                              "transforms": [
+                                {
+                                  "type": "map",
+                                  "map": { "true": "OPEN", "false": "CLOSED" },
+                                  "fallback": "UNKNOWN"
+                                }
+                              ]
+                            }
+                          },
+                          "props.style.color": {
+                            "binding": {
+                              "type": "tag",
+                              "tagPath": "[default]BFS/Valve/SolenoidState",
+                              "transforms": [
+                                {
+                                  "type": "map",
+                                  "map": { "true": "#80CBC4", "false": "#90A4AE" },
+                                  "fallback": "#90A4AE"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "props": {
+                          "text": "CLOSED",
+                          "style": {
+                            "color": "#90A4AE",
+                            "fontSize": "24px",
+                            "fontWeight": "700",
+                            "letterSpacing": "2px",
+                            "fontFamily": "monospace"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": { "name": "ValveStateDesc" },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "tag",
+                              "tagPath": "[default]BFS/Valve/SolenoidState",
+                              "transforms": [
+                                {
+                                  "type": "map",
+                                  "map": { "true": "Water is flowing through to fill nozzle", "false": "Water flow is blocked" },
+                                  "fallback": "State unknown"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "props": {
+                          "text": "Water flow is blocked",
+                          "style": { "color": "#78909C", "fontSize": "12px", "fontFamily": "monospace" }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": { "name": "ValveControlCard" },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "backgroundColor": "#37474F",
+                    "padding": "16px",
+                    "gap": "12px",
+                    "borderRadius": "2px",
+                    "border": "1px solid #455A64"
+                  }
+                },
+                "children": [
+                  {
+                    "meta": { "name": "ControlLabel" },
+                    "props": {
+                      "text": "MANUAL CONTROL  —  MAINTENANCE USE ONLY",
+                      "style": { "color": "#78909C", "fontSize": "10px", "letterSpacing": "1.5px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "ControlWarning" },
+                    "props": {
+                      "text": "⚠  Manual commands bypass automatic filling logic. Use only during maintenance.",
+                      "style": { "color": "#FFB74D", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "ControlButtons" },
+                    "props": {
+                      "direction": "row",
+                      "style": { "gap": "12px" }
+                    },
+                    "children": [
+                      {
+                        "meta": { "name": "OpenValveBtn" },
+                        "props": {
+                          "text": "OPEN VALVE",
+                          "style": {
+                            "backgroundColor": "#00695C",
+                            "color": "#E0F2F1",
+                            "fontSize": "13px",
+                            "fontWeight": "700",
+                            "padding": "10px 20px",
+                            "letterSpacing": "0.5px",
+                            "fontFamily": "monospace"
+                          },
+                          "action": {
+                            "type": "tag",
+                            "config": {
+                              "tagPath": "[default]BFS/Valve/Command",
+                              "value": true
+                            }
+                          }
+                        },
+                        "type": "ia.input.button"
+                      },
+                      {
+                        "meta": { "name": "CloseValveBtn" },
+                        "props": {
+                          "text": "CLOSE VALVE",
+                          "style": {
+                            "backgroundColor": "#546E7A",
+                            "color": "#ECEFF1",
+                            "fontSize": "13px",
+                            "fontWeight": "700",
+                            "padding": "10px 20px",
+                            "letterSpacing": "0.5px",
+                            "fontFamily": "monospace"
+                          },
+                          "action": {
+                            "type": "tag",
+                            "config": {
+                              "tagPath": "[default]BFS/Valve/Command",
+                              "value": false
+                            }
+                          }
+                        },
+                        "type": "ia.input.button"
+                      }
+                    ],
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": { "name": "ValveSpecCard" },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "backgroundColor": "#37474F",
+                    "padding": "16px",
+                    "gap": "8px",
+                    "borderRadius": "2px",
+                    "border": "1px solid #455A64"
+                  }
+                },
+                "children": [
+                  {
+                    "meta": { "name": "ValveSpecLabel" },
+                    "props": {
+                      "text": "DEVICE SPECIFICATIONS  —  V-01",
+                      "style": { "color": "#78909C", "fontSize": "10px", "letterSpacing": "1.5px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "ValveSpecType" },
+                    "props": {
+                      "text": "Type:     2-Way Normally-Closed Solenoid Valve",
+                      "style": { "color": "#90A4AE", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "ValveSpecCoil" },
+                    "props": {
+                      "text": "Coil:     24 VDC",
+                      "style": { "color": "#90A4AE", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "ValveSpecMedia" },
+                    "props": {
+                      "text": "Media:    Potable water",
+                      "style": { "color": "#90A4AE", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "ValveSpecTag" },
+                    "props": {
+                      "text": "Tag:      [default]BFS/Valve/SolenoidState",
+                      "style": { "color": "#90A4AE", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "type": "ia.container.flex"
+              }
+            ],
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": { "name": "PumpColumn" },
+            "position": { "grow": 1, "basis": "0" },
+            "props": {
+              "direction": "column",
+              "style": { "gap": "16px" }
+            },
+            "children": [
+              {
+                "meta": { "name": "PumpSectionLabel" },
+                "props": {
+                  "text": "PUMP  —  P-01",
+                  "style": {
+                    "color": "#90A4AE",
+                    "fontSize": "11px",
+                    "letterSpacing": "2px",
+                    "fontFamily": "monospace",
+                    "borderBottom": "1px solid #455A64",
+                    "paddingBottom": "6px"
+                  }
+                },
+                "type": "ia.display.label"
+              },
+              {
+                "meta": { "name": "PumpStateCard" },
+                "props": {
+                  "direction": "row",
+                  "alignItems": "center",
+                  "style": {
+                    "backgroundColor": "#37474F",
+                    "padding": "20px 16px",
+                    "gap": "20px",
+                    "borderRadius": "2px",
+                    "border": "1px solid #455A64"
+                  }
+                },
+                "children": [
+                  {
+                    "meta": { "name": "PumpSymbolCircle" },
+                    "propConfig": {
+                      "props.style.backgroundColor": {
+                        "binding": {
+                          "type": "tag",
+                          "tagPath": "[default]BFS/Pump/Running",
+                          "transforms": [
+                            {
+                              "type": "map",
+                              "map": { "true": "#004D40", "false": "#37474F" },
+                              "fallback": "#37474F"
+                            }
+                          ]
+                        }
+                      },
+                      "props.style.borderColor": {
+                        "binding": {
+                          "type": "tag",
+                          "tagPath": "[default]BFS/Pump/Running",
+                          "transforms": [
+                            {
+                              "type": "map",
+                              "map": { "true": "#80CBC4", "false": "#607D8B" },
+                              "fallback": "#607D8B"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "props": {
+                      "style": {
+                        "width": "80px",
+                        "height": "80px",
+                        "borderRadius": "50%",
+                        "backgroundColor": "#37474F",
+                        "border": "3px solid #607D8B",
+                        "display": "flex",
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "flexShrink": "0"
+                      }
+                    },
+                    "children": [
+                      {
+                        "meta": { "name": "PumpSymbolText" },
+                        "props": {
+                          "text": "P-01",
+                          "style": { "color": "#90A4AE", "fontSize": "14px", "fontWeight": "700", "fontFamily": "monospace" }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "type": "ia.container.flex"
+                  },
+                  {
+                    "meta": { "name": "PumpStateInfo" },
+                    "position": { "grow": 1 },
+                    "props": {
+                      "direction": "column",
+                      "style": { "gap": "6px" }
+                    },
+                    "children": [
+                      {
+                        "meta": { "name": "PumpStateValue" },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "tag",
+                              "tagPath": "[default]BFS/Pump/Running",
+                              "transforms": [
+                                {
+                                  "type": "map",
+                                  "map": { "true": "RUNNING", "false": "STOPPED" },
+                                  "fallback": "UNKNOWN"
+                                }
+                              ]
+                            }
+                          },
+                          "props.style.color": {
+                            "binding": {
+                              "type": "tag",
+                              "tagPath": "[default]BFS/Pump/Running",
+                              "transforms": [
+                                {
+                                  "type": "map",
+                                  "map": { "true": "#80CBC4", "false": "#90A4AE" },
+                                  "fallback": "#90A4AE"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "props": {
+                          "text": "STOPPED",
+                          "style": {
+                            "color": "#90A4AE",
+                            "fontSize": "24px",
+                            "fontWeight": "700",
+                            "letterSpacing": "2px",
+                            "fontFamily": "monospace"
+                          }
+                        },
+                        "type": "ia.display.label"
+                      },
+                      {
+                        "meta": { "name": "PumpStateDesc" },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "tag",
+                              "tagPath": "[default]BFS/Pump/Running",
+                              "transforms": [
+                                {
+                                  "type": "map",
+                                  "map": { "true": "Motor energized — water pressure at valve", "false": "Motor de-energized — no flow possible" },
+                                  "fallback": "State unknown"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "props": {
+                          "text": "Motor de-energized — no flow possible",
+                          "style": { "color": "#78909C", "fontSize": "12px", "fontFamily": "monospace" }
+                        },
+                        "type": "ia.display.label"
+                      }
+                    ],
+                    "type": "ia.container.flex"
+                  }
+                ],
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": { "name": "PumpSpecCard" },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "backgroundColor": "#37474F",
+                    "padding": "16px",
+                    "gap": "8px",
+                    "borderRadius": "2px",
+                    "border": "1px solid #455A64"
+                  }
+                },
+                "children": [
+                  {
+                    "meta": { "name": "PumpSpecLabel" },
+                    "props": {
+                      "text": "DEVICE SPECIFICATIONS  —  P-01",
+                      "style": { "color": "#78909C", "fontSize": "10px", "letterSpacing": "1.5px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "PumpSpecType" },
+                    "props": {
+                      "text": "Type:     Centrifugal water pump",
+                      "style": { "color": "#90A4AE", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "PumpSpecControl" },
+                    "props": {
+                      "text": "Control:  Automatic via BFS/System/State",
+                      "style": { "color": "#90A4AE", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "PumpSpecTag" },
+                    "props": {
+                      "text": "Tag:      [default]BFS/Pump/Running",
+                      "style": { "color": "#90A4AE", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "type": "ia.container.flex"
+              },
+              {
+                "meta": { "name": "SystemLogicCard" },
+                "props": {
+                  "direction": "column",
+                  "style": {
+                    "backgroundColor": "#37474F",
+                    "padding": "16px",
+                    "gap": "8px",
+                    "borderRadius": "2px",
+                    "border": "1px solid #455A64"
+                  }
+                },
+                "children": [
+                  {
+                    "meta": { "name": "LogicLabel" },
+                    "props": {
+                      "text": "FILL SEQUENCE LOGIC",
+                      "style": { "color": "#78909C", "fontSize": "10px", "letterSpacing": "1.5px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "Logic1" },
+                    "props": {
+                      "text": "1. System START → Pump P-01 starts.",
+                      "style": { "color": "#90A4AE", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "Logic2" },
+                    "props": {
+                      "text": "2. Laser LS-01 detects bottle → Valve V-01 opens.",
+                      "style": { "color": "#90A4AE", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "Logic3" },
+                    "props": {
+                      "text": "3. Fill timer completes → Valve V-01 closes.",
+                      "style": { "color": "#90A4AE", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "Logic4" },
+                    "props": {
+                      "text": "4. Bottle exits → FillCount increments → repeat.",
+                      "style": { "color": "#90A4AE", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  },
+                  {
+                    "meta": { "name": "Logic5" },
+                    "props": {
+                      "text": "FAULT: If LS-01 Health = False, Valve is forced CLOSED.",
+                      "style": { "color": "#EF9A9A", "fontSize": "11px", "fontFamily": "monospace" }
+                    },
+                    "type": "ia.display.label"
+                  }
+                ],
+                "type": "ia.container.flex"
+              }
+            ],
+            "type": "ia.container.flex"
+          }
+        ],
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": { "name": "root" },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#546E7A",
+        "height": "100%",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

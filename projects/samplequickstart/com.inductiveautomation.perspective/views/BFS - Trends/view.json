@@ -1,0 +1,229 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 900,
+      "width": 1280
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": { "name": "Header" },
+        "position": { "basis": "56px", "shrink": 0 },
+        "props": {
+          "direction": "row",
+          "alignItems": "center",
+          "style": {
+            "backgroundColor": "#37474F",
+            "padding": "0 24px",
+            "gap": "16px",
+            "borderBottom": "2px solid #263238"
+          }
+        },
+        "children": [
+          {
+            "meta": { "name": "BackBtn" },
+            "props": {
+              "text": "‹ OVERVIEW",
+              "style": {
+                "backgroundColor": "#455A64",
+                "color": "#B0BEC5",
+                "fontSize": "12px",
+                "padding": "6px 14px",
+                "fontFamily": "monospace",
+                "letterSpacing": "0.5px"
+              },
+              "action": { "type": "page", "config": { "url": "/bfs-overview" } }
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "meta": { "name": "Title" },
+            "position": { "grow": 1 },
+            "props": {
+              "text": "PROCESS TRENDS  —  BFS  |  LEVEL 4",
+              "style": {
+                "color": "#ECEFF1",
+                "fontSize": "15px",
+                "fontWeight": "600",
+                "letterSpacing": "1px",
+                "fontFamily": "monospace"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": { "name": "Timestamp" },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "type": "expr",
+                  "expression": "dateFormat(now(), 'yyyy-MM-dd  HH:mm:ss')"
+                }
+              }
+            },
+            "props": {
+              "text": "",
+              "style": { "color": "#78909C", "fontSize": "12px", "fontFamily": "monospace" }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": { "name": "ProductionTrendSection" },
+        "position": { "grow": 1, "basis": "0" },
+        "props": {
+          "direction": "column",
+          "style": {
+            "backgroundColor": "#455A64",
+            "padding": "16px 24px 8px 24px",
+            "gap": "8px"
+          }
+        },
+        "children": [
+          {
+            "meta": { "name": "TrendLabel" },
+            "props": {
+              "text": "PRODUCTION TREND  —  FILL COUNT & FILL RATE",
+              "style": { "color": "#90A4AE", "fontSize": "10px", "letterSpacing": "1.5px", "fontFamily": "monospace" }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": { "name": "ProductionChart" },
+            "position": { "grow": 1, "basis": "0" },
+            "props": {
+              "defaultPens": [
+                {
+                  "name": "Fill Count",
+                  "tagPath": "[default]BFS/Production/FillCount",
+                  "color": "#80CBC4",
+                  "lineWidth": 2,
+                  "style": "Line"
+                },
+                {
+                  "name": "Fill Rate (btl/min)",
+                  "tagPath": "[default]BFS/Production/FillRate",
+                  "color": "#FFB74D",
+                  "lineWidth": 2,
+                  "style": "Line"
+                },
+                {
+                  "name": "Target Count",
+                  "tagPath": "[default]BFS/Production/TargetCount",
+                  "color": "#546E7A",
+                  "lineWidth": 1,
+                  "style": "Dash"
+                }
+              ],
+              "historicalMode": true,
+              "startDate": {
+                "expression": "now() - 3600000"
+              },
+              "endDate": {
+                "expression": "now()"
+              },
+              "showLegend": true,
+              "style": {
+                "backgroundColor": "#263238",
+                "color": "#ECEFF1",
+                "fontFamily": "monospace",
+                "fontSize": "11px"
+              },
+              "xAxisLabel": "Time",
+              "gridColor": "#37474F"
+            },
+            "type": "ia.chart.power-chart"
+          }
+        ],
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": { "name": "StatusTrendSection" },
+        "position": { "basis": "260px", "shrink": 0 },
+        "props": {
+          "direction": "column",
+          "style": {
+            "backgroundColor": "#37474F",
+            "padding": "12px 24px",
+            "gap": "8px",
+            "borderTop": "2px solid #263238"
+          }
+        },
+        "children": [
+          {
+            "meta": { "name": "StatusTrendLabel" },
+            "props": {
+              "text": "DIGITAL STATUS TREND  —  VALVE, PUMP, SENSOR",
+              "style": { "color": "#90A4AE", "fontSize": "10px", "letterSpacing": "1.5px", "fontFamily": "monospace" }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": { "name": "StatusChart" },
+            "position": { "grow": 1, "basis": "0" },
+            "props": {
+              "defaultPens": [
+                {
+                  "name": "Solenoid Valve",
+                  "tagPath": "[default]BFS/Valve/SolenoidState",
+                  "color": "#80CBC4",
+                  "lineWidth": 2,
+                  "style": "Line"
+                },
+                {
+                  "name": "Pump Running",
+                  "tagPath": "[default]BFS/Pump/Running",
+                  "color": "#A5D6A7",
+                  "lineWidth": 2,
+                  "style": "Line"
+                },
+                {
+                  "name": "Bottle Detected",
+                  "tagPath": "[default]BFS/Sensor/BottleDetected",
+                  "color": "#FFD54F",
+                  "lineWidth": 2,
+                  "style": "Line"
+                }
+              ],
+              "historicalMode": true,
+              "startDate": {
+                "expression": "now() - 3600000"
+              },
+              "endDate": {
+                "expression": "now()"
+              },
+              "showLegend": true,
+              "style": {
+                "backgroundColor": "#263238",
+                "color": "#ECEFF1",
+                "fontFamily": "monospace",
+                "fontSize": "11px"
+              },
+              "xAxisLabel": "Time",
+              "gridColor": "#37474F",
+              "yAxisMin": -0.1,
+              "yAxisMax": 1.1
+            },
+            "type": "ia.chart.power-chart"
+          }
+        ],
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": { "name": "root" },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#455A64",
+        "height": "100%",
+        "overflow": "hidden"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}
