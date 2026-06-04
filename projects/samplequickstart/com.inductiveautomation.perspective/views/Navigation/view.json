@@ -423,126 +423,60 @@
             "type": "ia.input.button",
             "meta": { "name": "Tab_STEM" },
             "position": { "grow": 1 },
-            "propConfig": {
-              "props.style.color": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/symposium', '#FFFFFF', '#909090')" }
-              },
-              "props.style.borderBottom": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/symposium', '2px solid #FFFFFF', '2px solid transparent')" }
-              },
-              "props.style.fontWeight": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/symposium', '700', '400')" }
-              }
-            },
             "props": {
               "text": "STEM Symposium",
               "action": { "type": "page", "config": { "url": "/symposium" } },
-              "style": { "backgroundColor": "transparent", "color": "#909090", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderBottom": "2px solid transparent", "borderRadius": "0", "padding": "0 4px" }
+              "style": { "backgroundColor": "transparent", "color": "#FFFFFF", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderRadius": "0", "padding": "0 4px" }
             }
           },
           {
             "type": "ia.input.button",
             "meta": { "name": "Tab_Overview" },
             "position": { "grow": 1 },
-            "propConfig": {
-              "props.style.color": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/overview' || {page.props.path} == '/', '#FFFFFF', '#909090')" }
-              },
-              "props.style.borderBottom": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/overview' || {page.props.path} == '/', '2px solid #FFFFFF', '2px solid transparent')" }
-              },
-              "props.style.fontWeight": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/overview' || {page.props.path} == '/', '700', '400')" }
-              }
-            },
             "props": {
               "text": "Overview",
               "action": { "type": "page", "config": { "url": "/overview" } },
-              "style": { "backgroundColor": "transparent", "color": "#909090", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderBottom": "2px solid transparent", "borderRadius": "0", "padding": "0 4px" }
+              "style": { "backgroundColor": "transparent", "color": "#FFFFFF", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderRadius": "0", "padding": "0 4px" }
             }
           },
           {
             "type": "ia.input.button",
             "meta": { "name": "Tab_Process" },
             "position": { "grow": 1 },
-            "propConfig": {
-              "props.style.color": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/process', '#FFFFFF', '#909090')" }
-              },
-              "props.style.borderBottom": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/process', '2px solid #FFFFFF', '2px solid transparent')" }
-              },
-              "props.style.fontWeight": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/process', '700', '400')" }
-              }
-            },
             "props": {
               "text": "Process",
               "action": { "type": "page", "config": { "url": "/process" } },
-              "style": { "backgroundColor": "transparent", "color": "#909090", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderBottom": "2px solid transparent", "borderRadius": "0", "padding": "0 4px" }
+              "style": { "backgroundColor": "transparent", "color": "#FFFFFF", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderRadius": "0", "padding": "0 4px" }
             }
           },
           {
             "type": "ia.input.button",
             "meta": { "name": "Tab_FillingTank" },
             "position": { "grow": 1 },
-            "propConfig": {
-              "props.style.color": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/filling-tank' || {page.props.path} == '/sensor' || {page.props.path} == '/filling' || {page.props.path} == '/tank', '#FFFFFF', '#909090')" }
-              },
-              "props.style.borderBottom": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/filling-tank' || {page.props.path} == '/sensor' || {page.props.path} == '/filling' || {page.props.path} == '/tank', '2px solid #FFFFFF', '2px solid transparent')" }
-              },
-              "props.style.fontWeight": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/filling-tank' || {page.props.path} == '/sensor' || {page.props.path} == '/filling' || {page.props.path} == '/tank', '700', '400')" }
-              }
-            },
             "props": {
               "text": "Filling & Tank",
               "action": { "type": "page", "config": { "url": "/filling-tank" } },
-              "style": { "backgroundColor": "transparent", "color": "#909090", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderBottom": "2px solid transparent", "borderRadius": "0", "padding": "0 4px" }
+              "style": { "backgroundColor": "transparent", "color": "#FFFFFF", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderRadius": "0", "padding": "0 4px" }
             }
           },
           {
             "type": "ia.input.button",
             "meta": { "name": "Tab_Alarms" },
             "position": { "grow": 1 },
-            "propConfig": {
-              "props.style.color": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/alarms', '#FFFFFF', '#909090')" }
-              },
-              "props.style.borderBottom": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/alarms', '2px solid #FFFFFF', '2px solid transparent')" }
-              },
-              "props.style.fontWeight": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/alarms', '700', '400')" }
-              }
-            },
             "props": {
               "text": "Alarms",
               "action": { "type": "page", "config": { "url": "/alarms" } },
-              "style": { "backgroundColor": "transparent", "color": "#909090", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderBottom": "2px solid transparent", "borderRadius": "0", "padding": "0 4px" }
+              "style": { "backgroundColor": "transparent", "color": "#FFFFFF", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderRadius": "0", "padding": "0 4px" }
             }
           },
           {
             "type": "ia.input.button",
             "meta": { "name": "Tab_Credits" },
             "position": { "grow": 1 },
-            "propConfig": {
-              "props.style.color": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/credits', '#FFFFFF', '#909090')" }
-              },
-              "props.style.borderBottom": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/credits', '2px solid #FFFFFF', '2px solid transparent')" }
-              },
-              "props.style.fontWeight": {
-                "binding": { "type": "expr", "expression": "if({page.props.path} == '/credits', '700', '400')" }
-              }
-            },
             "props": {
               "text": "Credits",
               "action": { "type": "page", "config": { "url": "/credits" } },
-              "style": { "backgroundColor": "transparent", "color": "#909090", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderBottom": "2px solid transparent", "borderRadius": "0", "padding": "0 4px" }
+              "style": { "backgroundColor": "transparent", "color": "#FFFFFF", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderRadius": "0", "padding": "0 4px" }
             }
           }
         ]

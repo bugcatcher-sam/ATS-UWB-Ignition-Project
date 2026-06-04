@@ -313,25 +313,50 @@
               "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "8px", "gap": "4px" }
             },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "FILL COUNT & FLOW RATE  —  LAST 60 MIN", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace", "letterSpacing": "0.5px", "fontWeight": "700" } } },
+              { "type": "ia.display.label", "props": { "text": "LIVE PRODUCTION DATA", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace", "letterSpacing": "0.5px", "fontWeight": "700" } } },
               {
-                "type": "ia.chart.tag-history",
+                "type": "ia.container.flex",
                 "meta": { "name": "FillTrend" },
                 "position": { "grow": 1 },
-                "props": {
-                  "config": {
-                    "subplots": [
+                "props": { "direction": "column", "style": { "backgroundColor": "#D0D0D0", "padding": "10px", "gap": "10px", "justifyContent": "center" } },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "props": { "direction": "row", "alignItems": "center", "style": { "gap": "8px" } },
+                    "children": [
+                      { "type": "ia.display.label", "props": { "text": "Fill Count:", "style": { "color": "#555555", "fontSize": "13px", "fontFamily": "monospace", "width": "100px" } } },
                       {
-                        "pens": [
-                          { "tagPath": "[default]BFS/Production/FillCount", "name": "Fill Count", "color": "#1565C0", "lineWeight": 2 },
-                          { "tagPath": "[default]BFS/FlowMeter/FT001_FlowRate", "name": "Flow Rate (mL/s)", "color": "#2E7D32", "lineWeight": 2 }
-                        ]
+                        "type": "ia.display.label",
+                        "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Production/FillCount", "transforms": [{ "type": "expr", "expression": "toStr({value}) + ' bottles'" }] } } },
+                        "props": { "text": "0 bottles", "style": { "color": "#1565C0", "fontSize": "20px", "fontFamily": "monospace", "fontWeight": "700" } }
                       }
                     ]
                   },
-                  "startDate": "${now - 1h}",
-                  "endDate": "${now}"
-                }
+                  {
+                    "type": "ia.container.flex",
+                    "props": { "direction": "row", "alignItems": "center", "style": { "gap": "8px" } },
+                    "children": [
+                      { "type": "ia.display.label", "props": { "text": "Flow Rate:", "style": { "color": "#555555", "fontSize": "13px", "fontFamily": "monospace", "width": "100px" } } },
+                      {
+                        "type": "ia.display.label",
+                        "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/FlowMeter/FT001_FlowRate", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' mL/s'" }] } } },
+                        "props": { "text": "0.0 mL/s", "style": { "color": "#2E7D32", "fontSize": "20px", "fontFamily": "monospace", "fontWeight": "700" } }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "props": { "direction": "row", "alignItems": "center", "style": { "gap": "8px" } },
+                    "children": [
+                      { "type": "ia.display.label", "props": { "text": "Tank Level:", "style": { "color": "#555555", "fontSize": "13px", "fontFamily": "monospace", "width": "100px" } } },
+                      {
+                        "type": "ia.display.label",
+                        "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Tank/TK001_Level_PV", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' %'" }] } } },
+                        "props": { "text": "0.0 %", "style": { "color": "#E65100", "fontSize": "20px", "fontFamily": "monospace", "fontWeight": "700" } }
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           },
