@@ -12,26 +12,17 @@
     "meta": { "name": "root" },
     "props": {
       "direction": "column",
-      "style": {
-        "backgroundColor": "#C8C8C8",
-        "width": "100%",
-        "height": "100%"
-      }
+      "style": { "backgroundColor": "#C8C8C8", "width": "100%", "height": "100%" }
     },
     "children": [
       {
         "type": "ia.container.flex",
         "meta": { "name": "TitleBar" },
-        "position": { "basis": "36px", "shrink": 0 },
+        "position": { "basis": "40px", "shrink": 0 },
         "props": {
           "direction": "row",
           "alignItems": "center",
-          "style": {
-            "backgroundColor": "#3D3D3D",
-            "padding": "0 12px",
-            "gap": "12px",
-            "borderBottom": "2px solid #555555"
-          }
+          "style": { "backgroundColor": "#3D3D3D", "padding": "0 14px", "gap": "12px", "borderBottom": "2px solid #555555" }
         },
         "children": [
           {
@@ -40,43 +31,25 @@
             "position": { "grow": 1 },
             "props": {
               "text": "AUTOMATED BOTTLE FILLER  —  SYSTEM OVERVIEW",
-              "style": {
-                "color": "#E0E0E0",
-                "fontSize": "13px",
-                "fontWeight": "600",
-                "fontFamily": "monospace",
-                "letterSpacing": "0.5px"
-              }
+              "style": { "color": "#E0E0E0", "fontSize": "15px", "fontWeight": "600", "fontFamily": "monospace", "letterSpacing": "0.5px" }
             }
           },
           {
             "type": "ia.display.label",
             "meta": { "name": "SystemMode" },
             "propConfig": {
-              "props.text": {
-                "binding": { "type": "tag", "tagPath": "[default]BFS/System/SystemMode" }
-              },
+              "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/System/SystemMode" } },
               "props.style.backgroundColor": {
                 "binding": {
                   "type": "tag",
                   "tagPath": "[default]BFS/System/SystemMode",
-                  "transforms": [
-                    { "type": "map", "map": { "AUTO": "#1B5E20", "RUNNING": "#1B5E20", "MANUAL": "#BF360C", "MAINTENANCE": "#0D47A1", "STOPPED": "#424242", "FAULT": "#7F0000" }, "fallback": "#424242" }
-                  ]
+                  "transforms": [{ "type": "map", "map": { "AUTO": "#1B5E20", "RUNNING": "#1B5E20", "MANUAL": "#BF360C", "MAINTENANCE": "#0D47A1", "STOPPED": "#424242", "FAULT": "#7F0000" }, "fallback": "#424242" }]
                 }
               }
             },
             "props": {
               "text": "STOPPED",
-              "style": {
-                "backgroundColor": "#424242",
-                "color": "#FFFFFF",
-                "fontSize": "11px",
-                "fontWeight": "700",
-                "fontFamily": "monospace",
-                "padding": "3px 10px",
-                "letterSpacing": "1px"
-              }
+              "style": { "backgroundColor": "#424242", "color": "#FFFFFF", "fontSize": "13px", "fontWeight": "700", "fontFamily": "monospace", "padding": "4px 12px", "letterSpacing": "1px" }
             }
           }
         ]
@@ -84,15 +57,11 @@
       {
         "type": "ia.container.flex",
         "meta": { "name": "KPIRow" },
-        "position": { "basis": "100px", "shrink": 0 },
+        "position": { "basis": "110px", "shrink": 0 },
         "props": {
           "direction": "row",
           "alignItems": "stretch",
-          "style": {
-            "padding": "8px 12px",
-            "gap": "8px",
-            "borderBottom": "1px solid #AAAAAA"
-          }
+          "style": { "padding": "8px 12px", "gap": "8px", "borderBottom": "1px solid #AAAAAA" }
         },
         "children": [
           {
@@ -103,107 +72,76 @@
               "direction": "column",
               "alignItems": "center",
               "justifyContent": "center",
-              "style": {
-                "backgroundColor": "#BBBBBB",
-                "border": "1px solid #999999",
-                "gap": "2px",
-                "padding": "6px"
-              }
+              "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "gap": "2px", "padding": "8px" }
             },
             "children": [
-              {
-                "type": "ia.display.label",
-                "props": { "text": "BOTTLES FILLED", "style": { "color": "#555555", "fontSize": "9px", "fontFamily": "monospace", "letterSpacing": "0.5px" } }
-              },
+              { "type": "ia.display.label", "props": { "text": "BOTTLES FILLED", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace", "letterSpacing": "0.5px" } } },
               {
                 "type": "ia.display.label",
                 "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Production/FillCount", "transforms": [{ "type": "expr", "expression": "toStr({value})" }] } } },
-                "props": { "text": "0", "style": { "color": "#111111", "fontSize": "28px", "fontWeight": "700", "fontFamily": "monospace" } }
+                "props": { "text": "0", "style": { "color": "#111111", "fontSize": "32px", "fontWeight": "700", "fontFamily": "monospace" } }
               },
-              {
-                "type": "ia.display.label",
-                "props": { "text": "this shift", "style": { "color": "#777777", "fontSize": "9px", "fontFamily": "monospace" } }
-              }
+              { "type": "ia.display.label", "props": { "text": "this shift", "style": { "color": "#777777", "fontSize": "11px", "fontFamily": "monospace" } } }
             ]
           },
           {
             "type": "ia.container.flex",
             "meta": { "name": "KPI_Target" },
             "position": { "grow": 1 },
-            "props": {
-              "direction": "column",
-              "alignItems": "center",
-              "justifyContent": "center",
-              "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "gap": "2px", "padding": "6px" }
-            },
+            "props": { "direction": "column", "alignItems": "center", "justifyContent": "center", "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "gap": "2px", "padding": "8px" } },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "BATCH TARGET", "style": { "color": "#555555", "fontSize": "9px", "fontFamily": "monospace", "letterSpacing": "0.5px" } } },
+              { "type": "ia.display.label", "props": { "text": "BATCH TARGET", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace", "letterSpacing": "0.5px" } } },
               {
                 "type": "ia.display.label",
                 "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Production/TargetCount", "transforms": [{ "type": "expr", "expression": "toStr({value})" }] } } },
-                "props": { "text": "100", "style": { "color": "#111111", "fontSize": "28px", "fontWeight": "700", "fontFamily": "monospace" } }
+                "props": { "text": "100", "style": { "color": "#111111", "fontSize": "32px", "fontWeight": "700", "fontFamily": "monospace" } }
               },
-              { "type": "ia.display.label", "props": { "text": "bottles", "style": { "color": "#777777", "fontSize": "9px", "fontFamily": "monospace" } } }
+              { "type": "ia.display.label", "props": { "text": "bottles", "style": { "color": "#777777", "fontSize": "11px", "fontFamily": "monospace" } } }
             ]
           },
           {
             "type": "ia.container.flex",
             "meta": { "name": "KPI_FillRate" },
             "position": { "grow": 1 },
-            "props": {
-              "direction": "column",
-              "alignItems": "center",
-              "justifyContent": "center",
-              "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "gap": "2px", "padding": "6px" }
-            },
+            "props": { "direction": "column", "alignItems": "center", "justifyContent": "center", "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "gap": "2px", "padding": "8px" } },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "FILL RATE", "style": { "color": "#555555", "fontSize": "9px", "fontFamily": "monospace", "letterSpacing": "0.5px" } } },
+              { "type": "ia.display.label", "props": { "text": "FILL RATE", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace", "letterSpacing": "0.5px" } } },
               {
                 "type": "ia.display.label",
                 "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Production/FillRate", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0')" }] } } },
-                "props": { "text": "0.0", "style": { "color": "#111111", "fontSize": "28px", "fontWeight": "700", "fontFamily": "monospace" } }
+                "props": { "text": "0.0", "style": { "color": "#111111", "fontSize": "32px", "fontWeight": "700", "fontFamily": "monospace" } }
               },
-              { "type": "ia.display.label", "props": { "text": "btl/min", "style": { "color": "#777777", "fontSize": "9px", "fontFamily": "monospace" } } }
+              { "type": "ia.display.label", "props": { "text": "bottles/min", "style": { "color": "#777777", "fontSize": "11px", "fontFamily": "monospace" } } }
             ]
           },
           {
             "type": "ia.container.flex",
             "meta": { "name": "KPI_TankLevel" },
             "position": { "grow": 1 },
-            "props": {
-              "direction": "column",
-              "alignItems": "center",
-              "justifyContent": "center",
-              "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "gap": "2px", "padding": "6px" }
-            },
+            "props": { "direction": "column", "alignItems": "center", "justifyContent": "center", "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "gap": "2px", "padding": "8px" } },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "TANK LEVEL", "style": { "color": "#555555", "fontSize": "9px", "fontFamily": "monospace", "letterSpacing": "0.5px" } } },
+              { "type": "ia.display.label", "props": { "text": "TANK LEVEL", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace", "letterSpacing": "0.5px" } } },
               {
                 "type": "ia.display.label",
                 "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Tank/TK001_Level_PV", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + '%'" }] } } },
-                "props": { "text": "75.0%", "style": { "color": "#111111", "fontSize": "28px", "fontWeight": "700", "fontFamily": "monospace" } }
+                "props": { "text": "75.0%", "style": { "color": "#111111", "fontSize": "32px", "fontWeight": "700", "fontFamily": "monospace" } }
               },
-              { "type": "ia.display.label", "props": { "text": "TK-001", "style": { "color": "#777777", "fontSize": "9px", "fontFamily": "monospace" } } }
+              { "type": "ia.display.label", "props": { "text": "TK-001", "style": { "color": "#777777", "fontSize": "11px", "fontFamily": "monospace" } } }
             ]
           },
           {
             "type": "ia.container.flex",
             "meta": { "name": "KPI_FlowRate" },
             "position": { "grow": 1 },
-            "props": {
-              "direction": "column",
-              "alignItems": "center",
-              "justifyContent": "center",
-              "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "gap": "2px", "padding": "6px" }
-            },
+            "props": { "direction": "column", "alignItems": "center", "justifyContent": "center", "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "gap": "2px", "padding": "8px" } },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "FLOW RATE", "style": { "color": "#555555", "fontSize": "9px", "fontFamily": "monospace", "letterSpacing": "0.5px" } } },
+              { "type": "ia.display.label", "props": { "text": "FLOW RATE", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace", "letterSpacing": "0.5px" } } },
               {
                 "type": "ia.display.label",
                 "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/FlowMeter/FT001_FlowRate", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0')" }] } } },
-                "props": { "text": "0.0", "style": { "color": "#111111", "fontSize": "28px", "fontWeight": "700", "fontFamily": "monospace" } }
+                "props": { "text": "0.0", "style": { "color": "#111111", "fontSize": "32px", "fontWeight": "700", "fontFamily": "monospace" } }
               },
-              { "type": "ia.display.label", "props": { "text": "mL/s", "style": { "color": "#777777", "fontSize": "9px", "fontFamily": "monospace" } } }
+              { "type": "ia.display.label", "props": { "text": "mL/s", "style": { "color": "#777777", "fontSize": "11px", "fontFamily": "monospace" } } }
             ]
           }
         ]
@@ -214,61 +152,50 @@
         "position": { "basis": "120px", "shrink": 0 },
         "props": {
           "direction": "row",
-          "style": {
-            "padding": "8px 12px",
-            "gap": "8px",
-            "borderBottom": "1px solid #AAAAAA"
-          }
+          "style": { "padding": "8px 12px", "gap": "8px", "borderBottom": "1px solid #AAAAAA" }
         },
         "children": [
           {
             "type": "ia.container.flex",
             "meta": { "name": "PumpStatus" },
             "position": { "grow": 1 },
-            "props": {
-              "direction": "column",
-              "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "8px", "gap": "4px" }
-            },
+            "props": { "direction": "column", "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "8px", "gap": "5px" } },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "P-001  DIAPHRAGM PUMP", "style": { "color": "#444444", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px" } } },
+              { "type": "ia.display.label", "props": { "text": "P-001  DIAPHRAGM PUMP", "style": { "color": "#444444", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px" } } },
               {
                 "type": "ia.container.flex",
                 "props": { "direction": "row", "style": { "gap": "8px", "alignItems": "center" } },
                 "children": [
                   {
                     "type": "ia.display.label",
-                    "propConfig": {
-                      "props.style.backgroundColor": {
-                        "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/Running", "transforms": [{ "type": "map", "map": { "true": "#2E7D32" }, "fallback": "#616161" }] }
-                      }
-                    },
-                    "props": { "text": " ", "style": { "backgroundColor": "#616161", "width": "12px", "height": "12px", "borderRadius": "50%" } }
+                    "propConfig": { "props.style.backgroundColor": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/Running", "transforms": [{ "type": "map", "map": { "true": "#2E7D32" }, "fallback": "#616161" }] } } },
+                    "props": { "text": " ", "style": { "backgroundColor": "#616161", "width": "14px", "height": "14px", "borderRadius": "50%" } }
                   },
                   {
                     "type": "ia.display.label",
                     "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/Running", "transforms": [{ "type": "map", "map": { "true": "RUNNING", "false": "STOPPED" } }] } } },
-                    "props": { "text": "STOPPED", "style": { "color": "#333333", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700" } }
+                    "props": { "text": "STOPPED", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
                   }
                 ]
               },
               {
                 "type": "ia.container.flex",
-                "props": { "direction": "row", "style": { "gap": "6px" } },
+                "props": { "direction": "row", "style": { "gap": "8px" } },
                 "children": [
-                  { "type": "ia.display.label", "props": { "text": "Mode:", "style": { "color": "#666666", "fontSize": "10px", "fontFamily": "monospace" } } },
+                  { "type": "ia.display.label", "props": { "text": "Mode:", "style": { "color": "#666666", "fontSize": "12px", "fontFamily": "monospace" } } },
                   {
                     "type": "ia.display.label",
                     "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/P001_Mode" } } },
-                    "props": { "text": "AUTO", "style": { "color": "#333333", "fontSize": "10px", "fontFamily": "monospace" } }
+                    "props": { "text": "AUTO", "style": { "color": "#333333", "fontSize": "12px", "fontFamily": "monospace" } }
                   },
-                  { "type": "ia.display.label", "props": { "text": "  Fault:", "style": { "color": "#666666", "fontSize": "10px", "fontFamily": "monospace" } } },
+                  { "type": "ia.display.label", "props": { "text": " Fault:", "style": { "color": "#666666", "fontSize": "12px", "fontFamily": "monospace" } } },
                   {
                     "type": "ia.display.label",
                     "propConfig": {
                       "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/P001_Fault", "transforms": [{ "type": "map", "map": { "true": "YES", "false": "None" } }] } },
                       "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/P001_Fault", "transforms": [{ "type": "map", "map": { "true": "#B71C1C" }, "fallback": "#2E7D32" }] } }
                     },
-                    "props": { "text": "None", "style": { "color": "#2E7D32", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700" } }
+                    "props": { "text": "None", "style": { "color": "#2E7D32", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700" } }
                   }
                 ]
               }
@@ -278,12 +205,9 @@
             "type": "ia.container.flex",
             "meta": { "name": "ValveStatus" },
             "position": { "grow": 1 },
-            "props": {
-              "direction": "column",
-              "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "8px", "gap": "4px" }
-            },
+            "props": { "direction": "column", "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "8px", "gap": "5px" } },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "SV-001  SOLENOID VALVE", "style": { "color": "#444444", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px" } } },
+              { "type": "ia.display.label", "props": { "text": "SV-001  SOLENOID VALVE", "style": { "color": "#444444", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px" } } },
               {
                 "type": "ia.container.flex",
                 "props": { "direction": "row", "style": { "gap": "8px", "alignItems": "center" } },
@@ -291,33 +215,33 @@
                   {
                     "type": "ia.display.label",
                     "propConfig": { "props.style.backgroundColor": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SolenoidState", "transforms": [{ "type": "map", "map": { "true": "#1565C0" }, "fallback": "#616161" }] } } },
-                    "props": { "text": " ", "style": { "backgroundColor": "#616161", "width": "12px", "height": "12px", "borderRadius": "50%" } }
+                    "props": { "text": " ", "style": { "backgroundColor": "#616161", "width": "14px", "height": "14px", "borderRadius": "50%" } }
                   },
                   {
                     "type": "ia.display.label",
                     "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SolenoidState", "transforms": [{ "type": "map", "map": { "true": "OPEN", "false": "CLOSED" } }] } } },
-                    "props": { "text": "CLOSED", "style": { "color": "#333333", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700" } }
+                    "props": { "text": "CLOSED", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
                   }
                 ]
               },
               {
                 "type": "ia.container.flex",
-                "props": { "direction": "row", "style": { "gap": "6px" } },
+                "props": { "direction": "row", "style": { "gap": "8px" } },
                 "children": [
-                  { "type": "ia.display.label", "props": { "text": "Mode:", "style": { "color": "#666666", "fontSize": "10px", "fontFamily": "monospace" } } },
+                  { "type": "ia.display.label", "props": { "text": "Mode:", "style": { "color": "#666666", "fontSize": "12px", "fontFamily": "monospace" } } },
                   {
                     "type": "ia.display.label",
                     "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SV001_Mode" } } },
-                    "props": { "text": "AUTO", "style": { "color": "#333333", "fontSize": "10px", "fontFamily": "monospace" } }
+                    "props": { "text": "AUTO", "style": { "color": "#333333", "fontSize": "12px", "fontFamily": "monospace" } }
                   },
-                  { "type": "ia.display.label", "props": { "text": "  Fault:", "style": { "color": "#666666", "fontSize": "10px", "fontFamily": "monospace" } } },
+                  { "type": "ia.display.label", "props": { "text": " Fault:", "style": { "color": "#666666", "fontSize": "12px", "fontFamily": "monospace" } } },
                   {
                     "type": "ia.display.label",
                     "propConfig": {
                       "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SV001_Fault", "transforms": [{ "type": "map", "map": { "true": "YES", "false": "None" } }] } },
                       "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SV001_Fault", "transforms": [{ "type": "map", "map": { "true": "#B71C1C" }, "fallback": "#2E7D32" }] } }
                     },
-                    "props": { "text": "None", "style": { "color": "#2E7D32", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700" } }
+                    "props": { "text": "None", "style": { "color": "#2E7D32", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700" } }
                   }
                 ]
               }
@@ -327,12 +251,9 @@
             "type": "ia.container.flex",
             "meta": { "name": "LaserStatus" },
             "position": { "grow": 1 },
-            "props": {
-              "direction": "column",
-              "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "8px", "gap": "4px" }
-            },
+            "props": { "direction": "column", "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "8px", "gap": "5px" } },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "LS-001  LASER DETECTOR", "style": { "color": "#444444", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px" } } },
+              { "type": "ia.display.label", "props": { "text": "LS-001  LASER DETECTOR", "style": { "color": "#444444", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px" } } },
               {
                 "type": "ia.container.flex",
                 "props": { "direction": "row", "style": { "gap": "8px", "alignItems": "center" } },
@@ -340,33 +261,33 @@
                   {
                     "type": "ia.display.label",
                     "propConfig": { "props.style.backgroundColor": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/BottleDetected", "transforms": [{ "type": "map", "map": { "true": "#2E7D32" }, "fallback": "#757575" }] } } },
-                    "props": { "text": " ", "style": { "backgroundColor": "#757575", "width": "12px", "height": "12px", "borderRadius": "50%" } }
+                    "props": { "text": " ", "style": { "backgroundColor": "#757575", "width": "14px", "height": "14px", "borderRadius": "50%" } }
                   },
                   {
                     "type": "ia.display.label",
                     "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/BottleDetected", "transforms": [{ "type": "map", "map": { "true": "BOTTLE PRESENT", "false": "NO BOTTLE" } }] } } },
-                    "props": { "text": "NO BOTTLE", "style": { "color": "#333333", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700" } }
+                    "props": { "text": "NO BOTTLE", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
                   }
                 ]
               },
               {
                 "type": "ia.container.flex",
-                "props": { "direction": "row", "style": { "gap": "6px" } },
+                "props": { "direction": "row", "style": { "gap": "8px" } },
                 "children": [
-                  { "type": "ia.display.label", "props": { "text": "Signal:", "style": { "color": "#666666", "fontSize": "10px", "fontFamily": "monospace" } } },
+                  { "type": "ia.display.label", "props": { "text": "Signal:", "style": { "color": "#666666", "fontSize": "12px", "fontFamily": "monospace" } } },
                   {
                     "type": "ia.display.label",
                     "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/LS001_Signal", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + '%'" }] } } },
-                    "props": { "text": "0.0%", "style": { "color": "#333333", "fontSize": "10px", "fontFamily": "monospace" } }
+                    "props": { "text": "0.0%", "style": { "color": "#333333", "fontSize": "12px", "fontFamily": "monospace" } }
                   },
-                  { "type": "ia.display.label", "props": { "text": "  Health:", "style": { "color": "#666666", "fontSize": "10px", "fontFamily": "monospace" } } },
+                  { "type": "ia.display.label", "props": { "text": " Health:", "style": { "color": "#666666", "fontSize": "12px", "fontFamily": "monospace" } } },
                   {
                     "type": "ia.display.label",
                     "propConfig": {
                       "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/Health", "transforms": [{ "type": "map", "map": { "true": "OK", "false": "FAULT" } }] } },
                       "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/Health", "transforms": [{ "type": "map", "map": { "true": "#2E7D32", "false": "#B71C1C" } }] } }
                     },
-                    "props": { "text": "OK", "style": { "color": "#2E7D32", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700" } }
+                    "props": { "text": "OK", "style": { "color": "#2E7D32", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700" } }
                   }
                 ]
               }
@@ -392,7 +313,7 @@
               "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "8px", "gap": "4px" }
             },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "FILL COUNT TREND  —  LAST 60 MIN", "style": { "color": "#555555", "fontSize": "10px", "fontFamily": "monospace", "letterSpacing": "0.5px", "fontWeight": "700" } } },
+              { "type": "ia.display.label", "props": { "text": "FILL COUNT & FLOW RATE  —  LAST 60 MIN", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace", "letterSpacing": "0.5px", "fontWeight": "700" } } },
               {
                 "type": "ia.chart.tag-history",
                 "meta": { "name": "FillTrend" },
@@ -402,18 +323,8 @@
                     "subplots": [
                       {
                         "pens": [
-                          {
-                            "tagPath": "[default]BFS/Production/FillCount",
-                            "name": "Fill Count",
-                            "color": "#1565C0",
-                            "lineWeight": 1.5
-                          },
-                          {
-                            "tagPath": "[default]BFS/FlowMeter/FT001_FlowRate",
-                            "name": "Flow Rate mL/s",
-                            "color": "#2E7D32",
-                            "lineWeight": 1.5
-                          }
+                          { "tagPath": "[default]BFS/Production/FillCount", "name": "Fill Count", "color": "#1565C0", "lineWeight": 2 },
+                          { "tagPath": "[default]BFS/FlowMeter/FT001_FlowRate", "name": "Flow Rate (mL/s)", "color": "#2E7D32", "lineWeight": 2 }
                         ]
                       }
                     ]
@@ -430,16 +341,16 @@
             "position": { "grow": 1 },
             "props": {
               "direction": "column",
-              "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "8px", "gap": "8px" }
+              "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "10px", "gap": "10px" }
             },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "SYSTEM CONTROL", "style": { "color": "#555555", "fontSize": "10px", "fontFamily": "monospace", "letterSpacing": "0.5px", "fontWeight": "700" } } },
+              { "type": "ia.display.label", "props": { "text": "SYSTEM CONTROL", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace", "letterSpacing": "0.5px", "fontWeight": "700" } } },
               {
                 "type": "ia.input.button",
                 "props": {
                   "text": "START SYSTEM",
                   "action": { "type": "tag-write", "config": { "tagPath": "[default]BFS/System/StartCmd", "value": true } },
-                  "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "12px", "fontWeight": "700", "padding": "8px", "letterSpacing": "0.5px" }
+                  "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "13px", "fontWeight": "700", "padding": "10px" }
                 }
               },
               {
@@ -447,7 +358,7 @@
                 "props": {
                   "text": "STOP SYSTEM",
                   "action": { "type": "tag-write", "config": { "tagPath": "[default]BFS/System/StopCmd", "value": true } },
-                  "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "12px", "fontWeight": "700", "padding": "8px", "letterSpacing": "0.5px" }
+                  "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "13px", "fontWeight": "700", "padding": "10px" }
                 }
               },
               {
@@ -455,28 +366,7 @@
                 "props": {
                   "text": "RESET FAULT",
                   "action": { "type": "tag-write", "config": { "tagPath": "[default]BFS/System/FaultReset", "value": true } },
-                  "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "12px", "fontWeight": "700", "padding": "8px", "letterSpacing": "0.5px" }
-                }
-              },
-              {
-                "type": "ia.display.label",
-                "props": { "text": "───────────────────", "style": { "color": "#999999", "fontSize": "10px" } }
-              },
-              { "type": "ia.display.label", "props": { "text": "QUICK NAV", "style": { "color": "#555555", "fontSize": "10px", "fontFamily": "monospace", "letterSpacing": "0.5px" } } },
-              {
-                "type": "ia.input.button",
-                "props": {
-                  "text": "→ Process P&ID",
-                  "action": { "type": "page", "config": { "url": "/process" } },
-                  "style": { "backgroundColor": "#9E9E9E", "color": "#111111", "fontFamily": "monospace", "fontSize": "11px", "padding": "6px" }
-                }
-              },
-              {
-                "type": "ia.input.button",
-                "props": {
-                  "text": "→ Alarm History",
-                  "action": { "type": "page", "config": { "url": "/alarms" } },
-                  "style": { "backgroundColor": "#9E9E9E", "color": "#111111", "fontFamily": "monospace", "fontSize": "11px", "padding": "6px" }
+                  "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "13px", "fontWeight": "700", "padding": "10px" }
                 }
               }
             ]

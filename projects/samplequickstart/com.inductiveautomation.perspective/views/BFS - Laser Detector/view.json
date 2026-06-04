@@ -2,10 +2,7 @@
   "custom": {},
   "params": {},
   "props": {
-    "defaultSize": {
-      "height": 664,
-      "width": 1024
-    }
+    "defaultSize": { "height": 688, "width": 1024 }
   },
   "root": {
     "type": "ia.container.flex",
@@ -18,21 +15,21 @@
       {
         "type": "ia.container.flex",
         "meta": { "name": "TitleBar" },
-        "position": { "basis": "36px", "shrink": 0 },
+        "position": { "basis": "40px", "shrink": 0 },
         "props": {
           "direction": "row",
           "alignItems": "center",
-          "style": { "backgroundColor": "#3D3D3D", "padding": "0 12px", "gap": "12px", "borderBottom": "2px solid #555555" }
+          "style": { "backgroundColor": "#3D3D3D", "padding": "0 14px", "gap": "12px", "borderBottom": "2px solid #555555" }
         },
         "children": [
-          { "type": "ia.display.label", "position": { "grow": 1 }, "props": { "text": "AUTOMATED BOTTLE FILLER  —  SENSOR DIAGNOSTICS", "style": { "color": "#E0E0E0", "fontSize": "13px", "fontWeight": "600", "fontFamily": "monospace", "letterSpacing": "0.5px" } } },
+          { "type": "ia.display.label", "position": { "grow": 1 }, "props": { "text": "AUTOMATED BOTTLE FILLER  —  SENSOR DIAGNOSTICS", "style": { "color": "#E0E0E0", "fontSize": "15px", "fontWeight": "600", "fontFamily": "monospace", "letterSpacing": "0.5px" } } },
           {
             "type": "ia.display.label",
             "propConfig": {
               "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/Health", "transforms": [{ "type": "map", "map": { "true": "SENSOR OK", "false": "SENSOR FAULT" } }] } },
               "props.style.backgroundColor": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/Health", "transforms": [{ "type": "map", "map": { "true": "#1B5E20", "false": "#7F0000" } }] } }
             },
-            "props": { "text": "SENSOR OK", "style": { "backgroundColor": "#1B5E20", "color": "#FFFFFF", "fontSize": "11px", "fontWeight": "700", "fontFamily": "monospace", "padding": "3px 10px", "letterSpacing": "1px" } }
+            "props": { "text": "SENSOR OK", "style": { "backgroundColor": "#1B5E20", "color": "#FFFFFF", "fontSize": "13px", "fontWeight": "700", "fontFamily": "monospace", "padding": "4px 12px", "letterSpacing": "1px" } }
           }
         ]
       },
@@ -40,37 +37,31 @@
         "type": "ia.container.flex",
         "meta": { "name": "MainContent" },
         "position": { "grow": 1 },
-        "props": {
-          "direction": "row",
-          "style": { "padding": "8px", "gap": "8px" }
-        },
+        "props": { "direction": "row", "style": { "padding": "8px", "gap": "8px" } },
         "children": [
           {
             "type": "ia.container.flex",
             "meta": { "name": "LaserPanel" },
-            "position": { "basis": "300px", "shrink": 0 },
-            "props": {
-              "direction": "column",
-              "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "10px", "gap": "10px" }
-            },
+            "position": { "basis": "320px", "shrink": 0 },
+            "props": { "direction": "column", "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "12px", "gap": "12px" } },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "LS-001  LASER DETECTOR  (ISA 5.1)", "style": { "color": "#444444", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px" } } },
+              { "type": "ia.display.label", "props": { "text": "LS-001  LASER DETECTOR", "style": { "color": "#444444", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px" } } },
               {
                 "type": "ia.container.flex",
-                "props": { "direction": "column", "style": { "gap": "6px" } },
+                "props": { "direction": "column", "style": { "gap": "8px" } },
                 "children": [
                   {
                     "type": "ia.container.flex",
                     "props": { "direction": "row", "alignItems": "center", "style": { "gap": "8px" } },
                     "children": [
-                      { "type": "ia.display.label", "props": { "text": "Bottle Detected:", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace", "width": "120px" } } },
+                      { "type": "ia.display.label", "props": { "text": "Bottle Detected:", "style": { "color": "#555555", "fontSize": "13px", "fontFamily": "monospace", "width": "130px" } } },
                       {
                         "type": "ia.display.label",
                         "propConfig": {
                           "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/BottleDetected", "transforms": [{ "type": "map", "map": { "true": "● YES", "false": "○ NO" } }] } },
                           "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/BottleDetected", "transforms": [{ "type": "map", "map": { "true": "#2E7D32" }, "fallback": "#757575" }] } }
                         },
-                        "props": { "text": "○ NO", "style": { "color": "#757575", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                        "props": { "text": "○ NO", "style": { "color": "#757575", "fontSize": "15px", "fontFamily": "monospace", "fontWeight": "700" } }
                       }
                     ]
                   },
@@ -78,49 +69,20 @@
                     "type": "ia.container.flex",
                     "props": { "direction": "row", "alignItems": "center", "style": { "gap": "8px" } },
                     "children": [
-                      { "type": "ia.display.label", "props": { "text": "Sensor Health:", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace", "width": "120px" } } },
+                      { "type": "ia.display.label", "props": { "text": "Sensor Health:", "style": { "color": "#555555", "fontSize": "13px", "fontFamily": "monospace", "width": "130px" } } },
                       {
                         "type": "ia.display.label",
                         "propConfig": {
                           "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/Health", "transforms": [{ "type": "map", "map": { "true": "● OK", "false": "● FAULT" } }] } },
                           "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/Health", "transforms": [{ "type": "map", "map": { "true": "#2E7D32", "false": "#B71C1C" } }] } }
                         },
-                        "props": { "text": "● OK", "style": { "color": "#2E7D32", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                        "props": { "text": "● OK", "style": { "color": "#2E7D32", "fontSize": "15px", "fontFamily": "monospace", "fontWeight": "700" } }
                       }
                     ]
                   }
                 ]
               },
-              { "type": "ia.display.label", "props": { "text": "SIGNAL STRENGTH", "style": { "color": "#555555", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px", "marginTop": "6px" } } },
-              {
-                "type": "ia.container.flex",
-                "props": { "direction": "column", "style": { "gap": "4px" } },
-                "children": [
-                  {
-                    "type": "ia.container.flex",
-                    "props": { "direction": "row", "alignItems": "center", "style": { "gap": "8px" } },
-                    "children": [
-                      { "type": "ia.display.label", "props": { "text": "Signal:", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace", "width": "60px" } } },
-                      {
-                        "type": "ia.display.label",
-                        "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/LS001_Signal", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' %'" }] } } },
-                        "props": { "text": "0.0 %", "style": { "color": "#111111", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
-                      }
-                    ]
-                  },
-                  {
-                    "type": "ia.display.progress-bar",
-                    "meta": { "name": "SignalBar" },
-                    "propConfig": { "props.value": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/LS001_Signal" } } },
-                    "props": {
-                      "value": 0,
-                      "max": 100,
-                      "style": { "height": "16px", "backgroundColor": "#999999" }
-                    }
-                  }
-                ]
-              },
-              { "type": "ia.display.label", "props": { "text": "CALIBRATION SETPOINTS", "style": { "color": "#555555", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px", "marginTop": "6px" } } },
+              { "type": "ia.display.label", "props": { "text": "SIGNAL STRENGTH", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px", "marginTop": "4px" } } },
               {
                 "type": "ia.container.flex",
                 "props": { "direction": "column", "style": { "gap": "6px" } },
@@ -129,11 +91,49 @@
                     "type": "ia.container.flex",
                     "props": { "direction": "row", "alignItems": "center", "style": { "gap": "8px" } },
                     "children": [
-                      { "type": "ia.display.label", "props": { "text": "Threshold:", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace", "width": "90px" } } },
+                      { "type": "ia.display.label", "props": { "text": "Signal:", "style": { "color": "#555555", "fontSize": "13px", "fontFamily": "monospace", "width": "70px" } } },
                       {
-                        "type": "ia.input.numeric",
-                        "propConfig": { "props.value": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/LS001_Threshold", "bidirectional": true } } },
-                        "props": { "value": 50.0, "suffix": " %", "style": { "backgroundColor": "#E0E0E0", "border": "1px solid #888888", "fontFamily": "monospace", "fontSize": "12px", "width": "100px" } }
+                        "type": "ia.display.label",
+                        "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/LS001_Signal", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' %'" }] } } },
+                        "props": { "text": "0.0 %", "style": { "color": "#111111", "fontSize": "15px", "fontFamily": "monospace", "fontWeight": "700" } }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": { "name": "SignalBar" },
+                    "props": {
+                      "direction": "row",
+                      "style": { "backgroundColor": "#AAAAAA", "height": "20px", "width": "100%", "overflow": "hidden", "borderRadius": "2px", "border": "1px solid #888888" }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "propConfig": {
+                          "props.style.width": {
+                            "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/LS001_Signal", "transforms": [{ "type": "expr", "expression": "toStr({value}) + '%'" }] }
+                          }
+                        },
+                        "props": { "text": "", "style": { "backgroundColor": "#1565C0", "height": "100%", "width": "0%" } }
+                      }
+                    ]
+                  }
+                ]
+              },
+              { "type": "ia.display.label", "props": { "text": "CALIBRATION SETPOINTS", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px", "marginTop": "4px" } } },
+              {
+                "type": "ia.container.flex",
+                "props": { "direction": "column", "style": { "gap": "8px" } },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "props": { "direction": "row", "alignItems": "center", "style": { "gap": "8px" } },
+                    "children": [
+                      { "type": "ia.display.label", "props": { "text": "Threshold:", "style": { "color": "#555555", "fontSize": "13px", "fontFamily": "monospace", "width": "100px" } } },
+                      {
+                        "type": "ia.input.text",
+                        "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/LS001_Threshold", "bidirectional": true } } },
+                        "props": { "text": "50", "placeholder": "50 %", "style": { "backgroundColor": "#E0E0E0", "border": "1px solid #888888", "fontFamily": "monospace", "fontSize": "13px", "width": "110px" } }
                       }
                     ]
                   },
@@ -141,24 +141,14 @@
                     "type": "ia.container.flex",
                     "props": { "direction": "row", "alignItems": "center", "style": { "gap": "8px" } },
                     "children": [
-                      { "type": "ia.display.label", "props": { "text": "Sensitivity:", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace", "width": "90px" } } },
+                      { "type": "ia.display.label", "props": { "text": "Sensitivity:", "style": { "color": "#555555", "fontSize": "13px", "fontFamily": "monospace", "width": "100px" } } },
                       {
-                        "type": "ia.input.numeric",
-                        "propConfig": { "props.value": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/LS001_Sensitivity", "bidirectional": true } } },
-                        "props": { "value": 75.0, "suffix": " %", "style": { "backgroundColor": "#E0E0E0", "border": "1px solid #888888", "fontFamily": "monospace", "fontSize": "12px", "width": "100px" } }
+                        "type": "ia.input.text",
+                        "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/LS001_Sensitivity", "bidirectional": true } } },
+                        "props": { "text": "75", "placeholder": "75 %", "style": { "backgroundColor": "#E0E0E0", "border": "1px solid #888888", "fontFamily": "monospace", "fontSize": "13px", "width": "110px" } }
                       }
                     ]
                   }
-                ]
-              },
-              { "type": "ia.display.label", "props": { "text": "MAINTENANCE ACTIONS  (Requires Maintenance Role)", "style": { "color": "#555555", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px", "marginTop": "6px" } } },
-              {
-                "type": "ia.container.flex",
-                "props": { "direction": "row", "style": { "gap": "8px", "flexWrap": "wrap" } },
-                "children": [
-                  { "type": "ia.input.button", "props": { "text": "CALIBRATE", "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "11px", "fontWeight": "700", "padding": "6px 10px" } } },
-                  { "type": "ia.input.button", "props": { "text": "TEST BEAM", "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "11px", "fontWeight": "700", "padding": "6px 10px" } } },
-                  { "type": "ia.input.button", "props": { "text": "RESET FAULT", "action": { "type": "tag-write", "config": { "tagPath": "[default]BFS/System/FaultReset", "value": true } }, "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "11px", "fontWeight": "700", "padding": "6px 10px" } } }
                 ]
               }
             ]
@@ -166,93 +156,110 @@
           {
             "type": "ia.container.flex",
             "meta": { "name": "FlowSensorPanel" },
-            "position": { "basis": "240px", "shrink": 0 },
-            "props": {
-              "direction": "column",
-              "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "10px", "gap": "8px" }
-            },
+            "position": { "basis": "260px", "shrink": 0 },
+            "props": { "direction": "column", "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "12px", "gap": "10px" } },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "FT-001  FLOW TRANSMITTER  (ISA 5.1)", "style": { "color": "#444444", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px" } } },
+              { "type": "ia.display.label", "props": { "text": "FT-001  FLOW TRANSMITTER", "style": { "color": "#444444", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px" } } },
               {
                 "type": "ia.container.flex",
-                "props": { "direction": "column", "style": { "gap": "8px" } },
+                "props": { "direction": "column", "style": { "gap": "10px" } },
                 "children": [
                   {
                     "type": "ia.container.flex",
-                    "props": { "direction": "column", "style": { "backgroundColor": "#D0D0D0", "padding": "8px", "gap": "4px" } },
+                    "props": { "direction": "column", "style": { "backgroundColor": "#D0D0D0", "padding": "10px", "gap": "4px" } },
                     "children": [
-                      { "type": "ia.display.label", "props": { "text": "FLOW RATE", "style": { "color": "#555555", "fontSize": "9px", "fontFamily": "monospace" } } },
+                      { "type": "ia.display.label", "props": { "text": "FLOW RATE", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace" } } },
                       {
                         "type": "ia.display.label",
                         "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/FlowMeter/FT001_FlowRate", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0')" }] } } },
-                        "props": { "text": "0.0", "style": { "color": "#111111", "fontSize": "24px", "fontWeight": "700", "fontFamily": "monospace" } }
+                        "props": { "text": "0.0", "style": { "color": "#111111", "fontSize": "28px", "fontWeight": "700", "fontFamily": "monospace" } }
                       },
-                      { "type": "ia.display.label", "props": { "text": "mL/s", "style": { "color": "#777777", "fontSize": "11px", "fontFamily": "monospace" } } }
+                      { "type": "ia.display.label", "props": { "text": "mL per second", "style": { "color": "#777777", "fontSize": "12px", "fontFamily": "monospace" } } }
                     ]
                   },
                   {
                     "type": "ia.container.flex",
-                    "props": { "direction": "column", "style": { "backgroundColor": "#D0D0D0", "padding": "8px", "gap": "4px" } },
+                    "props": { "direction": "column", "style": { "backgroundColor": "#D0D0D0", "padding": "10px", "gap": "4px" } },
                     "children": [
-                      { "type": "ia.display.label", "props": { "text": "TOTALIZER (SESSION)", "style": { "color": "#555555", "fontSize": "9px", "fontFamily": "monospace" } } },
+                      { "type": "ia.display.label", "props": { "text": "TOTAL VOLUME (SESSION)", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace" } } },
                       {
                         "type": "ia.display.label",
                         "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/FlowMeter/FT001_Totalizer", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0')" }] } } },
-                        "props": { "text": "0.0", "style": { "color": "#111111", "fontSize": "24px", "fontWeight": "700", "fontFamily": "monospace" } }
+                        "props": { "text": "0.0", "style": { "color": "#111111", "fontSize": "28px", "fontWeight": "700", "fontFamily": "monospace" } }
                       },
-                      { "type": "ia.display.label", "props": { "text": "mL dispensed", "style": { "color": "#777777", "fontSize": "11px", "fontFamily": "monospace" } } }
+                      { "type": "ia.display.label", "props": { "text": "mL dispensed this session", "style": { "color": "#777777", "fontSize": "12px", "fontFamily": "monospace" } } }
                     ]
                   },
                   {
                     "type": "ia.container.flex",
                     "props": { "direction": "row", "alignItems": "center", "style": { "gap": "8px" } },
                     "children": [
-                      { "type": "ia.display.label", "props": { "text": "FT-001 Fault:", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace" } } },
+                      { "type": "ia.display.label", "props": { "text": "FT-001 Fault:", "style": { "color": "#555555", "fontSize": "13px", "fontFamily": "monospace" } } },
                       {
                         "type": "ia.display.label",
                         "propConfig": {
                           "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/FlowMeter/FT001_Fault", "transforms": [{ "type": "map", "map": { "true": "FAULT", "false": "OK" } }] } },
                           "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/FlowMeter/FT001_Fault", "transforms": [{ "type": "map", "map": { "true": "#B71C1C", "false": "#2E7D32" } }] } }
                         },
-                        "props": { "text": "OK", "style": { "color": "#2E7D32", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700" } }
+                        "props": { "text": "OK", "style": { "color": "#2E7D32", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
                       }
                     ]
                   },
-                  { "type": "ia.input.button", "props": { "text": "RESET TOTALIZER", "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "11px", "fontWeight": "700", "padding": "6px 10px" } } }
+                  { "type": "ia.input.button", "props": { "text": "RESET TOTALIZER", "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "13px", "fontWeight": "700", "padding": "8px 12px" } } }
                 ]
               }
             ]
           },
           {
             "type": "ia.container.flex",
-            "meta": { "name": "TrendPanel" },
+            "meta": { "name": "LiveReadingsPanel" },
             "position": { "grow": 1 },
-            "props": {
-              "direction": "column",
-              "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "8px", "gap": "4px" }
-            },
+            "props": { "direction": "column", "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "12px", "gap": "10px" } },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "SENSOR SIGNAL TREND  —  LAST 30 MIN", "style": { "color": "#555555", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px" } } },
+              { "type": "ia.display.label", "props": { "text": "LIVE SENSOR READINGS", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "0.5px", "borderBottom": "1px solid #AAAAAA", "paddingBottom": "8px" } } },
               {
-                "type": "ia.chart.tag-history",
-                "meta": { "name": "SensorTrend" },
-                "position": { "grow": 1 },
-                "props": {
-                  "config": {
-                    "subplots": [
+                "type": "ia.container.flex",
+                "props": { "direction": "column", "style": { "backgroundColor": "#D0D0D0", "padding": "10px", "gap": "8px" } },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "props": { "direction": "row", "alignItems": "center", "style": { "gap": "8px" } },
+                    "children": [
+                      { "type": "ia.display.label", "props": { "text": "Laser Signal:", "style": { "color": "#555555", "fontSize": "13px", "fontFamily": "monospace", "width": "120px" } } },
                       {
-                        "pens": [
-                          { "tagPath": "[default]BFS/Sensor/LS001_Signal", "name": "Laser Signal %", "color": "#1565C0", "lineWeight": 1.5 },
-                          { "tagPath": "[default]BFS/Sensor/LS001_Threshold", "name": "Threshold %", "color": "#E65100", "lineWeight": 1, "style": "Dash" },
-                          { "tagPath": "[default]BFS/FlowMeter/FT001_FlowRate", "name": "Flow Rate mL/s", "color": "#2E7D32", "lineWeight": 1.5 }
-                        ]
+                        "type": "ia.display.label",
+                        "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/LS001_Signal", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' %'" }] } } },
+                        "props": { "text": "0.0 %", "style": { "color": "#1565C0", "fontSize": "18px", "fontFamily": "monospace", "fontWeight": "700" } }
                       }
                     ]
                   },
-                  "startDate": "${now - 30m}",
-                  "endDate": "${now}"
-                }
-              }
+                  {
+                    "type": "ia.container.flex",
+                    "props": { "direction": "row", "alignItems": "center", "style": { "gap": "8px" } },
+                    "children": [
+                      { "type": "ia.display.label", "props": { "text": "Threshold:", "style": { "color": "#555555", "fontSize": "13px", "fontFamily": "monospace", "width": "120px" } } },
+                      {
+                        "type": "ia.display.label",
+                        "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/LS001_Threshold", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' %'" }] } } },
+                        "props": { "text": "50.0 %", "style": { "color": "#E65100", "fontSize": "18px", "fontFamily": "monospace", "fontWeight": "700" } }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "props": { "direction": "row", "alignItems": "center", "style": { "gap": "8px" } },
+                    "children": [
+                      { "type": "ia.display.label", "props": { "text": "Flow Rate:", "style": { "color": "#555555", "fontSize": "13px", "fontFamily": "monospace", "width": "120px" } } },
+                      {
+                        "type": "ia.display.label",
+                        "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/FlowMeter/FT001_FlowRate", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' mL/s'" }] } } },
+                        "props": { "text": "0.0 mL/s", "style": { "color": "#2E7D32", "fontSize": "18px", "fontFamily": "monospace", "fontWeight": "700" } }
+                      }
+                    ]
+                  }
+                ]
+              },
+              { "type": "ia.display.label", "props": { "text": "Signal vs Threshold — above threshold = beam broken = bottle present", "style": { "color": "#666666", "fontSize": "12px", "fontFamily": "monospace", "fontStyle": "italic", "marginTop": "4px" } } }
             ]
           }
         ]

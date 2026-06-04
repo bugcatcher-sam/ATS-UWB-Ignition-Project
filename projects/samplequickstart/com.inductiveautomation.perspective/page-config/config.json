@@ -1,67 +1,15 @@
 {
   "pages": {
-    "/overview": {
-      "title": "BFS Overview",
-      "viewPath": "BFS - Overview"
-    },
-    "/process": {
-      "title": "BFS Process P&ID",
-      "viewPath": "BFS - Process"
-    },
-    "/filling": {
-      "title": "BFS Fill Station",
-      "viewPath": "BFS - Filling"
-    },
-    "/tank": {
-      "title": "BFS Tank & Pump",
-      "viewPath": "BFS - Tank"
-    },
-    "/sensor": {
-      "title": "BFS Sensor Diagnostics",
-      "viewPath": "BFS - Laser Detector"
-    },
-    "/alarms": {
-      "title": "BFS Alarm Management",
-      "viewPath": "BFS - Alarm History"
-    },
-    "/credits": {
-      "title": "BFS Project Credits",
-      "viewPath": "BFS - Credits"
-    },
-    "/bfs-overview": {
-      "title": "BFS Overview",
-      "viewPath": "BFS - Overview"
-    },
-    "/bfs-laser-detector": {
-      "title": "BFS Sensor",
-      "viewPath": "BFS - Laser Detector"
-    },
-    "/bfs-valve-pump": {
-      "title": "BFS Valve & Pump",
-      "viewPath": "BFS - Valve and Pump"
-    },
-    "/bfs-alarms": {
-      "title": "BFS Alarm History",
-      "viewPath": "BFS - Alarm History"
-    },
-    "/bfs-trends": {
-      "title": "BFS Trends",
-      "viewPath": "BFS - Trends"
-    },
-    "/": {
-      "title": "Automated Bottle Filler",
-      "viewPath": "BFS - Overview"
-    },
-    "/Navigation": {
-      "viewPath": "Navigation"
-    },
-    "/main-page": {
-      "viewPath": "Main Page"
-    },
-    "/symposium": {
-      "title": "STEM Symposium",
-      "viewPath": "Symposium Page"
-    }
+    "/overview": { "title": "BFS Overview", "viewPath": "BFS - Overview" },
+    "/process":  { "title": "BFS Process Diagram", "viewPath": "BFS - Process" },
+    "/filling-tank": { "title": "BFS Filling, Tank & Sensor", "viewPath": "BFS - Filling & Tank" },
+    "/filling":  { "title": "BFS Filling, Tank & Sensor", "viewPath": "BFS - Filling & Tank" },
+    "/tank":     { "title": "BFS Filling, Tank & Sensor", "viewPath": "BFS - Filling & Tank" },
+    "/sensor":   { "title": "BFS Filling, Tank & Sensor", "viewPath": "BFS - Filling & Tank" },
+    "/alarms":   { "title": "BFS Alarm Management", "viewPath": "BFS - Alarm History" },
+    "/credits":  { "title": "BFS Project Credits", "viewPath": "BFS - Credits" },
+    "/symposium": { "title": "STEM Symposium", "viewPath": "Symposium Page" },
+    "/": { "title": "Automated Bottle Filler", "viewPath": "BFS - Overview" }
   },
   "sharedDocks": {
     "cornerPriority": "top-bottom",
@@ -70,31 +18,15 @@
         "anchor": "fixed",
         "autoBreakpoint": 480,
         "content": "push",
-        "handle": "show",
+        "handle": "hide",
         "iconUrl": "",
         "id": "navbar",
         "modal": false,
-        "resizable": true,
+        "resizable": false,
         "show": "visible",
         "size": 80,
         "viewParams": {},
         "viewPath": "Navigation"
-      }
-    ],
-    "bottom": [
-      {
-        "anchor": "fixed",
-        "autoBreakpoint": 480,
-        "content": "push",
-        "handle": "hide",
-        "iconUrl": "",
-        "id": "statusbar",
-        "modal": false,
-        "resizable": false,
-        "show": "visible",
-        "size": 24,
-        "viewParams": {},
-        "viewPath": "StatusBar"
       }
     ]
   }

@@ -12,26 +12,17 @@
     "meta": { "name": "root" },
     "props": {
       "direction": "column",
-      "style": {
-        "backgroundColor": "#C8C8C8",
-        "width": "100%",
-        "height": "100%"
-      }
+      "style": { "backgroundColor": "#C8C8C8", "width": "100%", "height": "100%" }
     },
     "children": [
       {
         "type": "ia.container.flex",
         "meta": { "name": "TitleBar" },
-        "position": { "basis": "36px", "shrink": 0 },
+        "position": { "basis": "40px", "shrink": 0 },
         "props": {
           "direction": "row",
           "alignItems": "center",
-          "style": {
-            "backgroundColor": "#3D3D3D",
-            "padding": "0 12px",
-            "gap": "12px",
-            "borderBottom": "2px solid #555555"
-          }
+          "style": { "backgroundColor": "#3D3D3D", "padding": "0 14px", "gap": "12px", "borderBottom": "2px solid #555555" }
         },
         "children": [
           {
@@ -39,912 +30,389 @@
             "meta": { "name": "ScreenTitle" },
             "position": { "grow": 1 },
             "props": {
-              "text": "AUTOMATED BOTTLE FILLER  —  PROCESS OVERVIEW  (Level 2 P&ID)",
-              "style": {
-                "color": "#E0E0E0",
-                "fontSize": "13px",
-                "fontWeight": "600",
-                "fontFamily": "monospace",
-                "letterSpacing": "0.5px"
-              }
+              "text": "AUTOMATED BOTTLE FILLER  —  PROCESS DIAGRAM",
+              "style": { "color": "#E0E0E0", "fontSize": "15px", "fontWeight": "600", "fontFamily": "monospace", "letterSpacing": "0.5px" }
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": { "name": "ClickHint" },
+            "props": {
+              "text": "Click any component to view details →",
+              "style": { "color": "#888888", "fontSize": "12px", "fontFamily": "monospace", "fontStyle": "italic" }
             }
           },
           {
             "type": "ia.display.label",
             "meta": { "name": "SystemStateLabel" },
             "propConfig": {
-              "props.text": {
-                "binding": {
-                  "type": "tag",
-                  "tagPath": "[default]BFS/System/SystemMode"
-                }
-              },
+              "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/System/SystemMode" } },
               "props.style.backgroundColor": {
                 "binding": {
                   "type": "tag",
                   "tagPath": "[default]BFS/System/SystemMode",
-                  "transforms": [
-                    {
-                      "type": "map",
-                      "map": {
-                        "AUTO": "#1B5E20",
-                        "RUNNING": "#1B5E20",
-                        "MANUAL": "#BF360C",
-                        "MAINTENANCE": "#0D47A1",
-                        "STOPPED": "#424242",
-                        "FAULT": "#7F0000"
-                      },
-                      "fallback": "#424242"
-                    }
-                  ]
+                  "transforms": [{ "type": "map", "map": { "AUTO": "#1B5E20", "RUNNING": "#1B5E20", "MANUAL": "#BF360C", "MAINTENANCE": "#0D47A1", "STOPPED": "#424242", "FAULT": "#7F0000" }, "fallback": "#424242" }]
                 }
               }
             },
             "props": {
               "text": "STOPPED",
-              "style": {
-                "backgroundColor": "#424242",
-                "color": "#FFFFFF",
-                "fontSize": "11px",
-                "fontWeight": "700",
-                "fontFamily": "monospace",
-                "padding": "3px 10px",
-                "letterSpacing": "1px"
-              }
+              "style": { "backgroundColor": "#424242", "color": "#FFFFFF", "fontSize": "13px", "fontWeight": "700", "fontFamily": "monospace", "padding": "4px 12px", "letterSpacing": "1px" }
             }
           }
         ]
       },
       {
         "type": "ia.container.flex",
-        "meta": { "name": "PIDCanvas" },
+        "meta": { "name": "MainRow" },
         "position": { "grow": 1 },
         "props": {
-          "direction": "column",
-          "style": {
-            "backgroundColor": "#C8C8C8",
-            "padding": "12px",
-            "position": "relative"
-          }
+          "direction": "row",
+          "style": { "overflow": "hidden" }
         },
         "children": [
           {
             "type": "ia.container.flex",
-            "meta": { "name": "PIDDiagram" },
+            "meta": { "name": "PIDArea" },
             "position": { "grow": 1 },
             "props": {
-              "direction": "row",
-              "alignItems": "center",
-              "style": {
-                "gap": "0px",
-                "padding": "8px 0"
-              }
+              "direction": "column",
+              "style": { "backgroundColor": "#C8C8C8" }
             },
             "children": [
               {
                 "type": "ia.container.flex",
-                "meta": { "name": "TankGroup" },
-                "position": { "basis": "140px", "shrink": 0 },
-                "props": {
-                  "direction": "column",
-                  "alignItems": "center",
-                  "style": { "gap": "4px" }
-                },
-                "children": [
-                  {
-                    "type": "ia.display.label",
-                    "meta": { "name": "TK001_Tag" },
-                    "props": {
-                      "text": "TK-001",
-                      "style": {
-                        "color": "#333333",
-                        "fontSize": "11px",
-                        "fontFamily": "monospace",
-                        "fontWeight": "700"
-                      }
-                    }
-                  },
-                  {
-                    "type": "ia.container.flex",
-                    "meta": { "name": "TankBody" },
-                    "props": {
-                      "direction": "column",
-                      "justifyContent": "flex-end",
-                      "style": {
-                        "width": "90px",
-                        "height": "130px",
-                        "border": "3px solid #555555",
-                        "backgroundColor": "#BBBBBB",
-                        "position": "relative",
-                        "overflow": "hidden"
-                      }
-                    },
-                    "children": [
-                      {
-                        "type": "ia.display.label",
-                        "meta": { "name": "TankWater" },
-                        "propConfig": {
-                          "props.style.height": {
-                            "binding": {
-                              "type": "tag",
-                              "tagPath": "[default]BFS/Tank/TK001_Level_PV",
-                              "transforms": [
-                                {
-                                  "type": "expr",
-                                  "expression": "toStr({value}) + '%'"
-                                }
-                              ]
-                            }
-                          }
-                        },
-                        "props": {
-                          "text": "",
-                          "style": {
-                            "backgroundColor": "#1565C0",
-                            "width": "100%",
-                            "height": "75%",
-                            "position": "absolute",
-                            "bottom": "0",
-                            "left": "0"
-                          }
-                        }
-                      },
-                      {
-                        "type": "ia.display.label",
-                        "meta": { "name": "TankLevelText" },
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "tag",
-                              "tagPath": "[default]BFS/Tank/TK001_Level_PV",
-                              "transforms": [
-                                {
-                                  "type": "expr",
-                                  "expression": "format({value}, '#0.0') + '%'"
-                                }
-                              ]
-                            }
-                          }
-                        },
-                        "props": {
-                          "text": "75.0%",
-                          "style": {
-                            "color": "#FFFFFF",
-                            "fontSize": "13px",
-                            "fontFamily": "monospace",
-                            "fontWeight": "700",
-                            "textAlign": "center",
-                            "width": "100%",
-                            "position": "absolute",
-                            "bottom": "8px",
-                            "zIndex": 1
-                          }
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "type": "ia.display.label",
-                    "meta": { "name": "TK001_Desc" },
-                    "props": {
-                      "text": "WATER SUPPLY",
-                      "style": {
-                        "color": "#555555",
-                        "fontSize": "9px",
-                        "fontFamily": "monospace",
-                        "letterSpacing": "0.5px"
-                      }
-                    }
-                  },
-                  {
-                    "type": "ia.container.flex",
-                    "meta": { "name": "LT001_Bubble" },
-                    "props": {
-                      "direction": "column",
-                      "alignItems": "center",
-                      "justifyContent": "center",
-                      "style": {
-                        "width": "44px",
-                        "height": "44px",
-                        "borderRadius": "50%",
-                        "border": "2px solid #555555",
-                        "backgroundColor": "#D8D8D8",
-                        "marginTop": "4px"
-                      }
-                    },
-                    "children": [
-                      {
-                        "type": "ia.display.label",
-                        "props": {
-                          "text": "LT",
-                          "style": { "color": "#333333", "fontSize": "9px", "fontFamily": "monospace", "fontWeight": "700" }
-                        }
-                      },
-                      {
-                        "type": "ia.display.label",
-                        "props": {
-                          "text": "001",
-                          "style": { "color": "#333333", "fontSize": "9px", "fontFamily": "monospace" }
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "type": "ia.container.flex",
-                    "meta": { "name": "LT001_Value" },
-                    "props": {
-                      "style": {
-                        "border": "1px solid #888888",
-                        "backgroundColor": "#E8E8E8",
-                        "padding": "2px 6px"
-                      }
-                    },
-                    "children": [
-                      {
-                        "type": "ia.display.label",
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "tag",
-                              "tagPath": "[default]BFS/Tank/TK001_Level_PV",
-                              "transforms": [
-                                {
-                                  "type": "expr",
-                                  "expression": "format({value}, '#0.0') + ' %'"
-                                }
-                              ]
-                            }
-                          }
-                        },
-                        "props": {
-                          "text": "75.0 %",
-                          "style": {
-                            "color": "#111111",
-                            "fontSize": "11px",
-                            "fontFamily": "monospace",
-                            "fontWeight": "700"
-                          }
-                        }
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "ia.display.label",
-                "meta": { "name": "Pipe_TankToPump" },
-                "position": { "basis": "40px", "shrink": 0 },
-                "propConfig": {
-                  "props.style.backgroundColor": {
-                    "binding": {
-                      "type": "tag",
-                      "tagPath": "[default]BFS/Pump/Running",
-                      "transforms": [
-                        {
-                          "type": "map",
-                          "map": { "true": "#1565C0" },
-                          "fallback": "#757575"
-                        }
-                      ]
-                    }
-                  }
-                },
-                "props": {
-                  "text": "",
-                  "style": {
-                    "backgroundColor": "#757575",
-                    "height": "6px",
-                    "width": "100%",
-                    "alignSelf": "center"
-                  }
-                }
-              },
-              {
-                "type": "ia.container.flex",
-                "meta": { "name": "PumpGroup" },
-                "position": { "basis": "120px", "shrink": 0 },
-                "props": {
-                  "direction": "column",
-                  "alignItems": "center",
-                  "style": { "gap": "4px" }
-                },
-                "children": [
-                  {
-                    "type": "ia.display.label",
-                    "meta": { "name": "P001_Tag" },
-                    "props": {
-                      "text": "P-001",
-                      "style": {
-                        "color": "#333333",
-                        "fontSize": "11px",
-                        "fontFamily": "monospace",
-                        "fontWeight": "700"
-                      }
-                    }
-                  },
-                  {
-                    "type": "ia.input.button",
-                    "meta": { "name": "P001_Symbol" },
-                    "propConfig": {
-                      "props.style.backgroundColor": {
-                        "binding": {
-                          "type": "tag",
-                          "tagPath": "[default]BFS/Pump/Running",
-                          "transforms": [
-                            {
-                              "type": "map",
-                              "map": { "true": "#2E7D32" },
-                              "fallback": "#616161"
-                            }
-                          ]
-                        }
-                      }
-                    },
-                    "props": {
-                      "text": "◉",
-                      "action": {
-                        "type": "script",
-                        "config": {
-                          "script": "system.perspective.openPopup(id='pump_faceplate', view='BFS - Pump001 Faceplate', params={}, position={'width': 300, 'height': 280})"
-                        }
-                      },
-                      "style": {
-                        "backgroundColor": "#616161",
-                        "color": "#FFFFFF",
-                        "fontSize": "22px",
-                        "width": "70px",
-                        "height": "70px",
-                        "borderRadius": "50%",
-                        "border": "3px solid #444444",
-                        "padding": "0",
-                        "cursor": "pointer"
-                      }
-                    }
-                  },
-                  {
-                    "type": "ia.display.label",
-                    "meta": { "name": "P001_Desc" },
-                    "props": {
-                      "text": "DIAPHRAGM\nPUMP",
-                      "style": {
-                        "color": "#555555",
-                        "fontSize": "9px",
-                        "fontFamily": "monospace",
-                        "letterSpacing": "0.5px",
-                        "textAlign": "center"
-                      }
-                    }
-                  },
-                  {
-                    "type": "ia.container.flex",
-                    "meta": { "name": "P001_Status" },
-                    "props": {
-                      "style": {
-                        "border": "1px solid #888888",
-                        "backgroundColor": "#E8E8E8",
-                        "padding": "2px 6px"
-                      }
-                    },
-                    "children": [
-                      {
-                        "type": "ia.display.label",
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "tag",
-                              "tagPath": "[default]BFS/Pump/Running",
-                              "transforms": [
-                                {
-                                  "type": "map",
-                                  "map": { "true": "RUNNING", "false": "STOPPED" },
-                                  "fallback": "UNKNOWN"
-                                }
-                              ]
-                            }
-                          },
-                          "props.style.color": {
-                            "binding": {
-                              "type": "tag",
-                              "tagPath": "[default]BFS/Pump/Running",
-                              "transforms": [
-                                {
-                                  "type": "map",
-                                  "map": { "true": "#2E7D32" },
-                                  "fallback": "#616161"
-                                }
-                              ]
-                            }
-                          }
-                        },
-                        "props": {
-                          "text": "STOPPED",
-                          "style": {
-                            "color": "#616161",
-                            "fontSize": "11px",
-                            "fontFamily": "monospace",
-                            "fontWeight": "700"
-                          }
-                        }
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "ia.display.label",
-                "meta": { "name": "Pipe_PumpToFT" },
-                "position": { "basis": "30px", "shrink": 0 },
-                "propConfig": {
-                  "props.style.backgroundColor": {
-                    "binding": {
-                      "type": "tag",
-                      "tagPath": "[default]BFS/Pump/Running",
-                      "transforms": [
-                        { "type": "map", "map": { "true": "#1565C0" }, "fallback": "#757575" }
-                      ]
-                    }
-                  }
-                },
-                "props": {
-                  "text": "",
-                  "style": {
-                    "backgroundColor": "#757575",
-                    "height": "6px",
-                    "width": "100%",
-                    "alignSelf": "center"
-                  }
-                }
-              },
-              {
-                "type": "ia.container.flex",
-                "meta": { "name": "FTGroup" },
-                "position": { "basis": "80px", "shrink": 0 },
-                "props": {
-                  "direction": "column",
-                  "alignItems": "center",
-                  "style": { "gap": "4px" }
-                },
-                "children": [
-                  {
-                    "type": "ia.container.flex",
-                    "meta": { "name": "FT001_Bubble" },
-                    "props": {
-                      "direction": "column",
-                      "alignItems": "center",
-                      "justifyContent": "center",
-                      "style": {
-                        "width": "44px",
-                        "height": "44px",
-                        "borderRadius": "50%",
-                        "border": "2px solid #555555",
-                        "backgroundColor": "#D8D8D8"
-                      }
-                    },
-                    "children": [
-                      {
-                        "type": "ia.display.label",
-                        "props": {
-                          "text": "FT",
-                          "style": { "color": "#333333", "fontSize": "9px", "fontFamily": "monospace", "fontWeight": "700" }
-                        }
-                      },
-                      {
-                        "type": "ia.display.label",
-                        "props": {
-                          "text": "001",
-                          "style": { "color": "#333333", "fontSize": "9px", "fontFamily": "monospace" }
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "type": "ia.container.flex",
-                    "meta": { "name": "FT001_Value" },
-                    "props": {
-                      "style": {
-                        "border": "1px solid #888888",
-                        "backgroundColor": "#E8E8E8",
-                        "padding": "2px 4px"
-                      }
-                    },
-                    "children": [
-                      {
-                        "type": "ia.display.label",
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "tag",
-                              "tagPath": "[default]BFS/FlowMeter/FT001_FlowRate",
-                              "transforms": [
-                                {
-                                  "type": "expr",
-                                  "expression": "format({value}, '#0.0') + ' mL/s'"
-                                }
-                              ]
-                            }
-                          }
-                        },
-                        "props": {
-                          "text": "0.0 mL/s",
-                          "style": {
-                            "color": "#111111",
-                            "fontSize": "10px",
-                            "fontFamily": "monospace",
-                            "fontWeight": "700"
-                          }
-                        }
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "ia.display.label",
-                "meta": { "name": "Pipe_FTtoValve" },
-                "position": { "basis": "30px", "shrink": 0 },
-                "propConfig": {
-                  "props.style.backgroundColor": {
-                    "binding": {
-                      "type": "tag",
-                      "tagPath": "[default]BFS/Valve/SolenoidState",
-                      "transforms": [
-                        { "type": "map", "map": { "true": "#1565C0" }, "fallback": "#757575" }
-                      ]
-                    }
-                  }
-                },
-                "props": {
-                  "text": "",
-                  "style": {
-                    "backgroundColor": "#757575",
-                    "height": "6px",
-                    "width": "100%",
-                    "alignSelf": "center"
-                  }
-                }
-              },
-              {
-                "type": "ia.container.flex",
-                "meta": { "name": "ValveGroup" },
-                "position": { "basis": "100px", "shrink": 0 },
-                "props": {
-                  "direction": "column",
-                  "alignItems": "center",
-                  "style": { "gap": "4px" }
-                },
-                "children": [
-                  {
-                    "type": "ia.display.label",
-                    "meta": { "name": "SV001_Tag" },
-                    "props": {
-                      "text": "SV-001",
-                      "style": {
-                        "color": "#333333",
-                        "fontSize": "11px",
-                        "fontFamily": "monospace",
-                        "fontWeight": "700"
-                      }
-                    }
-                  },
-                  {
-                    "type": "ia.input.button",
-                    "meta": { "name": "SV001_Symbol" },
-                    "propConfig": {
-                      "props.style.color": {
-                        "binding": {
-                          "type": "tag",
-                          "tagPath": "[default]BFS/Valve/SolenoidState",
-                          "transforms": [
-                            { "type": "map", "map": { "true": "#1565C0" }, "fallback": "#616161" }
-                          ]
-                        }
-                      }
-                    },
-                    "props": {
-                      "text": "⊳◁",
-                      "action": {
-                        "type": "script",
-                        "config": {
-                          "script": "system.perspective.openPopup(id='sv_faceplate', view='BFS - SV001 Faceplate', params={}, position={'width': 300, 'height': 260})"
-                        }
-                      },
-                      "style": {
-                        "backgroundColor": "#D0D0D0",
-                        "color": "#616161",
-                        "fontSize": "26px",
-                        "width": "60px",
-                        "height": "50px",
-                        "border": "2px solid #555555",
-                        "borderRadius": "2px",
-                        "padding": "0",
-                        "cursor": "pointer"
-                      }
-                    }
-                  },
-                  {
-                    "type": "ia.display.label",
-                    "meta": { "name": "SV001_Desc" },
-                    "props": {
-                      "text": "SOLENOID\nVALVE",
-                      "style": {
-                        "color": "#555555",
-                        "fontSize": "9px",
-                        "fontFamily": "monospace",
-                        "textAlign": "center"
-                      }
-                    }
-                  },
-                  {
-                    "type": "ia.container.flex",
-                    "meta": { "name": "SV001_Status" },
-                    "props": {
-                      "style": {
-                        "border": "1px solid #888888",
-                        "backgroundColor": "#E8E8E8",
-                        "padding": "2px 6px"
-                      }
-                    },
-                    "children": [
-                      {
-                        "type": "ia.display.label",
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "tag",
-                              "tagPath": "[default]BFS/Valve/SolenoidState",
-                              "transforms": [
-                                { "type": "map", "map": { "true": "OPEN", "false": "CLOSED" }, "fallback": "UNKNOWN" }
-                              ]
-                            }
-                          },
-                          "props.style.color": {
-                            "binding": {
-                              "type": "tag",
-                              "tagPath": "[default]BFS/Valve/SolenoidState",
-                              "transforms": [
-                                { "type": "map", "map": { "true": "#1565C0" }, "fallback": "#616161" }
-                              ]
-                            }
-                          }
-                        },
-                        "props": {
-                          "text": "CLOSED",
-                          "style": {
-                            "color": "#616161",
-                            "fontSize": "11px",
-                            "fontFamily": "monospace",
-                            "fontWeight": "700"
-                          }
-                        }
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "ia.display.label",
-                "meta": { "name": "Pipe_ValveToFill" },
+                "meta": { "name": "PIDDiagram" },
                 "position": { "grow": 1 },
-                "propConfig": {
-                  "props.style.backgroundColor": {
-                    "binding": {
-                      "type": "tag",
-                      "tagPath": "[default]BFS/Valve/SolenoidState",
-                      "transforms": [
-                        { "type": "map", "map": { "true": "#1565C0" }, "fallback": "#757575" }
-                      ]
-                    }
-                  }
-                },
                 "props": {
-                  "text": "",
-                  "style": {
-                    "backgroundColor": "#757575",
-                    "height": "6px",
-                    "alignSelf": "center"
-                  }
-                }
-              },
-              {
-                "type": "ia.container.flex",
-                "meta": { "name": "FillStationGroup" },
-                "position": { "basis": "150px", "shrink": 0 },
-                "props": {
-                  "direction": "column",
+                  "direction": "row",
                   "alignItems": "center",
-                  "style": { "gap": "4px" }
+                  "style": { "padding": "16px 12px", "gap": "0px" }
                 },
                 "children": [
                   {
-                    "type": "ia.display.label",
-                    "props": {
-                      "text": "FILL STATION",
-                      "style": {
-                        "color": "#333333",
-                        "fontSize": "11px",
-                        "fontFamily": "monospace",
-                        "fontWeight": "700"
-                      }
-                    }
-                  },
-                  {
                     "type": "ia.container.flex",
-                    "meta": { "name": "BottleContainer" },
-                    "props": {
-                      "direction": "column",
-                      "alignItems": "center",
-                      "justifyContent": "flex-end",
-                      "style": {
-                        "width": "50px",
-                        "height": "90px",
-                        "border": "3px solid #777777",
-                        "borderRadius": "4px 4px 8px 8px",
-                        "backgroundColor": "#E0E0E0",
-                        "position": "relative",
-                        "overflow": "hidden"
-                      }
-                    },
+                    "meta": { "name": "TankGroup" },
+                    "position": { "basis": "130px", "shrink": 0 },
+                    "props": { "direction": "column", "alignItems": "center", "style": { "gap": "4px" } },
                     "children": [
+                      { "type": "ia.display.label", "props": { "text": "TK-001", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } } },
                       {
-                        "type": "ia.display.label",
-                        "meta": { "name": "BottleWater" },
-                        "propConfig": {
-                          "props.style.height": {
-                            "binding": {
-                              "type": "tag",
-                              "tagPath": "[default]BFS/Filling/FillVolume_PV",
-                              "transforms": [
-                                {
-                                  "type": "expr",
-                                  "expression": "toStr(min(100, ({value} / 500.0) * 100)) + '%'"
-                                }
-                              ]
-                            }
-                          }
-                        },
+                        "type": "ia.input.button",
+                        "meta": { "name": "TK001_Btn" },
                         "props": {
-                          "text": "",
-                          "style": {
-                            "backgroundColor": "#1565C0",
-                            "width": "100%",
-                            "height": "0%",
-                            "position": "absolute",
-                            "bottom": "0",
-                            "left": "0"
-                          }
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "type": "ia.display.label",
-                    "props": {
-                      "text": "16.9 oz / 500 mL",
-                      "style": {
-                        "color": "#555555",
-                        "fontSize": "9px",
-                        "fontFamily": "monospace",
-                        "textAlign": "center"
-                      }
-                    }
-                  },
-                  {
-                    "type": "ia.container.flex",
-                    "meta": { "name": "LS001_Group" },
-                    "props": {
-                      "direction": "row",
-                      "alignItems": "center",
-                      "style": {
-                        "gap": "4px",
-                        "marginTop": "4px"
-                      }
-                    },
-                    "children": [
-                      {
-                        "type": "ia.container.flex",
-                        "meta": { "name": "LS001_Bubble" },
-                        "props": {
-                          "direction": "column",
-                          "alignItems": "center",
-                          "justifyContent": "center",
-                          "style": {
-                            "width": "36px",
-                            "height": "36px",
-                            "borderRadius": "50%",
-                            "border": "2px solid #555555",
-                            "backgroundColor": "#D8D8D8"
-                          }
+                          "action": {
+                            "type": "script",
+                            "config": { "script": "self.session.custom.selectedEquipment = 'TK001'\nself.session.custom.equipmentPanelOpen = True" }
+                          },
+                          "style": { "backgroundColor": "transparent", "border": "none", "padding": "0", "cursor": "pointer" }
                         },
                         "children": [
                           {
-                            "type": "ia.display.label",
+                            "type": "ia.container.flex",
                             "props": {
-                              "text": "LS",
-                              "style": { "color": "#333333", "fontSize": "8px", "fontFamily": "monospace", "fontWeight": "700" }
-                            }
-                          },
+                              "direction": "column",
+                              "justifyContent": "flex-end",
+                              "style": { "width": "90px", "height": "130px", "border": "3px solid #555555", "backgroundColor": "#BBBBBB", "position": "relative", "overflow": "hidden", "cursor": "pointer" }
+                            },
+                            "children": [
+                              {
+                                "type": "ia.display.label",
+                                "propConfig": {
+                                  "props.style.height": { "binding": { "type": "tag", "tagPath": "[default]BFS/Tank/TK001_Level_PV", "transforms": [{ "type": "expr", "expression": "toStr({value}) + '%'" }] } }
+                                },
+                                "props": { "text": "", "style": { "backgroundColor": "#1565C0", "width": "100%", "height": "75%", "position": "absolute", "bottom": "0", "left": "0" } }
+                              },
+                              {
+                                "type": "ia.display.label",
+                                "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Tank/TK001_Level_PV", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + '%'" }] } } },
+                                "props": { "text": "75.0%", "style": { "color": "#FFFFFF", "fontSize": "15px", "fontFamily": "monospace", "fontWeight": "700", "textAlign": "center", "width": "100%", "position": "absolute", "bottom": "8px", "zIndex": 1 } }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      { "type": "ia.display.label", "props": { "text": "WATER SUPPLY", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace" } } },
+                      {
+                        "type": "ia.container.flex",
+                        "meta": { "name": "LT001_Bubble" },
+                        "props": { "direction": "column", "alignItems": "center", "justifyContent": "center", "style": { "width": "48px", "height": "48px", "borderRadius": "50%", "border": "2px solid #555555", "backgroundColor": "#D8D8D8", "marginTop": "4px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "LT", "style": { "color": "#333333", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700" } } },
+                          { "type": "ia.display.label", "props": { "text": "001", "style": { "color": "#333333", "fontSize": "11px", "fontFamily": "monospace" } } }
+                        ]
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "meta": { "name": "LT001_Value" },
+                        "props": { "style": { "border": "1px solid #888888", "backgroundColor": "#E8E8E8", "padding": "3px 8px" } },
+                        "children": [
                           {
                             "type": "ia.display.label",
-                            "props": {
-                              "text": "001",
-                              "style": { "color": "#333333", "fontSize": "8px", "fontFamily": "monospace" }
-                            }
+                            "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Tank/TK001_Level_PV", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' % level'" }] } } },
+                            "props": { "text": "75.0 % level", "style": { "color": "#111111", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": { "name": "Pipe_TankToPump" },
+                    "position": { "basis": "40px", "shrink": 0 },
+                    "propConfig": { "props.style.backgroundColor": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/Running", "transforms": [{ "type": "map", "map": { "true": "#1565C0" }, "fallback": "#757575" }] } } },
+                    "props": { "text": "", "style": { "backgroundColor": "#757575", "height": "6px", "width": "100%", "alignSelf": "center" } }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": { "name": "PumpGroup" },
+                    "position": { "basis": "120px", "shrink": 0 },
+                    "props": { "direction": "column", "alignItems": "center", "style": { "gap": "4px" } },
+                    "children": [
+                      { "type": "ia.display.label", "props": { "text": "P-001", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } } },
+                      {
+                        "type": "ia.input.button",
+                        "meta": { "name": "P001_Symbol" },
+                        "propConfig": {
+                          "props.style.backgroundColor": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/Running", "transforms": [{ "type": "map", "map": { "true": "#2E7D32" }, "fallback": "#616161" }] } }
+                        },
+                        "props": {
+                          "text": "◉",
+                          "action": { "type": "script", "config": { "script": "self.session.custom.selectedEquipment = 'P001'\nself.session.custom.equipmentPanelOpen = True" } },
+                          "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontSize": "24px", "width": "72px", "height": "72px", "borderRadius": "50%", "border": "3px solid #444444", "padding": "0", "cursor": "pointer" }
+                        }
+                      },
+                      { "type": "ia.display.label", "props": { "text": "DIAPHRAGM PUMP", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace", "textAlign": "center" } } },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "style": { "border": "1px solid #888888", "backgroundColor": "#E8E8E8", "padding": "3px 8px" } },
+                        "children": [
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": {
+                              "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/Running", "transforms": [{ "type": "map", "map": { "true": "RUNNING", "false": "STOPPED" }, "fallback": "UNKNOWN" }] } },
+                              "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/Running", "transforms": [{ "type": "map", "map": { "true": "#2E7D32" }, "fallback": "#616161" }] } }
+                            },
+                            "props": { "text": "STOPPED", "style": { "color": "#616161", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": { "name": "Pipe_PumpToFT" },
+                    "position": { "basis": "28px", "shrink": 0 },
+                    "propConfig": { "props.style.backgroundColor": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/Running", "transforms": [{ "type": "map", "map": { "true": "#1565C0" }, "fallback": "#757575" }] } } },
+                    "props": { "text": "", "style": { "backgroundColor": "#757575", "height": "6px", "width": "100%", "alignSelf": "center" } }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": { "name": "FTGroup" },
+                    "position": { "basis": "80px", "shrink": 0 },
+                    "props": { "direction": "column", "alignItems": "center", "style": { "gap": "4px" } },
+                    "children": [
+                      {
+                        "type": "ia.input.button",
+                        "meta": { "name": "FT001_Bubble" },
+                        "props": {
+                          "action": { "type": "script", "config": { "script": "self.session.custom.selectedEquipment = 'FT001'\nself.session.custom.equipmentPanelOpen = True" } },
+                          "style": { "backgroundColor": "#D8D8D8", "border": "2px solid #555555", "borderRadius": "50%", "width": "48px", "height": "48px", "padding": "0", "cursor": "pointer" }
+                        },
+                        "children": [
+                          {
+                            "type": "ia.container.flex",
+                            "props": { "direction": "column", "alignItems": "center", "justifyContent": "center", "style": { "width": "100%", "height": "100%" } },
+                            "children": [
+                              { "type": "ia.display.label", "props": { "text": "FT", "style": { "color": "#333333", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700" } } },
+                              { "type": "ia.display.label", "props": { "text": "001", "style": { "color": "#333333", "fontSize": "11px", "fontFamily": "monospace" } } }
+                            ]
                           }
                         ]
                       },
                       {
-                        "type": "ia.display.label",
-                        "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "tag",
-                              "tagPath": "[default]BFS/Sensor/BottleDetected",
-                              "transforms": [
-                                { "type": "map", "map": { "true": "BOTTLE\nDETECTED", "false": "NO\nBOTTLE" } }
-                              ]
-                            }
-                          },
-                          "props.style.color": {
-                            "binding": {
-                              "type": "tag",
-                              "tagPath": "[default]BFS/Sensor/BottleDetected",
-                              "transforms": [
-                                { "type": "map", "map": { "true": "#2E7D32" }, "fallback": "#757575" }
-                              ]
-                            }
+                        "type": "ia.container.flex",
+                        "props": { "style": { "border": "1px solid #888888", "backgroundColor": "#E8E8E8", "padding": "3px 6px" } },
+                        "children": [
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/FlowMeter/FT001_FlowRate", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' mL/s'" }] } } },
+                            "props": { "text": "0.0 mL/s", "style": { "color": "#111111", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700" } }
                           }
-                        },
-                        "props": {
-                          "text": "NO\nBOTTLE",
-                          "style": {
-                            "color": "#757575",
-                            "fontSize": "9px",
-                            "fontFamily": "monospace",
-                            "fontWeight": "700",
-                            "textAlign": "center"
-                          }
-                        }
+                        ]
                       }
                     ]
                   },
                   {
+                    "type": "ia.display.label",
+                    "meta": { "name": "Pipe_FTtoValve" },
+                    "position": { "basis": "28px", "shrink": 0 },
+                    "propConfig": { "props.style.backgroundColor": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SolenoidState", "transforms": [{ "type": "map", "map": { "true": "#1565C0" }, "fallback": "#757575" }] } } },
+                    "props": { "text": "", "style": { "backgroundColor": "#757575", "height": "6px", "width": "100%", "alignSelf": "center" } }
+                  },
+                  {
                     "type": "ia.container.flex",
-                    "meta": { "name": "FillVolume_Value" },
-                    "props": {
-                      "style": {
-                        "border": "1px solid #888888",
-                        "backgroundColor": "#E8E8E8",
-                        "padding": "2px 6px"
-                      }
-                    },
+                    "meta": { "name": "ValveGroup" },
+                    "position": { "basis": "100px", "shrink": 0 },
+                    "props": { "direction": "column", "alignItems": "center", "style": { "gap": "4px" } },
                     "children": [
+                      { "type": "ia.display.label", "props": { "text": "SV-001", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } } },
                       {
-                        "type": "ia.display.label",
+                        "type": "ia.input.button",
+                        "meta": { "name": "SV001_Symbol" },
                         "propConfig": {
-                          "props.text": {
-                            "binding": {
-                              "type": "tag",
-                              "tagPath": "[default]BFS/Filling/FillVolume_PV",
-                              "transforms": [
-                                {
-                                  "type": "expr",
-                                  "expression": "format({value}, '#0.0') + ' mL'"
-                                }
-                              ]
-                            }
-                          }
+                          "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SolenoidState", "transforms": [{ "type": "map", "map": { "true": "#1565C0" }, "fallback": "#616161" }] } }
                         },
                         "props": {
-                          "text": "0.0 mL",
-                          "style": {
-                            "color": "#111111",
-                            "fontSize": "11px",
-                            "fontFamily": "monospace",
-                            "fontWeight": "700"
-                          }
+                          "text": "⊳◁",
+                          "action": { "type": "script", "config": { "script": "self.session.custom.selectedEquipment = 'SV001'\nself.session.custom.equipmentPanelOpen = True" } },
+                          "style": { "backgroundColor": "#D0D0D0", "color": "#616161", "fontSize": "28px", "width": "64px", "height": "52px", "border": "2px solid #555555", "borderRadius": "2px", "padding": "0", "cursor": "pointer" }
                         }
+                      },
+                      { "type": "ia.display.label", "props": { "text": "SOLENOID VALVE", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace", "textAlign": "center" } } },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "style": { "border": "1px solid #888888", "backgroundColor": "#E8E8E8", "padding": "3px 8px" } },
+                        "children": [
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": {
+                              "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SolenoidState", "transforms": [{ "type": "map", "map": { "true": "OPEN", "false": "CLOSED" }, "fallback": "UNKNOWN" }] } },
+                              "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SolenoidState", "transforms": [{ "type": "map", "map": { "true": "#1565C0" }, "fallback": "#616161" }] } }
+                            },
+                            "props": { "text": "CLOSED", "style": { "color": "#616161", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
                       }
                     ]
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": { "name": "Pipe_ValveToFill" },
+                    "position": { "grow": 1 },
+                    "propConfig": { "props.style.backgroundColor": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SolenoidState", "transforms": [{ "type": "map", "map": { "true": "#1565C0" }, "fallback": "#757575" }] } } },
+                    "props": { "text": "", "style": { "backgroundColor": "#757575", "height": "6px", "alignSelf": "center" } }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": { "name": "FillStationGroup" },
+                    "position": { "basis": "150px", "shrink": 0 },
+                    "props": { "direction": "column", "alignItems": "center", "style": { "gap": "4px" } },
+                    "children": [
+                      { "type": "ia.display.label", "props": { "text": "FILL STATION", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } } },
+                      {
+                        "type": "ia.container.flex",
+                        "meta": { "name": "BottleContainer" },
+                        "props": {
+                          "direction": "column",
+                          "alignItems": "center",
+                          "justifyContent": "flex-end",
+                          "style": { "width": "52px", "height": "95px", "border": "3px solid #777777", "borderRadius": "4px 4px 8px 8px", "backgroundColor": "#E0E0E0", "position": "relative", "overflow": "hidden" }
+                        },
+                        "children": [
+                          {
+                            "type": "ia.display.label",
+                            "meta": { "name": "BottleWater" },
+                            "propConfig": {
+                              "props.style.height": { "binding": { "type": "tag", "tagPath": "[default]BFS/Filling/FillVolume_PV", "transforms": [{ "type": "expr", "expression": "toStr(min(100, ({value} / 500.0) * 100)) + '%'" }] } }
+                            },
+                            "props": { "text": "", "style": { "backgroundColor": "#1565C0", "width": "100%", "height": "0%", "position": "absolute", "bottom": "0", "left": "0" } }
+                          },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Filling/FillVolume_PV", "transforms": [{ "type": "expr", "expression": "format({value}, '#0') + ' mL'" }] } } },
+                            "props": { "text": "0 mL", "style": { "color": "#FFFFFF", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700", "textShadow": "0 0 4px #000000", "position": "absolute", "bottom": "6px", "width": "100%", "textAlign": "center", "zIndex": 1 } }
+                          }
+                        ]
+                      },
+                      { "type": "ia.display.label", "props": { "text": "Target: 500 mL", "style": { "color": "#555555", "fontSize": "11px", "fontFamily": "monospace" } } },
+                      {
+                        "type": "ia.container.flex",
+                        "meta": { "name": "LS001_Group" },
+                        "props": { "direction": "row", "alignItems": "center", "style": { "gap": "4px", "marginTop": "4px" } },
+                        "children": [
+                          {
+                            "type": "ia.input.button",
+                            "meta": { "name": "LS001_Bubble" },
+                            "props": {
+                              "action": { "type": "script", "config": { "script": "self.session.custom.selectedEquipment = 'LS001'\nself.session.custom.equipmentPanelOpen = True" } },
+                              "style": { "backgroundColor": "#D8D8D8", "border": "2px solid #555555", "borderRadius": "50%", "width": "40px", "height": "40px", "padding": "0", "cursor": "pointer" }
+                            },
+                            "children": [
+                              {
+                                "type": "ia.container.flex",
+                                "props": { "direction": "column", "alignItems": "center", "justifyContent": "center", "style": { "width": "100%", "height": "100%" } },
+                                "children": [
+                                  { "type": "ia.display.label", "props": { "text": "LS", "style": { "color": "#333333", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700" } } },
+                                  { "type": "ia.display.label", "props": { "text": "001", "style": { "color": "#333333", "fontSize": "10px", "fontFamily": "monospace" } } }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": {
+                              "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/BottleDetected", "transforms": [{ "type": "map", "map": { "true": "DETECTED", "false": "NO BOTTLE" } }] } },
+                              "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/BottleDetected", "transforms": [{ "type": "map", "map": { "true": "#2E7D32" }, "fallback": "#757575" }] } }
+                            },
+                            "props": { "text": "NO BOTTLE", "style": { "color": "#757575", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": { "name": "StatusStrip" },
+                "position": { "basis": "70px", "shrink": 0 },
+                "props": {
+                  "direction": "row",
+                  "alignItems": "center",
+                  "style": { "backgroundColor": "#B8B8B8", "borderTop": "1px solid #999999", "padding": "0 16px", "gap": "6px", "flexWrap": "wrap" }
+                },
+                "children": [
+                  { "type": "ia.display.label", "props": { "text": "SYSTEM:", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace" } } },
+                  {
+                    "type": "ia.display.label",
+                    "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/System/SystemMode" } } },
+                    "props": { "text": "STOPPED", "style": { "color": "#333333", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700" } }
+                  },
+                  { "type": "ia.display.label", "props": { "text": "  |  ", "style": { "color": "#999999", "fontSize": "12px" } } },
+                  { "type": "ia.display.label", "props": { "text": "PUMP P-001:", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace" } } },
+                  {
+                    "type": "ia.display.label",
+                    "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/Running", "transforms": [{ "type": "map", "map": { "true": "RUNNING", "false": "STOPPED" } }] } } },
+                    "props": { "text": "STOPPED", "style": { "color": "#333333", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700" } }
+                  },
+                  { "type": "ia.display.label", "props": { "text": "  |  ", "style": { "color": "#999999", "fontSize": "12px" } } },
+                  { "type": "ia.display.label", "props": { "text": "VALVE SV-001:", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace" } } },
+                  {
+                    "type": "ia.display.label",
+                    "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SolenoidState", "transforms": [{ "type": "map", "map": { "true": "OPEN", "false": "CLOSED" } }] } } },
+                    "props": { "text": "CLOSED", "style": { "color": "#333333", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700" } }
+                  },
+                  { "type": "ia.display.label", "props": { "text": "  |  ", "style": { "color": "#999999", "fontSize": "12px" } } },
+                  { "type": "ia.display.label", "props": { "text": "FLOW:", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace" } } },
+                  {
+                    "type": "ia.display.label",
+                    "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/FlowMeter/FT001_FlowRate", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' mL/s'" }] } } },
+                    "props": { "text": "0.0 mL/s", "style": { "color": "#333333", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700" } }
+                  },
+                  { "type": "ia.display.label", "props": { "text": "  |  ", "style": { "color": "#999999", "fontSize": "12px" } } },
+                  { "type": "ia.display.label", "props": { "text": "TANK:", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace" } } },
+                  {
+                    "type": "ia.display.label",
+                    "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Tank/TK001_Level_PV", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + '%'" }] } } },
+                    "props": { "text": "75.0%", "style": { "color": "#333333", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700" } }
+                  },
+                  { "type": "ia.display.label", "props": { "text": "  |  ", "style": { "color": "#999999", "fontSize": "12px" } } },
+                  { "type": "ia.display.label", "props": { "text": "BOTTLES FILLED:", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace" } } },
+                  {
+                    "type": "ia.display.label",
+                    "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Production/FillCount", "transforms": [{ "type": "expr", "expression": "toStr({value})" }] } } },
+                    "props": { "text": "0", "style": { "color": "#333333", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700" } }
                   }
                 ]
               }
@@ -952,187 +420,415 @@
           },
           {
             "type": "ia.container.flex",
-            "meta": { "name": "StatusStrip" },
-            "position": { "basis": "80px", "shrink": 0 },
+            "meta": { "name": "EquipmentPanel" },
+            "position": { "basis": "290px", "shrink": 0 },
+            "propConfig": {
+              "props.style.display": {
+                "binding": { "type": "expr", "expression": "if({session.custom.equipmentPanelOpen}, 'flex', 'none')" }
+              }
+            },
             "props": {
-              "direction": "row",
-              "alignItems": "center",
+              "direction": "column",
               "style": {
+                "display": "none",
                 "backgroundColor": "#B8B8B8",
-                "borderTop": "1px solid #999999",
-                "padding": "0 16px",
-                "gap": "8px",
-                "flexWrap": "wrap"
+                "borderLeft": "2px solid #888888",
+                "width": "290px"
               }
             },
             "children": [
               {
-                "type": "ia.display.label",
+                "type": "ia.container.flex",
+                "meta": { "name": "PanelHeader" },
+                "position": { "basis": "40px", "shrink": 0 },
                 "props": {
-                  "text": "SYSTEM:",
-                  "style": { "color": "#555555", "fontSize": "10px", "fontFamily": "monospace" }
-                }
-              },
-              {
-                "type": "ia.display.label",
-                "propConfig": {
-                  "props.text": {
-                    "binding": {
-                      "type": "tag",
-                      "tagPath": "[default]BFS/System/SystemMode"
+                  "direction": "row",
+                  "alignItems": "center",
+                  "style": { "backgroundColor": "#3D3D3D", "padding": "0 12px", "gap": "8px" }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": { "name": "PanelTitle" },
+                    "position": { "grow": 1 },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "expr",
+                          "expression": "if({session.custom.selectedEquipment} == 'P001', 'P-001  DIAPHRAGM PUMP', if({session.custom.selectedEquipment} == 'SV001', 'SV-001  SOLENOID VALVE', if({session.custom.selectedEquipment} == 'TK001', 'TK-001  WATER TANK', if({session.custom.selectedEquipment} == 'LS001', 'LS-001  LASER DETECTOR', if({session.custom.selectedEquipment} == 'FT001', 'FT-001  FLOW METER', 'EQUIPMENT DETAIL')))))"
+                        }
+                      }
+                    },
+                    "props": {
+                      "text": "EQUIPMENT DETAIL",
+                      "style": { "color": "#E0E0E0", "fontSize": "13px", "fontWeight": "700", "fontFamily": "monospace" }
+                    }
+                  },
+                  {
+                    "type": "ia.input.button",
+                    "props": {
+                      "text": "✕  Close",
+                      "action": { "type": "script", "config": { "script": "self.session.custom.equipmentPanelOpen = False\nself.session.custom.selectedEquipment = ''" } },
+                      "style": { "backgroundColor": "#555555", "color": "#DDDDDD", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "padding": "4px 10px", "borderRadius": "2px" }
                     }
                   }
-                },
-                "props": {
-                  "text": "STOPPED",
-                  "style": { "color": "#333333", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700" }
-                }
+                ]
               },
               {
-                "type": "ia.display.label",
-                "props": { "text": "  |  ", "style": { "color": "#999999", "fontSize": "10px" } }
-              },
-              {
-                "type": "ia.display.label",
-                "props": { "text": "PUMP P-001:", "style": { "color": "#555555", "fontSize": "10px", "fontFamily": "monospace" } }
-              },
-              {
-                "type": "ia.display.label",
-                "propConfig": {
-                  "props.text": {
-                    "binding": {
-                      "type": "tag",
-                      "tagPath": "[default]BFS/Pump/Running",
-                      "transforms": [{ "type": "map", "map": { "true": "RUNNING", "false": "STOPPED" } }]
-                    }
+                "type": "ia.container.flex",
+                "meta": { "name": "PanelBody" },
+                "position": { "grow": 1 },
+                "props": { "direction": "column", "style": { "padding": "12px", "gap": "10px", "overflow": "auto" } },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "meta": { "name": "PumpDetails" },
+                    "propConfig": {
+                      "props.style.display": {
+                        "binding": { "type": "expr", "expression": "if({session.custom.selectedEquipment} == 'P001', 'flex', 'none')" }
+                      }
+                    },
+                    "props": { "direction": "column", "style": { "display": "none", "gap": "8px" } },
+                    "children": [
+                      { "type": "ia.display.label", "props": { "text": "Diaphragm pump driven by a motor,\nuses flexible membranes to displace\nfluid without contact.", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace", "fontStyle": "italic", "whiteSpace": "pre-line" } } },
+                      { "type": "ia.display.label", "props": { "text": "STATUS", "style": { "color": "#444444", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700", "borderBottom": "1px solid #999999", "paddingBottom": "4px" } } },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "6px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "Running:", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "monospace", "width": "90px" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": {
+                              "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/Running", "transforms": [{ "type": "map", "map": { "true": "YES", "false": "NO" } }] } },
+                              "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/Running", "transforms": [{ "type": "map", "map": { "true": "#2E7D32" }, "fallback": "#616161" }] } }
+                            },
+                            "props": { "text": "NO", "style": { "color": "#616161", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "6px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "Mode:", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "monospace", "width": "90px" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/P001_Mode" } } },
+                            "props": { "text": "AUTO", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "6px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "Speed:", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "monospace", "width": "90px" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/P001_Speed_PV", "transforms": [{ "type": "expr", "expression": "format({value}, '#0') + ' SPM'" }] } } },
+                            "props": { "text": "0 SPM", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "6px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "Current:", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "monospace", "width": "90px" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/P001_Current", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' A'" }] } } },
+                            "props": { "text": "0.0 A", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "6px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "Fault:", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "monospace", "width": "90px" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": {
+                              "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/P001_Fault", "transforms": [{ "type": "map", "map": { "true": "FAULT", "false": "None" } }] } },
+                              "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Pump/P001_Fault", "transforms": [{ "type": "map", "map": { "true": "#B71C1C", "false": "#2E7D32" } }] } }
+                            },
+                            "props": { "text": "None", "style": { "color": "#2E7D32", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      },
+                      { "type": "ia.display.label", "props": { "text": "MANUAL CONTROL", "style": { "color": "#444444", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700", "borderBottom": "1px solid #999999", "paddingBottom": "4px", "marginTop": "4px" } } },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "8px" } },
+                        "children": [
+                          { "type": "ia.input.button", "props": { "text": "START", "action": { "type": "tag-write", "config": { "tagPath": "[default]BFS/Pump/P001_Command", "value": true } }, "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "13px", "fontWeight": "700", "padding": "6px 14px" } } },
+                          { "type": "ia.input.button", "props": { "text": "STOP", "action": { "type": "tag-write", "config": { "tagPath": "[default]BFS/Pump/P001_Command", "value": false } }, "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "13px", "fontWeight": "700", "padding": "6px 14px" } } }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": { "name": "ValveDetails" },
+                    "propConfig": {
+                      "props.style.display": { "binding": { "type": "expr", "expression": "if({session.custom.selectedEquipment} == 'SV001', 'flex', 'none')" } }
+                    },
+                    "props": { "direction": "column", "style": { "display": "none", "gap": "8px" } },
+                    "children": [
+                      { "type": "ia.display.label", "props": { "text": "Electrically-operated valve that\nopens when energized to allow water\nflow to the fill station.", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace", "fontStyle": "italic", "whiteSpace": "pre-line" } } },
+                      { "type": "ia.display.label", "props": { "text": "STATUS", "style": { "color": "#444444", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700", "borderBottom": "1px solid #999999", "paddingBottom": "4px" } } },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "6px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "State:", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "monospace", "width": "80px" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": {
+                              "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SolenoidState", "transforms": [{ "type": "map", "map": { "true": "OPEN", "false": "CLOSED" } }] } },
+                              "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SolenoidState", "transforms": [{ "type": "map", "map": { "true": "#1565C0" }, "fallback": "#616161" }] } }
+                            },
+                            "props": { "text": "CLOSED", "style": { "color": "#616161", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "6px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "Mode:", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "monospace", "width": "80px" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SV001_Mode" } } },
+                            "props": { "text": "AUTO", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "6px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "Fault:", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "monospace", "width": "80px" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": {
+                              "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SV001_Fault", "transforms": [{ "type": "map", "map": { "true": "FAULT", "false": "None" } }] } },
+                              "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Valve/SV001_Fault", "transforms": [{ "type": "map", "map": { "true": "#B71C1C", "false": "#2E7D32" } }] } }
+                            },
+                            "props": { "text": "None", "style": { "color": "#2E7D32", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      },
+                      { "type": "ia.display.label", "props": { "text": "MANUAL CONTROL", "style": { "color": "#444444", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700", "borderBottom": "1px solid #999999", "paddingBottom": "4px", "marginTop": "4px" } } },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "8px" } },
+                        "children": [
+                          { "type": "ia.input.button", "props": { "text": "OPEN", "action": { "type": "tag-write", "config": { "tagPath": "[default]BFS/Valve/Command", "value": true } }, "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "13px", "fontWeight": "700", "padding": "6px 14px" } } },
+                          { "type": "ia.input.button", "props": { "text": "CLOSE", "action": { "type": "tag-write", "config": { "tagPath": "[default]BFS/Valve/Command", "value": false } }, "style": { "backgroundColor": "#616161", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "13px", "fontWeight": "700", "padding": "6px 14px" } } }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": { "name": "TankDetails" },
+                    "propConfig": {
+                      "props.style.display": { "binding": { "type": "expr", "expression": "if({session.custom.selectedEquipment} == 'TK001', 'flex', 'none')" } }
+                    },
+                    "props": { "direction": "column", "style": { "display": "none", "gap": "8px" } },
+                    "children": [
+                      { "type": "ia.display.label", "props": { "text": "Holds the water supply for the\nbottle filling process.", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace", "fontStyle": "italic", "whiteSpace": "pre-line" } } },
+                      { "type": "ia.display.label", "props": { "text": "STATUS", "style": { "color": "#444444", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700", "borderBottom": "1px solid #999999", "paddingBottom": "4px" } } },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "6px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "Level:", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "monospace", "width": "80px" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Tank/TK001_Level_PV", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' %'" }] } } },
+                            "props": { "text": "75.0 %", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "6px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "Volume:", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "monospace", "width": "80px" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Tank/TK001_Level_EU", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.00') + ' gal'" }] } } },
+                            "props": { "text": "3.75 gal", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "6px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "Pressure:", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "monospace", "width": "80px" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Tank/TK001_Pressure", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' PSI'" }] } } },
+                            "props": { "text": "14.7 PSI", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      },
+                      { "type": "ia.display.label", "props": { "text": "SETPOINTS", "style": { "color": "#444444", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700", "borderBottom": "1px solid #999999", "paddingBottom": "4px", "marginTop": "4px" } } },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "column", "style": { "gap": "4px" } },
+                        "children": [
+                          {
+                            "type": "ia.container.flex",
+                            "props": { "direction": "row", "style": { "gap": "6px" } },
+                            "children": [
+                              { "type": "ia.display.label", "props": { "text": "HH Shutoff:", "style": { "color": "#B71C1C", "fontSize": "12px", "fontFamily": "monospace", "width": "90px" } } },
+                              {
+                                "type": "ia.display.label",
+                                "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Tank/TK001_Level_SP_HH", "transforms": [{ "type": "expr", "expression": "format({value}, '#0') + ' %'" }] } } },
+                                "props": { "text": "95 %", "style": { "color": "#B71C1C", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700" } }
+                              }
+                            ]
+                          },
+                          {
+                            "type": "ia.container.flex",
+                            "props": { "direction": "row", "style": { "gap": "6px" } },
+                            "children": [
+                              { "type": "ia.display.label", "props": { "text": "Low Warn:", "style": { "color": "#F57F17", "fontSize": "12px", "fontFamily": "monospace", "width": "90px" } } },
+                              {
+                                "type": "ia.display.label",
+                                "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Tank/TK001_Level_SP_L", "transforms": [{ "type": "expr", "expression": "format({value}, '#0') + ' %'" }] } } },
+                                "props": { "text": "20 %", "style": { "color": "#F57F17", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700" } }
+                              }
+                            ]
+                          },
+                          {
+                            "type": "ia.container.flex",
+                            "props": { "direction": "row", "style": { "gap": "6px" } },
+                            "children": [
+                              { "type": "ia.display.label", "props": { "text": "LL Shutoff:", "style": { "color": "#B71C1C", "fontSize": "12px", "fontFamily": "monospace", "width": "90px" } } },
+                              {
+                                "type": "ia.display.label",
+                                "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Tank/TK001_Level_SP_LL", "transforms": [{ "type": "expr", "expression": "format({value}, '#0') + ' %'" }] } } },
+                                "props": { "text": "10 %", "style": { "color": "#B71C1C", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700" } }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": { "name": "LaserDetails" },
+                    "propConfig": {
+                      "props.style.display": { "binding": { "type": "expr", "expression": "if({session.custom.selectedEquipment} == 'LS001', 'flex', 'none')" } }
+                    },
+                    "props": { "direction": "column", "style": { "display": "none", "gap": "8px" } },
+                    "children": [
+                      { "type": "ia.display.label", "props": { "text": "Detects whether a 16.9 oz bottle\nis present and positioned correctly\nat the fill station.", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace", "fontStyle": "italic", "whiteSpace": "pre-line" } } },
+                      { "type": "ia.display.label", "props": { "text": "STATUS", "style": { "color": "#444444", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700", "borderBottom": "1px solid #999999", "paddingBottom": "4px" } } },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "6px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "Detected:", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "monospace", "width": "90px" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": {
+                              "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/BottleDetected", "transforms": [{ "type": "map", "map": { "true": "YES", "false": "NO" } }] } },
+                              "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/BottleDetected", "transforms": [{ "type": "map", "map": { "true": "#2E7D32" }, "fallback": "#757575" }] } }
+                            },
+                            "props": { "text": "NO", "style": { "color": "#757575", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "6px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "Signal:", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "monospace", "width": "90px" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/LS001_Signal", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' %'" }] } } },
+                            "props": { "text": "0.0 %", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "6px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "Health:", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "monospace", "width": "90px" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": {
+                              "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/Health", "transforms": [{ "type": "map", "map": { "true": "OK", "false": "FAULT" } }] } },
+                              "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/Sensor/Health", "transforms": [{ "type": "map", "map": { "true": "#2E7D32", "false": "#B71C1C" } }] } }
+                            },
+                            "props": { "text": "OK", "style": { "color": "#2E7D32", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": { "name": "FlowDetails" },
+                    "propConfig": {
+                      "props.style.display": { "binding": { "type": "expr", "expression": "if({session.custom.selectedEquipment} == 'FT001', 'flex', 'none')" } }
+                    },
+                    "props": { "direction": "column", "style": { "display": "none", "gap": "8px" } },
+                    "children": [
+                      { "type": "ia.display.label", "props": { "text": "Measures the flow rate of water\npassing through the pipe toward\nthe fill station.", "style": { "color": "#555555", "fontSize": "12px", "fontFamily": "monospace", "fontStyle": "italic", "whiteSpace": "pre-line" } } },
+                      { "type": "ia.display.label", "props": { "text": "STATUS", "style": { "color": "#444444", "fontSize": "12px", "fontFamily": "monospace", "fontWeight": "700", "borderBottom": "1px solid #999999", "paddingBottom": "4px" } } },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "6px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "Flow Rate:", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "monospace", "width": "90px" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/FlowMeter/FT001_FlowRate", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' mL/s'" }] } } },
+                            "props": { "text": "0.0 mL/s", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "6px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "Totalizer:", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "monospace", "width": "90px" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": { "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/FlowMeter/FT001_Totalizer", "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + ' mL'" }] } } },
+                            "props": { "text": "0.0 mL", "style": { "color": "#333333", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "props": { "direction": "row", "style": { "gap": "6px" } },
+                        "children": [
+                          { "type": "ia.display.label", "props": { "text": "Fault:", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "monospace", "width": "90px" } } },
+                          {
+                            "type": "ia.display.label",
+                            "propConfig": {
+                              "props.text": { "binding": { "type": "tag", "tagPath": "[default]BFS/FlowMeter/FT001_Fault", "transforms": [{ "type": "map", "map": { "true": "FAULT", "false": "None" } }] } },
+                              "props.style.color": { "binding": { "type": "tag", "tagPath": "[default]BFS/FlowMeter/FT001_Fault", "transforms": [{ "type": "map", "map": { "true": "#B71C1C", "false": "#2E7D32" } }] } }
+                            },
+                            "props": { "text": "None", "style": { "color": "#2E7D32", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } }
+                          }
+                        ]
+                      }
+                    ]
                   }
-                },
-                "props": {
-                  "text": "STOPPED",
-                  "style": { "color": "#333333", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700" }
-                }
-              },
-              {
-                "type": "ia.display.label",
-                "props": { "text": "  |  ", "style": { "color": "#999999", "fontSize": "10px" } }
-              },
-              {
-                "type": "ia.display.label",
-                "props": { "text": "SV-001:", "style": { "color": "#555555", "fontSize": "10px", "fontFamily": "monospace" } }
-              },
-              {
-                "type": "ia.display.label",
-                "propConfig": {
-                  "props.text": {
-                    "binding": {
-                      "type": "tag",
-                      "tagPath": "[default]BFS/Valve/SolenoidState",
-                      "transforms": [{ "type": "map", "map": { "true": "OPEN", "false": "CLOSED" } }]
-                    }
-                  }
-                },
-                "props": {
-                  "text": "CLOSED",
-                  "style": { "color": "#333333", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700" }
-                }
-              },
-              {
-                "type": "ia.display.label",
-                "props": { "text": "  |  ", "style": { "color": "#999999", "fontSize": "10px" } }
-              },
-              {
-                "type": "ia.display.label",
-                "props": { "text": "FLOW FT-001:", "style": { "color": "#555555", "fontSize": "10px", "fontFamily": "monospace" } }
-              },
-              {
-                "type": "ia.display.label",
-                "propConfig": {
-                  "props.text": {
-                    "binding": {
-                      "type": "tag",
-                      "tagPath": "[default]BFS/FlowMeter/FT001_FlowRate",
-                      "transforms": [
-                        { "type": "expr", "expression": "format({value}, '#0.0') + ' mL/s'" }
-                      ]
-                    }
-                  }
-                },
-                "props": {
-                  "text": "0.0 mL/s",
-                  "style": { "color": "#333333", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700" }
-                }
-              },
-              {
-                "type": "ia.display.label",
-                "props": { "text": "  |  ", "style": { "color": "#999999", "fontSize": "10px" } }
-              },
-              {
-                "type": "ia.display.label",
-                "props": { "text": "LS-001:", "style": { "color": "#555555", "fontSize": "10px", "fontFamily": "monospace" } }
-              },
-              {
-                "type": "ia.display.label",
-                "propConfig": {
-                  "props.text": {
-                    "binding": {
-                      "type": "tag",
-                      "tagPath": "[default]BFS/Sensor/Health",
-                      "transforms": [{ "type": "map", "map": { "true": "OK", "false": "FAULT" } }]
-                    }
-                  }
-                },
-                "props": {
-                  "text": "OK",
-                  "style": { "color": "#333333", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700" }
-                }
-              },
-              {
-                "type": "ia.display.label",
-                "props": { "text": "  |  ", "style": { "color": "#999999", "fontSize": "10px" } }
-              },
-              {
-                "type": "ia.display.label",
-                "props": { "text": "TANK TK-001:", "style": { "color": "#555555", "fontSize": "10px", "fontFamily": "monospace" } }
-              },
-              {
-                "type": "ia.display.label",
-                "propConfig": {
-                  "props.text": {
-                    "binding": {
-                      "type": "tag",
-                      "tagPath": "[default]BFS/Tank/TK001_Level_PV",
-                      "transforms": [{ "type": "expr", "expression": "format({value}, '#0.0') + '%'" }]
-                    }
-                  }
-                },
-                "props": {
-                  "text": "75.0%",
-                  "style": { "color": "#333333", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700" }
-                }
-              },
-              {
-                "type": "ia.display.label",
-                "props": { "text": "  |  ", "style": { "color": "#999999", "fontSize": "10px" } }
-              },
-              {
-                "type": "ia.display.label",
-                "props": { "text": "BOTTLES:", "style": { "color": "#555555", "fontSize": "10px", "fontFamily": "monospace" } }
-              },
-              {
-                "type": "ia.display.label",
-                "propConfig": {
-                  "props.text": {
-                    "binding": {
-                      "type": "tag",
-                      "tagPath": "[default]BFS/Production/FillCount",
-                      "transforms": [{ "type": "expr", "expression": "toStr({value})" }]
-                    }
-                  }
-                },
-                "props": {
-                  "text": "0",
-                  "style": { "color": "#333333", "fontSize": "10px", "fontFamily": "monospace", "fontWeight": "700" }
-                }
+                ]
               }
             ]
           }

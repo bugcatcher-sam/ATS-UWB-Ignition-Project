@@ -2,10 +2,7 @@
   "custom": {},
   "params": {},
   "props": {
-    "defaultSize": {
-      "height": 664,
-      "width": 1024
-    }
+    "defaultSize": { "height": 664, "width": 1024 }
   },
   "root": {
     "type": "ia.container.flex",
@@ -18,47 +15,65 @@
       {
         "type": "ia.container.flex",
         "meta": { "name": "TitleBar" },
-        "position": { "basis": "36px", "shrink": 0 },
+        "position": { "basis": "40px", "shrink": 0 },
         "props": {
           "direction": "row",
           "alignItems": "center",
-          "style": { "backgroundColor": "#3D3D3D", "padding": "0 12px", "borderBottom": "2px solid #555555" }
+          "style": { "backgroundColor": "#3D3D3D", "padding": "0 14px", "borderBottom": "2px solid #555555" }
         },
         "children": [
-          { "type": "ia.display.label", "props": { "text": "AUTOMATED BOTTLE FILLER  —  PROJECT CREDITS", "style": { "color": "#E0E0E0", "fontSize": "13px", "fontWeight": "600", "fontFamily": "monospace", "letterSpacing": "0.5px" } } }
+          { "type": "ia.display.label", "props": { "text": "AUTOMATED BOTTLE FILLER  —  PROJECT CREDITS", "style": { "color": "#E0E0E0", "fontSize": "15px", "fontWeight": "600", "fontFamily": "monospace", "letterSpacing": "0.5px" } } }
         ]
       },
       {
         "type": "ia.container.flex",
         "meta": { "name": "LogoRow" },
-        "position": { "basis": "80px", "shrink": 0 },
+        "position": { "basis": "90px", "shrink": 0 },
         "props": {
           "direction": "row",
           "alignItems": "center",
           "justifyContent": "center",
-          "style": { "backgroundColor": "#BBBBBB", "borderBottom": "1px solid #AAAAAA", "gap": "40px", "padding": "12px" }
+          "style": { "backgroundColor": "#BBBBBB", "borderBottom": "1px solid #AAAAAA", "gap": "50px", "padding": "14px" }
         },
         "children": [
           {
             "type": "ia.container.flex",
-            "props": { "direction": "column", "alignItems": "center", "style": { "gap": "4px" } },
+            "props": { "direction": "row", "alignItems": "center", "style": { "gap": "10px" } },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "UW BOTHELL", "style": { "color": "#4B9CD3", "fontSize": "22px", "fontWeight": "700", "fontFamily": "Arial, sans-serif", "letterSpacing": "3px" } } },
-              { "type": "ia.display.label", "props": { "text": "SCHOOL OF STEM", "style": { "color": "#666666", "fontSize": "11px", "fontFamily": "Arial, sans-serif", "letterSpacing": "2px" } } },
-              { "type": "ia.display.label", "props": { "text": "Engineering & Computer Science", "style": { "color": "#888888", "fontSize": "10px", "fontFamily": "Arial, sans-serif" } } }
+              {
+                "type": "ia.display.image",
+                "props": { "source": "/system/webdev/samplequickstart/uwb-logo.png", "style": { "width": "60px", "height": "60px", "objectFit": "contain", "borderRadius": "3px", "backgroundColor": "#FFFFFF" } }
+              },
+              {
+                "type": "ia.container.flex",
+                "props": { "direction": "column", "style": { "gap": "2px" } },
+                "children": [
+                  { "type": "ia.display.label", "props": { "text": "University of Washington", "style": { "color": "#4B2E83", "fontSize": "15px", "fontFamily": "Arial, sans-serif" } } },
+                  { "type": "ia.display.label", "props": { "text": "Bothell", "style": { "color": "#4B2E83", "fontSize": "20px", "fontWeight": "700", "fontFamily": "Arial, sans-serif" } } },
+                  { "type": "ia.display.label", "props": { "text": "School of STEM", "style": { "color": "#888888", "fontSize": "12px", "fontFamily": "Arial, sans-serif" } } }
+                ]
+              }
             ]
           },
-          {
-            "type": "ia.display.label",
-            "props": { "text": "×", "style": { "color": "#AAAAAA", "fontSize": "24px", "fontFamily": "monospace" } }
-          },
+          { "type": "ia.display.label", "props": { "text": "×", "style": { "color": "#AAAAAA", "fontSize": "28px" } } },
           {
             "type": "ia.container.flex",
-            "props": { "direction": "column", "alignItems": "center", "style": { "gap": "4px" } },
+            "props": { "direction": "row", "alignItems": "center", "style": { "gap": "10px" } },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "▲ ATS AUTOMATION", "style": { "color": "#E8A020", "fontSize": "22px", "fontWeight": "700", "fontFamily": "Arial, sans-serif", "letterSpacing": "2px" } } },
-              { "type": "ia.display.label", "props": { "text": "INDUSTRIAL CONTROLS", "style": { "color": "#666666", "fontSize": "11px", "fontFamily": "Arial, sans-serif", "letterSpacing": "2px" } } },
-              { "type": "ia.display.label", "props": { "text": "Automated Bottle Filler — Capstone Project 2026", "style": { "color": "#888888", "fontSize": "10px", "fontFamily": "Arial, sans-serif" } } }
+              {
+                "type": "ia.container.flex",
+                "props": { "direction": "column", "alignItems": "center", "justifyContent": "center", "style": { "backgroundColor": "#E8A020", "width": "50px", "height": "50px", "borderRadius": "3px" } },
+                "children": [{ "type": "ia.display.label", "props": { "text": "▲", "style": { "color": "#FFFFFF", "fontSize": "28px", "lineHeight": "1" } } }]
+              },
+              {
+                "type": "ia.container.flex",
+                "props": { "direction": "column", "style": { "gap": "2px" } },
+                "children": [
+                  { "type": "ia.display.label", "props": { "text": "ATS Industrial", "style": { "color": "#E8A020", "fontSize": "20px", "fontWeight": "700", "fontFamily": "Arial, sans-serif" } } },
+                  { "type": "ia.display.label", "props": { "text": "Automated Bottle Filler", "style": { "color": "#666666", "fontSize": "13px", "fontFamily": "Arial, sans-serif" } } },
+                  { "type": "ia.display.label", "props": { "text": "Capstone Project 2026", "style": { "color": "#888888", "fontSize": "12px", "fontFamily": "Arial, sans-serif" } } }
+                ]
+              }
             ]
           }
         ]
@@ -67,38 +82,29 @@
         "type": "ia.container.flex",
         "meta": { "name": "ContentArea" },
         "position": { "grow": 1 },
-        "props": {
-          "direction": "row",
-          "style": { "padding": "12px", "gap": "12px" }
-        },
+        "props": { "direction": "row", "style": { "padding": "12px", "gap": "12px" } },
         "children": [
           {
             "type": "ia.container.flex",
             "meta": { "name": "ProjectInfo" },
             "position": { "grow": 1 },
-            "props": {
-              "direction": "column",
-              "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "12px", "gap": "8px" }
-            },
+            "props": { "direction": "column", "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "14px", "gap": "8px" } },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "PROJECT INFORMATION", "style": { "color": "#444444", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "1px", "borderBottom": "1px solid #999999", "paddingBottom": "6px" } } },
-              { "type": "ia.display.label", "props": { "text": "Project Title:", "style": { "color": "#666666", "fontSize": "10px", "fontFamily": "monospace" } } },
-              { "type": "ia.display.label", "props": { "text": "Automated Bottle Filling Station", "style": { "color": "#222222", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700" } } },
-              { "type": "ia.display.label", "props": { "text": "Course:", "style": { "color": "#666666", "fontSize": "10px", "fontFamily": "monospace", "marginTop": "6px" } } },
-              { "type": "ia.display.label", "props": { "text": "UWB STEM Capstone — Spring 2026", "style": { "color": "#222222", "fontSize": "12px", "fontFamily": "monospace" } } },
-              { "type": "ia.display.label", "props": { "text": "Institution:", "style": { "color": "#666666", "fontSize": "10px", "fontFamily": "monospace", "marginTop": "6px" } } },
-              { "type": "ia.display.label", "props": { "text": "University of Washington Bothell", "style": { "color": "#222222", "fontSize": "12px", "fontFamily": "monospace" } } },
-              { "type": "ia.display.label", "props": { "text": "Industry Partner:", "style": { "color": "#666666", "fontSize": "10px", "fontFamily": "monospace", "marginTop": "6px" } } },
-              { "type": "ia.display.label", "props": { "text": "ATS Automation", "style": { "color": "#222222", "fontSize": "12px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "PROJECT INFORMATION", "style": { "color": "#444444", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "1px", "borderBottom": "2px solid #999999", "paddingBottom": "8px" } } },
+              { "type": "ia.display.label", "props": { "text": "Project Title:", "style": { "color": "#666666", "fontSize": "12px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "Automated Bottle Filling Station", "style": { "color": "#222222", "fontSize": "15px", "fontFamily": "monospace", "fontWeight": "700" } } },
+              { "type": "ia.display.label", "props": { "text": "Course:", "style": { "color": "#666666", "fontSize": "12px", "fontFamily": "monospace", "marginTop": "6px" } } },
+              { "type": "ia.display.label", "props": { "text": "UWB STEM Capstone — Spring 2026", "style": { "color": "#222222", "fontSize": "14px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "Institution:", "style": { "color": "#666666", "fontSize": "12px", "fontFamily": "monospace", "marginTop": "6px" } } },
+              { "type": "ia.display.label", "props": { "text": "University of Washington Bothell", "style": { "color": "#222222", "fontSize": "14px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "Industry Partner:", "style": { "color": "#666666", "fontSize": "12px", "fontFamily": "monospace", "marginTop": "6px" } } },
+              { "type": "ia.display.label", "props": { "text": "ATS Industrial", "style": { "color": "#222222", "fontSize": "14px", "fontFamily": "monospace" } } },
               {
                 "type": "ia.input.button",
                 "props": {
                   "text": "STEM Symposium Website ↗",
-                  "action": {
-                    "type": "script",
-                    "config": { "script": "system.perspective.openBrowser('https://www.uwb.edu/stem/undergraduate/capstone-symposium')" }
-                  },
-                  "style": { "backgroundColor": "#4B9CD3", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "12px", "fontWeight": "700", "padding": "8px 16px", "marginTop": "12px" }
+                  "action": { "type": "script", "config": { "script": "system.perspective.openBrowser('https://www.uwb.edu/stem/undergraduate/capstone-symposium')" } },
+                  "style": { "backgroundColor": "#4B9CD3", "color": "#FFFFFF", "fontFamily": "monospace", "fontSize": "13px", "fontWeight": "700", "padding": "10px 18px", "marginTop": "14px" }
                 }
               }
             ]
@@ -107,44 +113,40 @@
             "type": "ia.container.flex",
             "meta": { "name": "TeamInfo" },
             "position": { "grow": 1 },
-            "props": {
-              "direction": "column",
-              "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "12px", "gap": "8px" }
-            },
+            "props": { "direction": "column", "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "14px", "gap": "8px" } },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "PROJECT TEAM", "style": { "color": "#444444", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "1px", "borderBottom": "1px solid #999999", "paddingBottom": "6px" } } },
-              { "type": "ia.display.label", "props": { "text": "Students:", "style": { "color": "#666666", "fontSize": "10px", "fontFamily": "monospace" } } },
-              { "type": "ia.display.label", "props": { "text": "— Adan Lawrence Rodriguez", "style": { "color": "#222222", "fontSize": "11px", "fontFamily": "monospace" } } },
-              { "type": "ia.display.label", "props": { "text": "— Samuel Govindu", "style": { "color": "#222222", "fontSize": "11px", "fontFamily": "monospace" } } },
-              { "type": "ia.display.label", "props": { "text": "Faculty Advisor:", "style": { "color": "#666666", "fontSize": "10px", "fontFamily": "monospace", "marginTop": "8px" } } },
-              { "type": "ia.display.label", "props": { "text": "— UWB School of STEM Faculty", "style": { "color": "#222222", "fontSize": "11px", "fontFamily": "monospace" } } },
-              { "type": "ia.display.label", "props": { "text": "Industry Advisor:", "style": { "color": "#666666", "fontSize": "10px", "fontFamily": "monospace", "marginTop": "8px" } } },
-              { "type": "ia.display.label", "props": { "text": "— ATS Automation Engineer", "style": { "color": "#222222", "fontSize": "11px", "fontFamily": "monospace" } } }
+              { "type": "ia.display.label", "props": { "text": "PROJECT TEAM", "style": { "color": "#444444", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "1px", "borderBottom": "2px solid #999999", "paddingBottom": "8px" } } },
+              { "type": "ia.display.label", "props": { "text": "Students:", "style": { "color": "#666666", "fontSize": "12px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "— Adan Lawrence Rodriguez", "style": { "color": "#222222", "fontSize": "13px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "— Rene Pantoja", "style": { "color": "#222222", "fontSize": "13px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "— Sam Govela", "style": { "color": "#222222", "fontSize": "13px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "— Joshua Christensen", "style": { "color": "#222222", "fontSize": "13px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "Faculty Advisor:", "style": { "color": "#666666", "fontSize": "12px", "fontFamily": "monospace", "marginTop": "8px" } } },
+              { "type": "ia.display.label", "props": { "text": "— UWB School of STEM Faculty", "style": { "color": "#222222", "fontSize": "13px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "Industry Advisor:", "style": { "color": "#666666", "fontSize": "12px", "fontFamily": "monospace", "marginTop": "8px" } } },
+              { "type": "ia.display.label", "props": { "text": "— ATS Industrial Engineer", "style": { "color": "#222222", "fontSize": "13px", "fontFamily": "monospace" } } }
             ]
           },
           {
             "type": "ia.container.flex",
             "meta": { "name": "TechInfo" },
             "position": { "grow": 1 },
-            "props": {
-              "direction": "column",
-              "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "12px", "gap": "8px" }
-            },
+            "props": { "direction": "column", "style": { "backgroundColor": "#BBBBBB", "border": "1px solid #999999", "padding": "14px", "gap": "8px" } },
             "children": [
-              { "type": "ia.display.label", "props": { "text": "SYSTEM SPECIFICATIONS", "style": { "color": "#444444", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "1px", "borderBottom": "1px solid #999999", "paddingBottom": "6px" } } },
-              { "type": "ia.display.label", "props": { "text": "Hardware:", "style": { "color": "#666666", "fontSize": "10px", "fontFamily": "monospace" } } },
-              { "type": "ia.display.label", "props": { "text": "— Diaphragm Pump P-001", "style": { "color": "#222222", "fontSize": "11px", "fontFamily": "monospace" } } },
-              { "type": "ia.display.label", "props": { "text": "— Solenoid Valve SV-001", "style": { "color": "#222222", "fontSize": "11px", "fontFamily": "monospace" } } },
-              { "type": "ia.display.label", "props": { "text": "— Laser Detector LS-001", "style": { "color": "#222222", "fontSize": "11px", "fontFamily": "monospace" } } },
-              { "type": "ia.display.label", "props": { "text": "— Water Supply Tank TK-001", "style": { "color": "#222222", "fontSize": "11px", "fontFamily": "monospace" } } },
-              { "type": "ia.display.label", "props": { "text": "Software & Standards:", "style": { "color": "#666666", "fontSize": "10px", "fontFamily": "monospace", "marginTop": "8px" } } },
-              { "type": "ia.display.label", "props": { "text": "— Ignition 8.1 Perspective (SCADA)", "style": { "color": "#222222", "fontSize": "11px", "fontFamily": "monospace" } } },
-              { "type": "ia.display.label", "props": { "text": "— ISA-101 HMI Design Standard", "style": { "color": "#222222", "fontSize": "11px", "fontFamily": "monospace" } } },
-              { "type": "ia.display.label", "props": { "text": "— ISA-18.2 Alarm Management", "style": { "color": "#222222", "fontSize": "11px", "fontFamily": "monospace" } } },
-              { "type": "ia.display.label", "props": { "text": "— ISA 5.1 P&ID Symbology", "style": { "color": "#222222", "fontSize": "11px", "fontFamily": "monospace" } } },
-              { "type": "ia.display.label", "props": { "text": "Fill Target:", "style": { "color": "#666666", "fontSize": "10px", "fontFamily": "monospace", "marginTop": "8px" } } },
-              { "type": "ia.display.label", "props": { "text": "— 16.9 oz (500 mL) Bottles", "style": { "color": "#222222", "fontSize": "11px", "fontFamily": "monospace" } } },
-              { "type": "ia.display.label", "props": { "text": "— 1024 × 768 Display Target", "style": { "color": "#222222", "fontSize": "11px", "fontFamily": "monospace" } } }
+              { "type": "ia.display.label", "props": { "text": "SYSTEM SPECIFICATIONS", "style": { "color": "#444444", "fontSize": "13px", "fontFamily": "monospace", "fontWeight": "700", "letterSpacing": "1px", "borderBottom": "2px solid #999999", "paddingBottom": "8px" } } },
+              { "type": "ia.display.label", "props": { "text": "Hardware:", "style": { "color": "#666666", "fontSize": "12px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "— Diaphragm Pump P-001", "style": { "color": "#222222", "fontSize": "13px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "— Solenoid Valve SV-001", "style": { "color": "#222222", "fontSize": "13px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "— Laser Detector LS-001", "style": { "color": "#222222", "fontSize": "13px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "— Water Supply Tank TK-001", "style": { "color": "#222222", "fontSize": "13px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "Software & Standards:", "style": { "color": "#666666", "fontSize": "12px", "fontFamily": "monospace", "marginTop": "8px" } } },
+              { "type": "ia.display.label", "props": { "text": "— Ignition 8.3 Perspective (SCADA)", "style": { "color": "#222222", "fontSize": "13px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "— ISA-101 HMI Design Standard", "style": { "color": "#222222", "fontSize": "13px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "— ISA-18.2 Alarm Management", "style": { "color": "#222222", "fontSize": "13px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "— ISA 5.1 P&ID Symbology", "style": { "color": "#222222", "fontSize": "13px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "Fill Target:", "style": { "color": "#666666", "fontSize": "12px", "fontFamily": "monospace", "marginTop": "8px" } } },
+              { "type": "ia.display.label", "props": { "text": "— 16.9 oz (500 mL) bottles", "style": { "color": "#222222", "fontSize": "13px", "fontFamily": "monospace" } } },
+              { "type": "ia.display.label", "props": { "text": "— 1024 × 768 display target", "style": { "color": "#222222", "fontSize": "13px", "fontFamily": "monospace" } } }
             ]
           }
         ]

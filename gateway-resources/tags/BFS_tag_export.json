@@ -101,6 +101,46 @@
           "valueSource": "memory",
           "value": false,
           "tooltip": "True when system is in running state"
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "StartFailed",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": false,
+          "tooltip": "True if start command was issued but system did not enter Running state within timeout (5 s)",
+          "alarms": [
+            {
+              "name": "Start Command Failed",
+              "label": "BFS System Failed to Start",
+              "mode": "Equals",
+              "setpointA": 1,
+              "priority": "High",
+              "enabled": true,
+              "ackMode": "Manual",
+              "notes": "A start command was issued but the system did not reach Running state within 5 seconds. Check pump, valve, and E-Stop status."
+            }
+          ]
+        },
+        {
+          "tagType": "AtomicTag",
+          "name": "StopFailed",
+          "dataType": "Boolean",
+          "valueSource": "memory",
+          "value": false,
+          "tooltip": "True if stop command was issued but system did not stop within timeout (5 s)",
+          "alarms": [
+            {
+              "name": "Stop Command Failed",
+              "label": "BFS System Failed to Stop",
+              "mode": "Equals",
+              "setpointA": 1,
+              "priority": "High",
+              "enabled": true,
+              "ackMode": "Manual",
+              "notes": "A stop command was issued but the system did not stop within 5 seconds. Check for valve or pump faults preventing safe shutdown."
+            }
+          ]
         }
       ]
     },

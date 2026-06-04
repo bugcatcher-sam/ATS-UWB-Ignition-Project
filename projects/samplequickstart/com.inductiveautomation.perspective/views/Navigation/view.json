@@ -2,10 +2,7 @@
   "custom": {},
   "params": {},
   "props": {
-    "defaultSize": {
-      "height": 80,
-      "width": 1024
-    }
+    "defaultSize": { "height": 80, "width": 1024 }
   },
   "root": {
     "type": "ia.container.flex",
@@ -29,46 +26,68 @@
           "alignItems": "center",
           "style": {
             "borderBottom": "1px solid #444444",
-            "padding": "0 12px",
+            "padding": "0 10px",
             "gap": "8px"
           }
         },
         "children": [
           {
             "type": "ia.container.flex",
-            "meta": { "name": "UWBSection" },
-            "position": { "basis": "200px", "shrink": 0 },
+            "meta": { "name": "UWBLogoBlock" },
+            "position": { "basis": "220px", "shrink": 0 },
             "props": {
-              "direction": "column",
-              "justifyContent": "center",
-              "style": {}
+              "direction": "row",
+              "alignItems": "center",
+              "style": { "gap": "8px" }
             },
             "children": [
               {
-                "type": "ia.display.label",
+                "type": "ia.display.image",
                 "meta": { "name": "UWBLogo" },
                 "props": {
-                  "text": "UW BOTHELL",
+                  "source": "/system/webdev/samplequickstart/uwb-logo.png",
                   "style": {
-                    "color": "#4B9CD3",
-                    "fontSize": "16px",
-                    "fontWeight": "700",
-                    "fontFamily": "Arial, sans-serif",
-                    "letterSpacing": "2px"
+                    "height": "38px",
+                    "width": "38px",
+                    "objectFit": "contain",
+                    "borderRadius": "2px",
+                    "backgroundColor": "#FFFFFF"
                   }
                 }
               },
               {
-                "type": "ia.display.label",
-                "meta": { "name": "UWBSubtitle" },
+                "type": "ia.container.flex",
                 "props": {
-                  "text": "School of STEM",
-                  "style": {
-                    "color": "#888888",
-                    "fontSize": "10px",
-                    "fontFamily": "Arial, sans-serif"
+                  "direction": "column",
+                  "justifyContent": "center",
+                  "style": { "gap": "1px" }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "props": {
+                      "text": "University of Washington",
+                      "style": {
+                        "color": "#D4C5F0",
+                        "fontSize": "11px",
+                        "fontFamily": "Arial, sans-serif",
+                        "letterSpacing": "0.2px"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "props": {
+                      "text": "Bothell",
+                      "style": {
+                        "color": "#FFFFFF",
+                        "fontSize": "13px",
+                        "fontWeight": "700",
+                        "fontFamily": "Arial, sans-serif"
+                      }
+                    }
                   }
-                }
+                ]
               }
             ]
           },
@@ -77,166 +96,311 @@
             "meta": { "name": "AlarmSummarySection" },
             "position": { "grow": 1 },
             "props": {
-              "direction": "row",
+              "direction": "column",
               "justifyContent": "center",
-              "alignItems": "center",
-              "style": { "gap": "16px" }
+              "style": {
+                "padding": "2px 8px",
+                "gap": "2px",
+                "overflow": "hidden"
+              }
             },
             "children": [
               {
-                "type": "ia.display.label",
-                "meta": { "name": "AlarmLabel" },
+                "type": "ia.container.flex",
+                "meta": { "name": "AlarmCountRow" },
                 "props": {
-                  "text": "ACTIVE ALARMS:",
-                  "style": {
-                    "color": "#888888",
-                    "fontSize": "11px",
-                    "fontFamily": "monospace",
-                    "letterSpacing": "0.5px"
-                  }
-                }
-              },
-              {
-                "type": "ia.display.label",
-                "meta": { "name": "AlarmActiveBadge" },
-                "propConfig": {
-                  "props.text": {
-                    "binding": {
-                      "type": "tag",
-                      "tagPath": "[default]BFS/System/AlarmActiveCount",
-                      "transforms": [
-                        {
-                          "type": "expr",
-                          "expression": "toStr({value})"
-                        }
-                      ]
+                  "direction": "row",
+                  "alignItems": "center",
+                  "style": { "gap": "10px" }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "props": {
+                      "text": "ACTIVE ALARMS",
+                      "style": {
+                        "color": "#888888",
+                        "fontSize": "10px",
+                        "fontFamily": "monospace",
+                        "letterSpacing": "0.5px"
+                      }
                     }
                   },
-                  "props.style.backgroundColor": {
-                    "binding": {
-                      "type": "tag",
-                      "tagPath": "[default]BFS/System/AlarmActiveCount",
-                      "transforms": [
-                        {
-                          "type": "map",
-                          "map": { "0": "#424242" },
-                          "fallback": "#B71C1C"
+                  {
+                    "type": "ia.display.label",
+                    "meta": { "name": "AlarmActiveBadge" },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "tag",
+                          "tagPath": "[default]BFS/System/AlarmActiveCount",
+                          "transforms": [{ "type": "expr", "expression": "toStr({value})" }]
                         }
-                      ]
-                    }
-                  }
-                },
-                "props": {
-                  "text": "0",
-                  "style": {
-                    "backgroundColor": "#424242",
-                    "color": "#FFFFFF",
-                    "fontSize": "14px",
-                    "fontWeight": "700",
-                    "padding": "2px 10px",
-                    "borderRadius": "2px",
-                    "fontFamily": "monospace",
-                    "minWidth": "30px",
-                    "textAlign": "center"
-                  }
-                }
-              },
-              {
-                "type": "ia.display.label",
-                "meta": { "name": "AlarmUnackLabel" },
-                "props": {
-                  "text": "UNACK:",
-                  "style": {
-                    "color": "#888888",
-                    "fontSize": "11px",
-                    "fontFamily": "monospace",
-                    "marginLeft": "8px"
-                  }
-                }
-              },
-              {
-                "type": "ia.display.label",
-                "meta": { "name": "AlarmUnackBadge" },
-                "propConfig": {
-                  "props.text": {
-                    "binding": {
-                      "type": "tag",
-                      "tagPath": "[default]BFS/System/AlarmUnackCount",
-                      "transforms": [
-                        {
-                          "type": "expr",
-                          "expression": "toStr({value})"
+                      },
+                      "props.style.backgroundColor": {
+                        "binding": {
+                          "type": "tag",
+                          "tagPath": "[default]BFS/System/AlarmActiveCount",
+                          "transforms": [{ "type": "map", "map": { "0": "#424242" }, "fallback": "#B71C1C" }]
                         }
-                      ]
+                      }
+                    },
+                    "props": {
+                      "text": "0",
+                      "style": {
+                        "backgroundColor": "#424242",
+                        "color": "#FFFFFF",
+                        "fontSize": "13px",
+                        "fontWeight": "700",
+                        "padding": "0px 8px",
+                        "borderRadius": "2px",
+                        "fontFamily": "monospace",
+                        "minWidth": "24px",
+                        "textAlign": "center"
+                      }
                     }
                   },
-                  "props.style.backgroundColor": {
-                    "binding": {
-                      "type": "tag",
-                      "tagPath": "[default]BFS/System/AlarmUnackCount",
-                      "transforms": [
-                        {
-                          "type": "map",
-                          "map": { "0": "#424242" },
-                          "fallback": "#E65100"
+                  {
+                    "type": "ia.display.label",
+                    "props": {
+                      "text": "UNACK",
+                      "style": { "color": "#888888", "fontSize": "10px", "fontFamily": "monospace", "marginLeft": "6px" }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": { "name": "AlarmUnackBadge" },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "tag",
+                          "tagPath": "[default]BFS/System/AlarmUnackCount",
+                          "transforms": [{ "type": "expr", "expression": "toStr({value})" }]
                         }
-                      ]
+                      },
+                      "props.style.backgroundColor": {
+                        "binding": {
+                          "type": "tag",
+                          "tagPath": "[default]BFS/System/AlarmUnackCount",
+                          "transforms": [{ "type": "map", "map": { "0": "#424242" }, "fallback": "#E65100" }]
+                        }
+                      }
+                    },
+                    "props": {
+                      "text": "0",
+                      "style": {
+                        "backgroundColor": "#424242",
+                        "color": "#FFFFFF",
+                        "fontSize": "13px",
+                        "fontWeight": "700",
+                        "padding": "0px 8px",
+                        "borderRadius": "2px",
+                        "fontFamily": "monospace",
+                        "minWidth": "24px",
+                        "textAlign": "center"
+                      }
                     }
                   }
-                },
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": { "name": "AlarmTextList" },
                 "props": {
-                  "text": "0",
-                  "style": {
-                    "backgroundColor": "#424242",
-                    "color": "#FFFFFF",
-                    "fontSize": "14px",
-                    "fontWeight": "700",
-                    "padding": "2px 10px",
-                    "borderRadius": "2px",
-                    "fontFamily": "monospace",
-                    "minWidth": "30px",
-                    "textAlign": "center"
+                  "direction": "row",
+                  "style": { "gap": "12px", "flexWrap": "nowrap", "overflow": "hidden" }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "propConfig": {
+                      "props.style.display": {
+                        "binding": {
+                          "type": "tag",
+                          "tagPath": "[default]BFS/System/EStop",
+                          "transforms": [{ "type": "map", "map": { "true": "block" }, "fallback": "none" }]
+                        }
+                      }
+                    },
+                    "props": {
+                      "text": "● E-STOP",
+                      "style": { "color": "#EF5350", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700", "display": "none" }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "propConfig": {
+                      "props.style.display": {
+                        "binding": {
+                          "type": "tag",
+                          "tagPath": "[default]BFS/Pump/P001_Fault",
+                          "transforms": [{ "type": "map", "map": { "true": "block" }, "fallback": "none" }]
+                        }
+                      }
+                    },
+                    "props": {
+                      "text": "● PUMP FAULT",
+                      "style": { "color": "#EF5350", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700", "display": "none" }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "propConfig": {
+                      "props.style.display": {
+                        "binding": {
+                          "type": "tag",
+                          "tagPath": "[default]BFS/Valve/SV001_Fault",
+                          "transforms": [{ "type": "map", "map": { "true": "block" }, "fallback": "none" }]
+                        }
+                      }
+                    },
+                    "props": {
+                      "text": "● VALVE FAULT",
+                      "style": { "color": "#EF5350", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700", "display": "none" }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "propConfig": {
+                      "props.style.display": {
+                        "binding": {
+                          "type": "tag",
+                          "tagPath": "[default]BFS/Sensor/Health",
+                          "transforms": [{ "type": "map", "map": { "false": "block" }, "fallback": "none" }]
+                        }
+                      }
+                    },
+                    "props": {
+                      "text": "● LASER FAULT",
+                      "style": { "color": "#EF5350", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700", "display": "none" }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "propConfig": {
+                      "props.style.display": {
+                        "binding": {
+                          "type": "tag",
+                          "tagPath": "[default]BFS/System/StartFailed",
+                          "transforms": [{ "type": "map", "map": { "true": "block" }, "fallback": "none" }]
+                        }
+                      }
+                    },
+                    "props": {
+                      "text": "● START FAILED",
+                      "style": { "color": "#FFA726", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700", "display": "none" }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "propConfig": {
+                      "props.style.display": {
+                        "binding": {
+                          "type": "tag",
+                          "tagPath": "[default]BFS/System/StopFailed",
+                          "transforms": [{ "type": "map", "map": { "true": "block" }, "fallback": "none" }]
+                        }
+                      }
+                    },
+                    "props": {
+                      "text": "● STOP FAILED",
+                      "style": { "color": "#FFA726", "fontSize": "11px", "fontFamily": "monospace", "fontWeight": "700", "display": "none" }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "meta": { "name": "NoAlarmText" },
+                    "propConfig": {
+                      "props.style.display": {
+                        "binding": {
+                          "type": "tag",
+                          "tagPath": "[default]BFS/System/AlarmActiveCount",
+                          "transforms": [{ "type": "map", "map": { "0": "block" }, "fallback": "none" }]
+                        }
+                      }
+                    },
+                    "props": {
+                      "text": "No active alarms",
+                      "style": { "color": "#666666", "fontSize": "11px", "fontFamily": "monospace", "fontStyle": "italic", "display": "block" }
+                    }
                   }
-                }
+                ]
               }
             ]
           },
           {
             "type": "ia.container.flex",
-            "meta": { "name": "ATSSection" },
-            "position": { "basis": "200px", "shrink": 0 },
+            "meta": { "name": "ATSLogoBlock" },
+            "position": { "basis": "220px", "shrink": 0 },
             "props": {
-              "direction": "column",
-              "alignItems": "flex-end",
-              "justifyContent": "center",
-              "style": {}
+              "direction": "row",
+              "alignItems": "center",
+              "justifyContent": "flex-end",
+              "style": { "gap": "8px" }
             },
             "children": [
               {
-                "type": "ia.display.label",
-                "meta": { "name": "ATSLogo" },
+                "type": "ia.container.flex",
                 "props": {
-                  "text": "▲ ATS AUTOMATION",
-                  "style": {
-                    "color": "#E8A020",
-                    "fontSize": "13px",
-                    "fontWeight": "700",
-                    "fontFamily": "Arial, sans-serif",
-                    "letterSpacing": "1px"
+                  "direction": "column",
+                  "alignItems": "flex-end",
+                  "justifyContent": "center",
+                  "style": { "gap": "1px" }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "props": {
+                      "text": "ATS Industrial",
+                      "style": {
+                        "color": "#FFFFFF",
+                        "fontSize": "13px",
+                        "fontWeight": "700",
+                        "fontFamily": "Arial, sans-serif"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "props": {
+                      "text": "Automated Bottle Filler",
+                      "style": {
+                        "color": "#AAAAAA",
+                        "fontSize": "11px",
+                        "fontFamily": "Arial, sans-serif"
+                      }
+                    }
                   }
-                }
+                ]
               },
               {
-                "type": "ia.display.label",
-                "meta": { "name": "SystemTitle" },
+                "type": "ia.container.flex",
+                "meta": { "name": "ATSMountainLogo" },
                 "props": {
-                  "text": "Automated Bottle Filler",
+                  "direction": "column",
+                  "alignItems": "center",
+                  "justifyContent": "center",
                   "style": {
-                    "color": "#AAAAAA",
-                    "fontSize": "10px",
-                    "fontFamily": "Arial, sans-serif"
+                    "backgroundColor": "#E8A020",
+                    "width": "36px",
+                    "height": "36px",
+                    "borderRadius": "2px"
                   }
-                }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "props": {
+                      "text": "▲",
+                      "style": {
+                        "color": "#FFFFFF",
+                        "fontSize": "20px",
+                        "lineHeight": "1",
+                        "textShadow": "0 2px 0 rgba(0,0,0,0.3)"
+                      }
+                    }
+                  }
+                ]
               }
             ]
           }
@@ -259,256 +423,126 @@
             "type": "ia.input.button",
             "meta": { "name": "Tab_STEM" },
             "position": { "grow": 1 },
+            "propConfig": {
+              "props.style.color": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/symposium', '#FFFFFF', '#909090')" }
+              },
+              "props.style.borderBottom": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/symposium', '2px solid #FFFFFF', '2px solid transparent')" }
+              },
+              "props.style.fontWeight": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/symposium', '700', '400')" }
+              }
+            },
             "props": {
               "text": "STEM Symposium",
-              "action": {
-                "type": "script",
-                "config": {
-                  "script": "system.perspective.openBrowser('https://www.uwb.edu/stem/undergraduate/capstone-symposium')"
-                }
-              },
-              "style": {
-                "backgroundColor": "transparent",
-                "color": "#B0B0B0",
-                "fontSize": "11px",
-                "fontFamily": "monospace",
-                "border": "none",
-                "borderBottom": "2px solid transparent",
-                "borderRadius": "0",
-                "padding": "0 4px",
-                "letterSpacing": "0.3px"
-              }
+              "action": { "type": "page", "config": { "url": "/symposium" } },
+              "style": { "backgroundColor": "transparent", "color": "#909090", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderBottom": "2px solid transparent", "borderRadius": "0", "padding": "0 4px" }
             }
           },
           {
             "type": "ia.input.button",
             "meta": { "name": "Tab_Overview" },
             "position": { "grow": 1 },
+            "propConfig": {
+              "props.style.color": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/overview' || {page.props.path} == '/', '#FFFFFF', '#909090')" }
+              },
+              "props.style.borderBottom": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/overview' || {page.props.path} == '/', '2px solid #FFFFFF', '2px solid transparent')" }
+              },
+              "props.style.fontWeight": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/overview' || {page.props.path} == '/', '700', '400')" }
+              }
+            },
             "props": {
               "text": "Overview",
-              "action": {
-                "type": "page",
-                "config": { "url": "/overview" }
-              },
-              "style": {
-                "backgroundColor": "transparent",
-                "color": "#FFFFFF",
-                "fontSize": "11px",
-                "fontFamily": "monospace",
-                "border": "none",
-                "borderBottom": "2px solid #6FA3D8",
-                "borderRadius": "0",
-                "padding": "0 4px"
-              }
+              "action": { "type": "page", "config": { "url": "/overview" } },
+              "style": { "backgroundColor": "transparent", "color": "#909090", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderBottom": "2px solid transparent", "borderRadius": "0", "padding": "0 4px" }
             }
           },
           {
             "type": "ia.input.button",
             "meta": { "name": "Tab_Process" },
             "position": { "grow": 1 },
+            "propConfig": {
+              "props.style.color": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/process', '#FFFFFF', '#909090')" }
+              },
+              "props.style.borderBottom": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/process', '2px solid #FFFFFF', '2px solid transparent')" }
+              },
+              "props.style.fontWeight": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/process', '700', '400')" }
+              }
+            },
             "props": {
               "text": "Process",
-              "action": {
-                "type": "page",
-                "config": { "url": "/process" }
-              },
-              "style": {
-                "backgroundColor": "transparent",
-                "color": "#B0B0B0",
-                "fontSize": "11px",
-                "fontFamily": "monospace",
-                "border": "none",
-                "borderBottom": "2px solid transparent",
-                "borderRadius": "0",
-                "padding": "0 4px"
-              }
+              "action": { "type": "page", "config": { "url": "/process" } },
+              "style": { "backgroundColor": "transparent", "color": "#909090", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderBottom": "2px solid transparent", "borderRadius": "0", "padding": "0 4px" }
             }
           },
           {
             "type": "ia.input.button",
-            "meta": { "name": "Tab_Filling" },
+            "meta": { "name": "Tab_FillingTank" },
             "position": { "grow": 1 },
-            "props": {
-              "text": "Filling",
-              "action": {
-                "type": "page",
-                "config": { "url": "/filling" }
+            "propConfig": {
+              "props.style.color": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/filling-tank' || {page.props.path} == '/sensor' || {page.props.path} == '/filling' || {page.props.path} == '/tank', '#FFFFFF', '#909090')" }
               },
-              "style": {
-                "backgroundColor": "transparent",
-                "color": "#B0B0B0",
-                "fontSize": "11px",
-                "fontFamily": "monospace",
-                "border": "none",
-                "borderBottom": "2px solid transparent",
-                "borderRadius": "0",
-                "padding": "0 4px"
-              }
-            }
-          },
-          {
-            "type": "ia.input.button",
-            "meta": { "name": "Tab_Tank" },
-            "position": { "grow": 1 },
-            "props": {
-              "text": "Tank",
-              "action": {
-                "type": "page",
-                "config": { "url": "/tank" }
+              "props.style.borderBottom": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/filling-tank' || {page.props.path} == '/sensor' || {page.props.path} == '/filling' || {page.props.path} == '/tank', '2px solid #FFFFFF', '2px solid transparent')" }
               },
-              "style": {
-                "backgroundColor": "transparent",
-                "color": "#B0B0B0",
-                "fontSize": "11px",
-                "fontFamily": "monospace",
-                "border": "none",
-                "borderBottom": "2px solid transparent",
-                "borderRadius": "0",
-                "padding": "0 4px"
+              "props.style.fontWeight": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/filling-tank' || {page.props.path} == '/sensor' || {page.props.path} == '/filling' || {page.props.path} == '/tank', '700', '400')" }
               }
-            }
-          },
-          {
-            "type": "ia.input.button",
-            "meta": { "name": "Tab_Sensor" },
-            "position": { "grow": 1 },
+            },
             "props": {
-              "text": "Sensor",
-              "action": {
-                "type": "page",
-                "config": { "url": "/sensor" }
-              },
-              "style": {
-                "backgroundColor": "transparent",
-                "color": "#B0B0B0",
-                "fontSize": "11px",
-                "fontFamily": "monospace",
-                "border": "none",
-                "borderBottom": "2px solid transparent",
-                "borderRadius": "0",
-                "padding": "0 4px"
-              }
+              "text": "Filling & Tank",
+              "action": { "type": "page", "config": { "url": "/filling-tank" } },
+              "style": { "backgroundColor": "transparent", "color": "#909090", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderBottom": "2px solid transparent", "borderRadius": "0", "padding": "0 4px" }
             }
           },
           {
             "type": "ia.input.button",
             "meta": { "name": "Tab_Alarms" },
             "position": { "grow": 1 },
+            "propConfig": {
+              "props.style.color": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/alarms', '#FFFFFF', '#909090')" }
+              },
+              "props.style.borderBottom": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/alarms', '2px solid #FFFFFF', '2px solid transparent')" }
+              },
+              "props.style.fontWeight": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/alarms', '700', '400')" }
+              }
+            },
             "props": {
               "text": "Alarms",
-              "action": {
-                "type": "page",
-                "config": { "url": "/alarms" }
-              },
-              "style": {
-                "backgroundColor": "transparent",
-                "color": "#B0B0B0",
-                "fontSize": "11px",
-                "fontFamily": "monospace",
-                "border": "none",
-                "borderBottom": "2px solid transparent",
-                "borderRadius": "0",
-                "padding": "0 4px"
-              }
+              "action": { "type": "page", "config": { "url": "/alarms" } },
+              "style": { "backgroundColor": "transparent", "color": "#909090", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderBottom": "2px solid transparent", "borderRadius": "0", "padding": "0 4px" }
             }
           },
           {
             "type": "ia.input.button",
             "meta": { "name": "Tab_Credits" },
             "position": { "grow": 1 },
+            "propConfig": {
+              "props.style.color": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/credits', '#FFFFFF', '#909090')" }
+              },
+              "props.style.borderBottom": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/credits', '2px solid #FFFFFF', '2px solid transparent')" }
+              },
+              "props.style.fontWeight": {
+                "binding": { "type": "expr", "expression": "if({page.props.path} == '/credits', '700', '400')" }
+              }
+            },
             "props": {
               "text": "Credits",
-              "action": {
-                "type": "page",
-                "config": { "url": "/credits" }
-              },
-              "style": {
-                "backgroundColor": "transparent",
-                "color": "#B0B0B0",
-                "fontSize": "11px",
-                "fontFamily": "monospace",
-                "border": "none",
-                "borderBottom": "2px solid transparent",
-                "borderRadius": "0",
-                "padding": "0 4px"
-              }
-            }
-          },
-          {
-            "type": "ia.input.button",
-            "meta": { "name": "ExpandToggle" },
-            "position": { "basis": "32px", "shrink": 0 },
-            "props": {
-              "text": "▼",
-              "action": {
-                "type": "script",
-                "config": {
-                  "script": "expanded = self.session.custom.navbarExpanded\nif expanded:\n\tself.session.custom.navbarExpanded = False\n\tself.session.props.dock.top.size = 80\n\tself.props.text = '▼'\nelse:\n\tself.session.custom.navbarExpanded = True\n\tself.session.props.dock.top.size = 220\n\tself.props.text = '▲'"
-                }
-              },
-              "style": {
-                "backgroundColor": "#333333",
-                "color": "#888888",
-                "fontSize": "10px",
-                "fontFamily": "monospace",
-                "border": "none",
-                "borderLeft": "1px solid #444444",
-                "borderRadius": "0",
-                "padding": "0 8px",
-                "minWidth": "32px"
-              }
-            }
-          }
-        ]
-      },
-      {
-        "type": "ia.container.flex",
-        "meta": { "name": "AlarmTableSection" },
-        "position": { "grow": 1 },
-        "propConfig": {
-          "props.style.display": {
-            "binding": {
-              "type": "expr",
-              "expression": "if({session.custom.navbarExpanded}, 'flex', 'none')"
-            }
-          }
-        },
-        "props": {
-          "direction": "column",
-          "style": {
-            "display": "none",
-            "padding": "4px 8px",
-            "backgroundColor": "#252525"
-          }
-        },
-        "children": [
-          {
-            "type": "ia.display.label",
-            "meta": { "name": "AlarmTableHeader" },
-            "position": { "basis": "18px", "shrink": 0 },
-            "props": {
-              "text": "ACTIVE ALARMS  —  ISA-18.2",
-              "style": {
-                "color": "#888888",
-                "fontSize": "10px",
-                "fontFamily": "monospace",
-                "letterSpacing": "1px",
-                "paddingBottom": "2px"
-              }
-            }
-          },
-          {
-            "type": "ia.display.alarmstatustable",
-            "meta": { "name": "AlarmTable" },
-            "position": { "grow": 1 },
-            "props": {
-              "showFilter": false,
-              "columns": [
-                { "field": "displayPath", "header": "Source", "visible": true },
-                { "field": "name", "header": "Alarm", "visible": true },
-                { "field": "priority", "header": "Priority", "visible": true },
-                { "field": "activeTime", "header": "Time", "visible": true }
-              ]
+              "action": { "type": "page", "config": { "url": "/credits" } },
+              "style": { "backgroundColor": "transparent", "color": "#909090", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderBottom": "2px solid transparent", "borderRadius": "0", "padding": "0 4px" }
             }
           }
         ]
