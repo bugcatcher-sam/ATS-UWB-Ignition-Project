@@ -425,7 +425,7 @@
             "position": { "grow": 1 },
             "props": {
               "text": "STEM Symposium",
-              "action": { "type": "page", "config": { "url": "/symposium" } },
+              "action": { "type": "script", "config": { "script": "system.perspective.navigate(page='/symposium')" } },
               "style": { "backgroundColor": "transparent", "color": "#FFFFFF", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderRadius": "0", "padding": "0 4px" }
             }
           },
@@ -435,7 +435,7 @@
             "position": { "grow": 1 },
             "props": {
               "text": "Overview",
-              "action": { "type": "page", "config": { "url": "/overview" } },
+              "action": { "type": "script", "config": { "script": "system.perspective.navigate(page='/overview')" } },
               "style": { "backgroundColor": "transparent", "color": "#FFFFFF", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderRadius": "0", "padding": "0 4px" }
             }
           },
@@ -445,7 +445,7 @@
             "position": { "grow": 1 },
             "props": {
               "text": "Process",
-              "action": { "type": "page", "config": { "url": "/process" } },
+              "action": { "type": "script", "config": { "script": "system.perspective.navigate(page='/process')" } },
               "style": { "backgroundColor": "transparent", "color": "#FFFFFF", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderRadius": "0", "padding": "0 4px" }
             }
           },
@@ -455,7 +455,7 @@
             "position": { "grow": 1 },
             "props": {
               "text": "Filling & Tank",
-              "action": { "type": "page", "config": { "url": "/filling-tank" } },
+              "action": { "type": "script", "config": { "script": "system.perspective.navigate(page='/filling-tank')" } },
               "style": { "backgroundColor": "transparent", "color": "#FFFFFF", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderRadius": "0", "padding": "0 4px" }
             }
           },
@@ -465,7 +465,7 @@
             "position": { "grow": 1 },
             "props": {
               "text": "Alarms",
-              "action": { "type": "page", "config": { "url": "/alarms" } },
+              "action": { "type": "script", "config": { "script": "system.perspective.navigate(page='/alarms')" } },
               "style": { "backgroundColor": "transparent", "color": "#FFFFFF", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderRadius": "0", "padding": "0 4px" }
             }
           },
@@ -475,7 +475,7 @@
             "position": { "grow": 1 },
             "props": {
               "text": "Credits",
-              "action": { "type": "page", "config": { "url": "/credits" } },
+              "action": { "type": "script", "config": { "script": "system.perspective.navigate(page='/credits')" } },
               "style": { "backgroundColor": "transparent", "color": "#FFFFFF", "fontSize": "12px", "fontFamily": "monospace", "border": "none", "borderRadius": "0", "padding": "0 4px" }
             }
           }
